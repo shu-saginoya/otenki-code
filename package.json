@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write ."
+    "format": "next lint --fix"
   },
   "dependencies": {
     "next": "15.1.4",
