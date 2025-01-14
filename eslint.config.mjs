@@ -3,6 +3,7 @@ import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
 import prettier from "eslint-plugin-prettier";
 import tailwindcss from "eslint-plugin-tailwindcss";
+import storybook from "eslint-plugin-storybook";
 import eslintConfigPrettier from "eslint-config-prettier";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -16,15 +17,12 @@ const eslintConfig = [
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
   },
-  ...compat.extends(
-    "next/core-web-vitals",
-    "next/typescript",
-    "plugin:prettier/recommended",
-  ),
+  ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     plugins: {
       prettier,
       tailwindcss,
+      storybook,
     },
     rules: {
       "prettier/prettier": "error", // Prettierのルールをエラーとして扱う
