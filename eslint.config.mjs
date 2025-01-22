@@ -4,6 +4,7 @@ import { FlatCompat } from "@eslint/eslintrc";
 import prettier from "eslint-plugin-prettier";
 import tailwindcss from "eslint-plugin-tailwindcss";
 import storybook from "eslint-plugin-storybook";
+import a11y from "eslint-plugin-jsx-a11y";
 import eslintConfigPrettier from "eslint-config-prettier";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -23,6 +24,7 @@ const eslintConfig = [
       prettier,
       tailwindcss,
       storybook,
+      a11y,
     },
     rules: {
       "prettier/prettier": "error", // Prettierのルールをエラーとして扱う
