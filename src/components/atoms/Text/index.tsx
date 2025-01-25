@@ -1,9 +1,9 @@
-import React from "react";
+import { ReactNode, ComponentProps } from "react";
 
 export type TextProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
-};
+} & ComponentProps<"span">;
 
 /**
  * Text component
@@ -12,8 +12,12 @@ export type TextProps = {
  * @param className 追加のクラス名（任意）
  * @returns
  */
-const Text: React.FC<TextProps> = ({ children, className }) => {
-  return <span className={className}>{children}</span>;
+const Text: React.FC<TextProps> = ({ children, className, ...props }) => {
+  return (
+    <span {...props} className={className}>
+      {children}
+    </span>
+  );
 };
 
 export default Text;

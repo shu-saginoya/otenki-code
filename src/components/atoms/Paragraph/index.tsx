@@ -1,9 +1,9 @@
-import React from "react";
+import { ReactNode, ComponentProps } from "react";
 
 export type ParagraphProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
-};
+} & ComponentProps<"p">;
 
 /**
  * Paragraph component
@@ -12,8 +12,16 @@ export type ParagraphProps = {
  * @param className 追加のクラス名（任意）
  * @returns
  */
-const Paragraph: React.FC<ParagraphProps> = ({ children, className }) => {
-  return <p className={className}>{children}</p>;
+const Paragraph: React.FC<ParagraphProps> = ({
+  children,
+  className,
+  ...props
+}) => {
+  return (
+    <p {...props} className={className}>
+      {children}
+    </p>
+  );
 };
 
 export default Paragraph;
