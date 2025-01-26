@@ -1,12 +1,12 @@
-import type { ApiContext, User } from 'types/data'
-import { fetcher } from 'utils'
+import type { ApiContext, User } from "types/data";
+import { fetcher } from "utils";
 
 export type GetUserParams = {
   /**
    * ユーザーID
    */
-  id: number
-}
+  id: number;
+};
 
 /**
  * ユーザーAPI(個別取得)
@@ -31,14 +31,14 @@ const getUser = async (
   }
   */
   return await fetcher(
-    `${context.apiRootUrl.replace(/\/$/g, '')}/users/${id}`,
+    `${context.apiRootUrl.replace(/\/$/g, "")}/users/${id}`,
     {
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
     },
-  )
-}
+  );
+};
 
-export default getUser
+export default getUser;
