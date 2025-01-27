@@ -13,6 +13,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.0",
     "clsx": "^2.1.1",
     "next": "15.1.4",
     "react": "^19.0.0",
