@@ -6,6 +6,7 @@ export default {
   component: IconButton,
   argTypes: {
     icon: {
+      control: "text",
       description: "アイコンを指定",
       table: {
         type: { summary: "string" },
@@ -17,6 +18,13 @@ export default {
       description: "Disabledフラグ",
       table: {
         type: { summary: "boolean" },
+      },
+    },
+    className: {
+      control: { type: "text" },
+      description: "ユーティリティクラス",
+      table: {
+        type: { summary: "string" },
       },
     },
     onClick: {
@@ -36,6 +44,15 @@ const sampleFunc = () => alert("ボタンが押されました");
 export const Default: Story = {
   args: {
     icon: "check",
+    onClick: sampleFunc,
+  },
+};
+
+// 背景色つきボタン
+export const Background: Story = {
+  args: {
+    icon: "close",
+    className: "bg-primary text-background-light",
     onClick: sampleFunc,
   },
 };

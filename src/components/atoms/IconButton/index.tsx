@@ -25,7 +25,7 @@ const IconButton: FC<IconButtonProps> = ({
   return (
     <button
       type={"button"}
-      className={`rounded-full border-0 p-1 disabled:cursor-not-allowed disabled:opacity-25 ${className}`}
+      className={`rounded-full border-0 p-1 hover:opacity-80 focus:opacity-80 disabled:cursor-not-allowed disabled:opacity-25 ${className}`}
       onClick={onClick}
       disabled={disabled}
       {...props}
