@@ -19,7 +19,6 @@ const Switch: FC<SwitchProps> = ({ checked, onChange, disabled = false }) => {
       checked={checked}
       onChange={onChange}
       disabled={disabled}
-      aria-label="Toggle switch"
       className={
         "group inline-flex h-6 w-11 items-center rounded-full bg-disabled transition-colors disabled:cursor-not-allowed  disabled:opacity-25 data-[checked]:bg-primary"
       }
