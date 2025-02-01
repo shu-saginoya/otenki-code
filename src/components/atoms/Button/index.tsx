@@ -1,30 +1,47 @@
 import { ReactNode, ComponentProps, FC } from "react";
+import clsx from "clsx";
 
 type ButtonProps = {
   children: ReactNode;
+  color?: Color;
   disabled?: boolean;
+  block?: boolean;
   onClick?: () => void;
 } & ComponentProps<"button">;
+
+const colorOptions = {
+  primary:
+    "bg-primary text-white hover:bg-primary-dark disabled:bg-primary-light",
+  none: "bg-transparent text-foreground dark:text-background hover:bg-black/20 disabled:text-disabled disabled:hover:bg-transparent",
+};
+
+type Color = keyof typeof colorOptions;
 
 /**
  * Button Component
  * @param children 子要素
+ * @param color 色の選択
  * @param disabled 押せない状態(真偽値)
+ * @param block ボタンをブロック要素にする(真偽値)
  * @param onClick 実行する関数
  * @returns
  */
 const Button: FC<ButtonProps> = ({
   children,
+  color = "primary",
   disabled = false,
+  block = false,
   onClick,
   ...props
 }) => {
   return (
     <button
       type={"button"}
-      className={
-        "rounded-full border-0 bg-primary px-4 py-1 text-white transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:bg-primary-light"
-      }
+      className={clsx([
+        "rounded-full border-0 px-4 py-1 transition-colors  disabled:cursor-not-allowed",
+        colorOptions[color],
+        block && "block w-full",
+      ])}
       onClick={onClick}
       disabled={disabled}
       {...props}

@@ -13,10 +13,26 @@ export default {
         type: { summary: "string" },
       },
     },
+    color: {
+      control: { type: "text" },
+      defaultValue: "primary",
+      description: "ボタンの色",
+      table: {
+        type: { summary: "string" },
+      },
+    },
     disabled: {
       control: { type: "boolean" },
       defaultValue: false,
       description: "Disabledフラグ",
+      table: {
+        type: { summary: "boolean" },
+      },
+    },
+    block: {
+      control: { type: "boolean" },
+      defaultValue: false,
+      description: "ブロック要素フラグ",
       table: {
         type: { summary: "boolean" },
       },
@@ -47,6 +63,15 @@ export const Disabled: Story = {
   args: {
     children: "Disabled Button",
     disabled: true,
+    onClick: sampleFunc,
+  },
+};
+
+// ブロックボタン
+export const Block: Story = {
+  args: {
+    children: "Block Button",
+    block: true,
     onClick: sampleFunc,
   },
 };
