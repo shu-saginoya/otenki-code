@@ -10,7 +10,7 @@ type CardProps = {
 
 const variants = {
   default: "",
-  elevated: "shadow",
+  elevated: "shadow-md",
   outlined: "border border-foreground-light dark:border-background-light",
 };
 
