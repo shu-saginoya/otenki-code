@@ -1,4 +1,6 @@
-import { ReactNode, ComponentProps, FC } from "react";
+import { ReactNode, ComponentProps, FC, createElement } from "react";
+import { iconOptions, IconOptions } from "@/utils/useIcons";
+import Flex from "@/components/layout/Flex";
 import clsx from "clsx";
 
 type ButtonProps = {
@@ -6,6 +8,8 @@ type ButtonProps = {
   color?: Color;
   disabled?: boolean;
   block?: boolean;
+  prependIcon?: IconOptions;
+  appendIcon?: IconOptions;
   onClick?: () => void;
 } & ComponentProps<"button">;
 
@@ -31,6 +35,8 @@ const Button: FC<ButtonProps> = ({
   color = "primary",
   disabled = false,
   block = false,
+  prependIcon,
+  appendIcon,
   onClick,
   ...props
 }) => {
@@ -38,7 +44,7 @@ const Button: FC<ButtonProps> = ({
     <button
       type={"button"}
       className={clsx([
-        "rounded-full border-0 px-4 py-1 transition-colors  disabled:cursor-not-allowed",
+        "rounded-full  border-0 px-4 py-1 transition-colors disabled:cursor-not-allowed",
         colorOptions[color],
         block && "block w-full",
       ])}
@@ -46,7 +52,11 @@ const Button: FC<ButtonProps> = ({
       disabled={disabled}
       {...props}
     >
-      {children}
+      <Flex className="items-center justify-between gap-1">
+        {prependIcon && createElement(iconOptions[prependIcon])}
+        {children}
+        {appendIcon && createElement(iconOptions[appendIcon])}
+      </Flex>
     </button>
   );
 };

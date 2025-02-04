@@ -37,6 +37,20 @@ export default {
         type: { summary: "boolean" },
       },
     },
+    prependIcon: {
+      control: { type: "text" },
+      description: "childrenの前にアイコンを表示",
+      table: {
+        type: { summary: "string" },
+      },
+    },
+    appendIcon: {
+      control: { type: "text" },
+      description: "childrenの後にアイコンを表示",
+      table: {
+        type: { summary: "string" },
+      },
+    },
     onClick: {
       description: "onClick イベントハンドラ",
       table: {
@@ -72,6 +86,15 @@ export const Block: Story = {
   args: {
     children: "Block Button",
     block: true,
+    onClick: sampleFunc,
+  },
+};
+
+// アイコンボタン
+export const Icon: Story = {
+  args: {
+    children: "Icon Button",
+    appendIcon: "arrowForward",
     onClick: sampleFunc,
   },
 };
