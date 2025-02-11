@@ -1,9 +1,15 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // 保存時にフォーマットを実行
   "editor.formatOnSave": true,
+
+  // デフォルトのフォーマッターとしてPrettierを指定（拡張機能ID: esbenp.prettier-vscode）
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // 保存時にESLintによる自動修正を実行
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "files.eol": "\n",
-  "files.autoGuessEncoding": true
+
+  // ESLintのフォーマット機能自体を無効化（Prettierに任せる）
+  "eslint.format.enable": false
 }
