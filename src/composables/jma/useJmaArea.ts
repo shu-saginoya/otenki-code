@@ -1,8 +1,8 @@
-// 地域情報を管理
+// 地域情報を取得
+import { useState, useEffect } from "react";
+import { fetcher } from "@/utils/index";
 
-import { ref, watch, readonly } from "vue";
-import { useFetch } from "@/composables/utils/useFetch";
-
+// 型定義
 import type {
   Areas,
   AreaCenters,
@@ -12,36 +12,58 @@ import type {
   AreaClass20s,
 } from "@/types/jmaAreas";
 
+// 型ガード関数
+const isAreas = (data: Partial<Areas>): data is Areas => {
+  return (
+    data &&
+    typeof data.centers !== "undefined" &&
+    typeof data.offices !== "undefined" &&
+    typeof data.class10s !== "undefined" &&
+    typeof data.class15s !== "undefined" &&
+    typeof data.class20s !== "undefined"
+  );
+};
+
 export const useJmaArea = () => {
-  // エリアの情報を公開しているURL
-  const url = "https://www.jma.go.jp/bosai/common/const/area.json";
+  const [centers, setCenters] = useState<AreaCenters | null>(null);
+  const [offices, setOffices] = useState<AreaOffices | null>(null);
+  const [class10s, setClass10s] = useState<AreaClass10s | null>(null);
+  const [class15s, setClass15s] = useState<AreaClass15s | null>(null);
+  const [class20s, setClass20s] = useState<AreaClass20s | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // 取得できたデータ
-  const { data, error } = useFetch(url);
+  useEffect(() => {
+    const url = "https://www.jma.go.jp/bosai/common/const/area.json";
 
-  //取得したデータを分割
-  const centers = ref<AreaCenters>();
-  const offices = ref<AreaOffices>();
-  const class10s = ref<AreaClass10s>();
-  const class15s = ref<AreaClass15s>();
-  const class20s = ref<AreaClass20s>();
-  watch(data, () => {
-    if (data.value) {
-      const areas: Areas = data.value;
-      centers.value = areas.centers;
-      offices.value = areas.offices;
-      class10s.value = areas.class10s;
-      class15s.value = areas.class15s;
-      class20s.value = areas.class20s;
-    }
-  });
+    const getData = async () => {
+      try {
+        const result = await fetcher<Areas>(url);
+
+        if (isAreas(result)) {
+          setCenters(result.centers);
+          setOffices(result.offices);
+          setClass10s(result.class10s);
+          setClass15s(result.class15s);
+          setClass20s(result.class20s);
+        }
+      } catch (err) {
+        setError((err as Error).message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getData();
+  }, []);
 
   return {
-    centers: readonly(centers),
-    offices: readonly(offices),
-    class10s: readonly(class10s),
-    class15s: readonly(class15s),
-    class20s: readonly(class20s),
+    centers,
+    offices,
+    class10s,
+    class15s,
+    class20s,
+    loading,
     error,
   };
 };
