@@ -10,8 +10,8 @@ export const store = configureStore({
   reducer: {
     // このプロパティ名をコンポーネントで値を呼び出すときに利用します。
     areas: areasReducer,
-    forecast: forecastReducer
-  }
+    forecast: forecastReducer,
+  },
 });
 
 // Redux Toolkitがコンポーネントで利用する際に必要となる値に対する型と値の更新に利用するメソッドに関する型を定義してくれる。これをexportしてコンポーネントで利用します。

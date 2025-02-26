@@ -16,7 +16,7 @@ export type GetUserParams = {
  */
 const getUser = async (
   context: ApiContext,
-  { id }: GetUserParams,
+  { id }: GetUserParams
 ): Promise<User> => {
   /**
   // ユーザーAPI
@@ -37,7 +37,7 @@ const getUser = async (
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-    },
+    }
   );
 };
 

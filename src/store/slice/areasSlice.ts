@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   areaLv1: undefined,
   areaLv2: undefined,
-  areaLv3: undefined
+  areaLv3: undefined,
 };
 
 // スライスの作成
@@ -28,8 +28,8 @@ const areasSlice = createSlice({
         state.areaLv2 = lv2;
         state.areaLv3 = lv3;
       }
-    }
-  }
+    },
+  },
 });
 
 export const { setArea, initArea } = areasSlice.actions;
