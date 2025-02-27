@@ -1,48 +1,48 @@
-export type AreaCenters = {
-  [key: string]: {
-    name: string;
-    enName: string;
-    officeName: string;
-    children: string[];
-  };
+// 地方予報区
+export type Center = {
+  name: string; // 予報区の名前
+  enName: string; // 予報区の英名
+  officeName: string; // 気象台の名前
+  children: string[]; // この予報区に含まれる府県予報区のIDリスト
 };
-export type AreaOffices = {
-  [key: string]: {
-    name: string;
-    enName: string;
-    officeName: string;
-    parent: string;
-    children: string[];
-  };
+
+// 府県予報区
+export type Office = {
+  name: string; // 予報区の名前
+  enName: string; // 予報区の英名
+  officeName: string; // 気象台の名前
+  parent: string; // 地方予報区のID
+  children: string[]; // この予報区に含まれる一次細分区域のIDリスト
 };
-export type AreaClass10s = {
-  [key: string]: {
-    name: string;
-    enName: string;
-    parent: string;
-    children: string[];
-  };
+
+// 一次細分区域
+export type Class10 = {
+  name: string; // 予報区の名前
+  enName: string; // 予報区の英名
+  parent: string; // 府県予報区のID
+  children: string[]; // この予報区に含まれる市町村等をまとめた地域のIDリスト
 };
-export type AreaClass15s = {
-  [key: string]: {
-    name: string;
-    enName: string;
-    parent: string;
-    children: string[];
-  };
+
+// 市町村等をまとめた地域
+export type Class15 = {
+  name: string; // 予報区の名前
+  enName: string; // 予報区の英名
+  parent: string; // 一次細分区域のID
+  children: string[]; // この予報区に含まれる二次細分区域のIDリスト
 };
-export type AreaClass20s = {
-  [key: string]: {
-    name: string;
-    enName: string;
-    kana: string;
-    parent: string;
-  };
+// 二次細分区域
+export type Class20 = {
+  name: string; // 予報区の名前
+  enName: string; // 予報区の英名
+  kana: string; // 予報区の名前のふりがな
+  parent: string; // 市町村等をまとめた地域のID
 };
+
+// エリア情報全体の構造
 export type Areas = {
-  centers: AreaCenters;
-  offices: AreaOffices;
-  class10s: AreaClass10s;
-  class15s: AreaClass15s;
-  class20s: AreaClass20s;
+  centers: Record<string, Center>;
+  offices: Record<string, Office>;
+  class10s: Record<string, Class10>;
+  class15s: Record<string, Class15>;
+  class20s: Record<string, Class20>;
 };

@@ -5,11 +5,11 @@ import { fetcher } from "@/utils/index";
 // 型定義
 import type {
   Areas,
-  AreaCenters,
-  AreaOffices,
-  AreaClass10s,
-  AreaClass15s,
-  AreaClass20s,
+  Center,
+  Office,
+  Class10,
+  Class15,
+  Class20,
 } from "@/types/jmaAreas";
 
 // 型ガード関数
@@ -25,11 +25,17 @@ const isAreas = (data: Partial<Areas>): data is Areas => {
 };
 
 export const useJmaArea = () => {
-  const [centers, setCenters] = useState<AreaCenters | null>(null);
-  const [offices, setOffices] = useState<AreaOffices | null>(null);
-  const [class10s, setClass10s] = useState<AreaClass10s | null>(null);
-  const [class15s, setClass15s] = useState<AreaClass15s | null>(null);
-  const [class20s, setClass20s] = useState<AreaClass20s | null>(null);
+  const [centers, setCenters] = useState<Record<string, Center> | null>(null);
+  const [offices, setOffices] = useState<Record<string, Office> | null>(null);
+  const [class10s, setClass10s] = useState<Record<string, Class10> | null>(
+    null
+  );
+  const [class15s, setClass15s] = useState<Record<string, Class15> | null>(
+    null
+  );
+  const [class20s, setClass20s] = useState<Record<string, Class20> | null>(
+    null
+  );
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
