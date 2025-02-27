@@ -1,19 +1,13 @@
-// 天気予報を取得してストアにセットする関数
-
-import { ref, watchEffect } from "vue";
-import { storeToRefs } from "pinia";
-import { useAreasStore } from "@/store/areas";
-import { useForecastStore } from "@/store/forecast";
-import { useFetch } from "@/composables/utils/useFetch";
-import { useDay } from "@/composables/utils/useDay";
-import { useTexts } from "@/composables/utils/useTexts";
-import type { ForecastList, AreaTypeA } from "@/types/jmaForecast";
-const { fullSpacesToHalf } = useTexts();
+// 天気予報を取得する関数
+import { useState, useEffect } from "react";
+import { fetcher } from "@/utils/index";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
 export const useJmaForecast = () => {
   // グローバルステートを取得
-  const { areaLv2, areaLv3 } = storeToRefs(useAreasStore());
-  const { setForecasts, setTempArea } = useForecastStore();
+  const { areaLv2, areaLv3 } = useSelector((state: RootState) => state.areas);
+  // const { setForecasts, setTempArea } = useForecastStore();
 
   // アクセスポイントのURLを生成
   const accessPoint = "https://www.jma.go.jp/bosai/forecast/data/forecast/";
