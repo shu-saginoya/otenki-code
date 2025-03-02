@@ -1,7 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export type Area = {
+  key: string;
+  name: string;
+};
+
+type AreaState = {
+  areaLv1: Area | undefined;
+  areaLv2: Area | undefined;
+  areaLv3: Area | undefined;
+};
+
 // 初期状態
-const initialState = {
+const initialState: AreaState = {
   areaLv1: undefined,
   areaLv2: undefined,
   areaLv3: undefined,
