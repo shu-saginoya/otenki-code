@@ -4,16 +4,16 @@ import { fetcher } from "@/utils/index";
 
 // 型定義
 import type {
-  Areas,
-  Center,
-  Office,
-  Class10,
-  Class15,
-  Class20,
-} from "@/types/jmaAreas";
+  JmaAreas,
+  JmaCenter,
+  JmaOffice,
+  JmaClass10,
+  JmaClass15,
+  JmaClass20,
+} from "@/types";
 
 // 型ガード関数
-const isAreas = (data: Partial<Areas>): data is Areas => {
+const isAreas = (data: Partial<JmaAreas>): data is JmaAreas => {
   return (
     data &&
     typeof data.centers !== "undefined" &&
@@ -25,15 +25,19 @@ const isAreas = (data: Partial<Areas>): data is Areas => {
 };
 
 export const useJmaArea = () => {
-  const [centers, setCenters] = useState<Record<string, Center> | null>(null);
-  const [offices, setOffices] = useState<Record<string, Office> | null>(null);
-  const [class10s, setClass10s] = useState<Record<string, Class10> | null>(
+  const [centers, setCenters] = useState<Record<string, JmaCenter> | null>(
     null
   );
-  const [class15s, setClass15s] = useState<Record<string, Class15> | null>(
+  const [offices, setOffices] = useState<Record<string, JmaOffice> | null>(
     null
   );
-  const [class20s, setClass20s] = useState<Record<string, Class20> | null>(
+  const [class10s, setClass10s] = useState<Record<string, JmaClass10> | null>(
+    null
+  );
+  const [class15s, setClass15s] = useState<Record<string, JmaClass15> | null>(
+    null
+  );
+  const [class20s, setClass20s] = useState<Record<string, JmaClass20> | null>(
     null
   );
   const [loading, setLoading] = useState<boolean>(true);
@@ -44,7 +48,7 @@ export const useJmaArea = () => {
 
     const getData = async () => {
       try {
-        const result = await fetcher<Areas>(url);
+        const result = await fetcher<JmaAreas>(url);
 
         if (isAreas(result)) {
           setCenters(result.centers);

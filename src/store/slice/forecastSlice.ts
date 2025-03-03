@@ -1,9 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type Area = {
-  key: string;
-  name: string;
-};
+import type { Area } from "@/types";
 
 // 初期状態
 type AreaState = {

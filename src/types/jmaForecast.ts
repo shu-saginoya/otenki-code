@@ -4,7 +4,7 @@ export type Area = {
 };
 
 // 各エリアの天気予報データ（府県予報区の単位）
-export type ForecastArea = {
+export type JmaForecastArea = {
   area: Area;
   weatherCodes: string[]; // 天気コード（6時間ごとの予報、3つセット）
   pops: string[]; // 降水確率（6時間ごとの予報、3つセット）
@@ -19,16 +19,16 @@ export type ForecastArea = {
 };
 
 // 日付ごとの予報
-export type ForecastTimeSeries = {
+export type JmaForecastTimeSeries = {
   timeDefines: string[]; // 予報の対象日時（ISO8601形式）
-  areas: ForecastArea[]; // 各エリアの予報データ
+  areas: JmaForecastArea[]; // 各エリアの予報データ
 };
 
 // 天気予報データ全体の構造
-export type ForecastData = {
+export type JmaForecastData = {
   publishingOffice: string; // 発表官署（例：東京地方気象台）
   reportDatetime: string; // 発表日時（ISO8601形式）
-  timeSeries: ForecastTimeSeries[]; // 各時間軸ごとのデータ（短期、週間など）
+  timeSeries: JmaForecastTimeSeries[]; // 各時間軸ごとのデータ（短期、週間など）
 };
 
-export type ForecastResponse = ForecastData[];
+export type JmaForecastResponse = JmaForecastData[];

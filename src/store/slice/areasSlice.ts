@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import type { Area } from "@/types/jmaForecast";
+import type { Area } from "@/types";
 
 type AreaState = {
   areaLv1: Area | undefined;

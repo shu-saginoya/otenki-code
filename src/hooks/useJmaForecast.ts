@@ -4,18 +4,18 @@ import { fetcher } from "@/utils/index";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 
-import type { ForecastResponse } from "@/types/jmaForecast";
+import type { JmaForecastResponse } from "@/types";
 
 // 型ガード関数
 const isForecastResponse = (
-  data: Partial<ForecastResponse>
-): data is ForecastResponse => {
+  data: Partial<JmaForecastResponse>
+): data is JmaForecastResponse => {
   return data && typeof data !== "undefined";
 };
 
 export const useJmaForecast = () => {
   const { areaLv2 } = useSelector((state: RootState) => state.areas);
-  const [forecast, setForecast] = useState<ForecastResponse | null>(null);
+  const [forecast, setForecast] = useState<JmaForecastResponse | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
@@ -30,7 +30,7 @@ export const useJmaForecast = () => {
       setError(null);
 
       try {
-        const result = await fetcher<ForecastResponse>(url);
+        const result = await fetcher<JmaForecastResponse>(url);
         if (isForecastResponse(result)) {
           setForecast(result);
         }

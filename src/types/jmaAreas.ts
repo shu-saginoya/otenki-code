@@ -1,5 +1,5 @@
 // 地方予報区
-export type Center = {
+export type JmaCenter = {
   name: string; // 予報区の名前
   enName: string; // 予報区の英名
   officeName: string; // 気象台の名前
@@ -7,7 +7,7 @@ export type Center = {
 };
 
 // 府県予報区
-export type Office = {
+export type JmaOffice = {
   name: string; // 予報区の名前
   enName: string; // 予報区の英名
   officeName: string; // 気象台の名前
@@ -16,7 +16,7 @@ export type Office = {
 };
 
 // 一次細分区域
-export type Class10 = {
+export type JmaClass10 = {
   name: string; // 予報区の名前
   enName: string; // 予報区の英名
   parent: string; // 府県予報区のID
@@ -24,14 +24,14 @@ export type Class10 = {
 };
 
 // 市町村等をまとめた地域
-export type Class15 = {
+export type JmaClass15 = {
   name: string; // 予報区の名前
   enName: string; // 予報区の英名
   parent: string; // 一次細分区域のID
   children: string[]; // この予報区に含まれる二次細分区域のIDリスト
 };
 // 二次細分区域
-export type Class20 = {
+export type JmaClass20 = {
   name: string; // 予報区の名前
   enName: string; // 予報区の英名
   kana: string; // 予報区の名前のふりがな
@@ -39,10 +39,10 @@ export type Class20 = {
 };
 
 // エリア情報全体の構造
-export type Areas = {
-  centers: Record<string, Center>;
-  offices: Record<string, Office>;
-  class10s: Record<string, Class10>;
-  class15s: Record<string, Class15>;
-  class20s: Record<string, Class20>;
+export type JmaAreas = {
+  centers: Record<string, JmaCenter>;
+  offices: Record<string, JmaOffice>;
+  class10s: Record<string, JmaClass10>;
+  class15s: Record<string, JmaClass15>;
+  class20s: Record<string, JmaClass20>;
 };
