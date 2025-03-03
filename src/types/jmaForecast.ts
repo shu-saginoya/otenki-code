@@ -1,9 +1,11 @@
+export type Area = {
+  name: string; // 地域名（例：東京地方）
+  code: string; // 地域コード（例：130010）
+};
+
 // 各エリアの天気予報データ（府県予報区の単位）
 export type ForecastArea = {
-  area: {
-    name: string; // 地域名（例：東京地方）
-    code: string; // 地域コード（例：130010）
-  };
+  area: Area;
   weatherCodes: string[]; // 天気コード（6時間ごとの予報、3つセット）
   pops: string[]; // 降水確率（6時間ごとの予報、3つセット）
   reliabilities?: string[]; // 予報の信頼度（中期予報などで使われる場合あり）

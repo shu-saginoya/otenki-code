@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { fetcher } from "@/utils/index";
 import { useSelector } from "react-redux";
-import { RootState } from "@/store/store";
+import { RootState } from "@/store";
 
 import type { ForecastResponse } from "@/types/jmaForecast";
 
@@ -23,7 +23,7 @@ export const useJmaForecast = () => {
     if (!areaLv2) return;
 
     const accessPoint = "https://www.jma.go.jp/bosai/forecast/data/forecast/";
-    const url = `${accessPoint}${areaLv2.key}.json`;
+    const url = `${accessPoint}${areaLv2.code}.json`;
 
     const getData = async () => {
       setLoading(true);
