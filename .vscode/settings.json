@@ -1,4 +1,7 @@
 {
+  // 改行コードをLFに統一
+  "files.eol": "\n",
+
   // 保存時にフォーマットを実行
   "editor.formatOnSave": true,
 
