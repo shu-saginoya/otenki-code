@@ -1,4 +1,4 @@
-import { ReactNode, FC } from "react";
+import { ReactNode, FC, JSX } from "react";
 import {
   gapMap,
   Gap,
@@ -11,8 +11,9 @@ import {
 import clsx from "clsx";
 
 type ContainerProps = {
-  gap?: Gap;
   children: ReactNode;
+  as?: keyof JSX.IntrinsicElements;
+  gap?: Gap;
 };
 
 /**
@@ -22,47 +23,61 @@ type ContainerProps = {
  * @param gap - 子要素同士の間隔。
  * @returns
  */
-export const Container: FC<ContainerProps> = ({ gap, children }) => {
+export const Container: FC<ContainerProps> = ({
+  gap,
+  children,
+  as: Component = "div",
+}) => {
   return (
-    <div
+    <Component
       className={clsx("grid grid-cols-12", gap !== undefined && gapMap[gap])}
     >
       {children}
-    </div>
+    </Component>
   );
 };
 
 type ColProps = {
+  children: ReactNode;
+  as?: keyof JSX.IntrinsicElements;
   // 基本の横幅（1～12の整数。12なら100%、6なら50%）
-  cols: ColsNumber;
+  cols?: ColsNumber;
   // レスポンシブ対応：sm, md, lg, xl それぞれでのカラム数を指定
   md?: ColsNumber;
   lg?: ColsNumber;
   xl?: ColsNumber;
-  children: ReactNode;
 };
 
 /**
  * Colコンポーネント
  * Containerコンポーネントの子要素
  *
- * @param cols -  基本の横幅(カラム数1～12)
- * @param md -  レスポンシブ時の横幅(カラム数1～12)
- * @param lg -  レスポンシブ時の横幅(カラム数1～12)
- * @param xl -  レスポンシブ時の横幅(カラム数1～12)
+ * @param cols - 基本の横幅(カラム数1～12)
+ * @param md - レスポンシブ時の横幅(カラム数1～12)
+ * @param lg - レスポンシブ時の横幅(カラム数1～12)
+ * @param xl - レスポンシブ時の横幅(カラム数1～12)
+ * @param as - タグの種類を指定(デフォルトはdiv)
  * @returns
  */
-export const Col: FC<ColProps> = ({ cols, md, lg, xl, children }) => {
+export const Col: FC<ColProps> = ({
+  cols,
+  md,
+  lg,
+  xl,
+  children,
+  as: Component = "div",
+}) => {
   return (
-    <div
+    <Component
       className={clsx(
-        colSpanMap[cols],
+        cols !== undefined && colSpanMap[cols],
         md !== undefined && mdColSpanMap[md],
         lg !== undefined && lgColSpanMap[lg],
-        xl !== undefined && xlColSpanMap[xl]
+        xl !== undefined && xlColSpanMap[xl],
+        "bg-slate-700"
       )}
     >
       {children}
-    </div>
+    </Component>
   );
 };
