@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import Flex from "@/components/layout/Flex";
+import { ReactNode } from "react";
+
 import Header from "@/components/organisms/Header";
 import Footer from "@/components/organisms/Footer";
-import Main from "@/components/organisms/Main";
 
 export const metadata: Metadata = {
   title: "ふくそう日和",
@@ -14,16 +14,18 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="ja">
       <body>
-        <Flex className="h-svh flex-col">
+        <div className="flex h-svh flex-col">
           <Header className="flex-none"></Header>
-          <Main className="grow">{children}</Main>
+          <main className="grow overflow-y-auto overflow-x-hidden p-1">
+            {children}
+          </main>
           <Footer className="flex-none"></Footer>
-        </Flex>
+        </div>
       </body>
     </html>
   );
