@@ -16,9 +16,9 @@ export const gapMap = {
 
 export type Gap = keyof typeof gapMap;
 
-export type ColsNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+export type GridCol = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
-export const colSpanMap: Record<ColsNumber, string> = {
+export const gridColMap: Record<GridCol, string> = {
   1: "col-span-1",
   2: "col-span-2",
   3: "col-span-3",
@@ -31,9 +31,9 @@ export const colSpanMap: Record<ColsNumber, string> = {
   10: "col-span-10",
   11: "col-span-11",
   12: "col-span-12",
-};
+} as const;
 
-export const mdColSpanMap: Record<ColsNumber, string> = {
+export const mdGridColMap: Record<GridCol, string> = {
   1: "md:col-span-1",
   2: "md:col-span-2",
   3: "md:col-span-3",
@@ -46,9 +46,9 @@ export const mdColSpanMap: Record<ColsNumber, string> = {
   10: "md:col-span-10",
   11: "md:col-span-11",
   12: "md:col-span-12",
-};
+} as const;
 
-export const lgColSpanMap: Record<ColsNumber, string> = {
+export const lgGridColMap: Record<GridCol, string> = {
   1: "lg:col-span-1",
   2: "lg:col-span-2",
   3: "lg:col-span-3",
@@ -61,9 +61,9 @@ export const lgColSpanMap: Record<ColsNumber, string> = {
   10: "lg:col-span-10",
   11: "lg:col-span-11",
   12: "lg:col-span-12",
-};
+} as const;
 
-export const xlColSpanMap: Record<ColsNumber, string> = {
+export const xlGridColMap: Record<GridCol, string> = {
   1: "xl:col-span-1",
   2: "xl:col-span-2",
   3: "xl:col-span-3",
@@ -76,4 +76,46 @@ export const xlColSpanMap: Record<ColsNumber, string> = {
   10: "xl:col-span-10",
   11: "xl:col-span-11",
   12: "xl:col-span-12",
-};
+} as const;
+
+export const flexWrapMap = {
+  nowrap: "flex-nowrap",
+  wrap: "flex-wrap",
+  wrapReverse: "flex-wrap-reverse",
+} as const;
+
+export type FlexWrap = keyof typeof flexWrapMap;
+
+export const flexDirectionMap = {
+  row: "flex-row",
+  rowReverse: "flex-row-reverse",
+  col: "flex-col",
+  colReverse: "flex-col-reverse",
+} as const;
+
+export type FlexDirection = keyof typeof flexDirectionMap;
+
+export const justifyContentMap = {
+  start: "justify-start",
+  content: "justify-content",
+  end: "justify-end",
+  center: "justify-center",
+  between: "justify-between",
+  around: "justify-around",
+  evenly: "justify-evenly",
+  stretch: "justify-stretch",
+  baseline: "justify-baseline",
+  normal: "justify-normal",
+} as const;
+
+export type JustifyContent = keyof typeof justifyContentMap;
+
+export const alignItemsMap = {
+  start: "items-start",
+  end: "align-end",
+  center: "align-center",
+  baseline: "align-baseline",
+  stretch: "align-stretch",
+} as const;
+
+export type AlignItems = keyof typeof alignItemsMap;
