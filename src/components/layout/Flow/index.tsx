@@ -5,6 +5,8 @@ import {
   flexDirectionMap,
   justifyContentMap,
   JustifyContent,
+  alignItemsMap,
+  AlignItems,
 } from "@/utils";
 import clsx from "clsx";
 
@@ -13,7 +15,8 @@ type FlowProps = {
   as?: keyof JSX.IntrinsicElements;
   gap?: Gap;
   reverse?: boolean;
-  align?: JustifyContent;
+  justify?: JustifyContent;
+  align?: AlignItems;
 };
 
 /**
@@ -22,7 +25,8 @@ type FlowProps = {
  *
  * @param gap - 子要素同士の間隔。
  * @param reverse - 並び順を逆にする。真偽値
- * @param align - 子要素の整列方法
+ * @param justify - 行揃え
+ * @param align - 縦方向の揃え
  * @returns
  */
 const Flow: FC<FlowProps> = ({
@@ -30,6 +34,7 @@ const Flow: FC<FlowProps> = ({
   children,
   as: Component = "div",
   reverse,
+  justify,
   align,
 }) => {
   return (
@@ -39,7 +44,8 @@ const Flow: FC<FlowProps> = ({
         gap !== undefined && gapMap[gap],
         reverse !== undefined &&
           flexDirectionMap[reverse ? "rowReverse" : "row"],
-        align !== undefined && justifyContentMap[align]
+        justify !== undefined && justifyContentMap[justify],
+        align !== undefined && alignItemsMap[align]
       )}
     >
       {children}
