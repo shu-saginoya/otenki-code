@@ -2,11 +2,11 @@ import { ReactNode, FC, JSX } from "react";
 import {
   gapMap,
   Gap,
-  colSpanMap,
-  mdColSpanMap,
-  lgColSpanMap,
-  xlColSpanMap,
-  ColsNumber,
+  gridColMap,
+  mdGridColMap,
+  lgGridColMap,
+  xlGridColMap,
+  GridCol,
 } from "@/utils";
 import clsx from "clsx";
 
@@ -17,7 +17,7 @@ type ContainerProps = {
 };
 
 /**
- * コンテナーコンポーネント
+ * Containerコンポーネント
  * レイアウトを担当するコンポーネントです。子要素にはColコンポーネントを利用してください。
  *
  * @param gap - 子要素同士の間隔。
@@ -41,11 +41,11 @@ type ColProps = {
   children: ReactNode;
   as?: keyof JSX.IntrinsicElements;
   // 基本の横幅（1～12の整数。12なら100%、6なら50%）
-  cols?: ColsNumber;
+  cols?: GridCol;
   // レスポンシブ対応：sm, md, lg, xl それぞれでのカラム数を指定
-  md?: ColsNumber;
-  lg?: ColsNumber;
-  xl?: ColsNumber;
+  md?: GridCol;
+  lg?: GridCol;
+  xl?: GridCol;
 };
 
 /**
@@ -70,11 +70,10 @@ export const Col: FC<ColProps> = ({
   return (
     <Component
       className={clsx(
-        cols !== undefined && colSpanMap[cols],
-        md !== undefined && mdColSpanMap[md],
-        lg !== undefined && lgColSpanMap[lg],
-        xl !== undefined && xlColSpanMap[xl],
-        "bg-slate-700"
+        cols !== undefined && gridColMap[cols],
+        md !== undefined && mdGridColMap[md],
+        lg !== undefined && lgGridColMap[lg],
+        xl !== undefined && xlGridColMap[xl]
       )}
     >
       {children}

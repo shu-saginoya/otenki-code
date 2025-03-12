@@ -3,33 +3,33 @@ import {
   gapMap,
   Gap,
   flexDirectionMap,
-  alignItemsMap,
-  AlignItems,
+  justifyContentMap,
+  JustifyContent,
 } from "@/utils";
 import clsx from "clsx";
 
-type StackProps = {
+type FlowProps = {
   children: ReactNode;
   as?: keyof JSX.IntrinsicElements;
   gap?: Gap;
   reverse?: boolean;
-  align?: AlignItems;
+  align?: JustifyContent;
 };
 
 /**
- * Stackコンポーネント
- * 要素を縦並びに整列するレイアウトコンポーネントです。
+ * Flowコンポーネント
+ * 要素を横並びに整列するレイアウトコンポーネントです。
  *
  * @param gap - 子要素同士の間隔。
  * @param reverse - 並び順を逆にする。真偽値
  * @param align - 子要素の整列方法
  * @returns
  */
-const Stack: FC<StackProps> = ({
+const Flow: FC<FlowProps> = ({
   gap,
   children,
   as: Component = "div",
-  reverse = false,
+  reverse,
   align,
 }) => {
   return (
@@ -37,9 +37,9 @@ const Stack: FC<StackProps> = ({
       className={clsx(
         "flex",
         gap !== undefined && gapMap[gap],
-        flexDirectionMap[reverse ? "colReverse" : "col"],
-        align !== undefined && alignItemsMap[align],
-        "items-center"
+        reverse !== undefined &&
+          flexDirectionMap[reverse ? "rowReverse" : "row"],
+        align !== undefined && justifyContentMap[align]
       )}
     >
       {children}
@@ -47,4 +47,4 @@ const Stack: FC<StackProps> = ({
   );
 };
 
-export default Stack;
+export default Flow;
