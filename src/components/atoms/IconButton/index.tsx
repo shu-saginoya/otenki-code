@@ -1,5 +1,5 @@
 import { ComponentProps, FC, createElement } from "react";
-import { iconOptions, IconOptions } from "@/utils/useIcons";
+import { iconOptions, IconOptions } from "@/utils";
 
 type IconButtonProps = {
   icon: IconOptions;
