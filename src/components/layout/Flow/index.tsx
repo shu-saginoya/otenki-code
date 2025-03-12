@@ -17,6 +17,7 @@ type FlowProps = {
   reverse?: boolean;
   justify?: JustifyContent;
   align?: AlignItems;
+  className?: string;
 };
 
 /**
@@ -27,6 +28,7 @@ type FlowProps = {
  * @param reverse - 並び順を逆にする。真偽値
  * @param justify - 行揃え
  * @param align - 縦方向の揃え
+ * @param className - 追加のクラス
  * @returns
  */
 const Flow: FC<FlowProps> = ({
@@ -36,6 +38,7 @@ const Flow: FC<FlowProps> = ({
   reverse,
   justify,
   align,
+  className,
 }) => {
   return (
     <Component
@@ -45,7 +48,8 @@ const Flow: FC<FlowProps> = ({
         reverse !== undefined &&
           flexDirectionMap[reverse ? "rowReverse" : "row"],
         justify !== undefined && justifyContentMap[justify],
-        align !== undefined && alignItemsMap[align]
+        align !== undefined && alignItemsMap[align],
+        className
       )}
     >
       {children}

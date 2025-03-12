@@ -7,6 +7,8 @@ import {
   lgGridColMap,
   xlGridColMap,
   GridCol,
+  justifySelfMap,
+  JustifySelf,
 } from "@/utils";
 import clsx from "clsx";
 
@@ -30,7 +32,10 @@ export const Container: FC<ContainerProps> = ({
 }) => {
   return (
     <Component
-      className={clsx("grid grid-cols-12", gap !== undefined && gapMap[gap])}
+      className={clsx(
+        "container mx-auto grid grid-cols-12",
+        gap !== undefined && gapMap[gap]
+      )}
     >
       {children}
     </Component>
@@ -46,6 +51,7 @@ type ColProps = {
   md?: GridCol;
   lg?: GridCol;
   xl?: GridCol;
+  justify?: JustifySelf;
 };
 
 /**
@@ -57,6 +63,7 @@ type ColProps = {
  * @param lg - レスポンシブ時の横幅(カラム数1～12)
  * @param xl - レスポンシブ時の横幅(カラム数1～12)
  * @param as - タグの種類を指定(デフォルトはdiv)
+ * @param justify - 行揃え
  * @returns
  */
 export const Col: FC<ColProps> = ({
@@ -65,6 +72,7 @@ export const Col: FC<ColProps> = ({
   lg,
   xl,
   children,
+  justify,
   as: Component = "div",
 }) => {
   return (
@@ -73,7 +81,8 @@ export const Col: FC<ColProps> = ({
         cols !== undefined && gridColMap[cols],
         md !== undefined && mdGridColMap[md],
         lg !== undefined && lgGridColMap[lg],
-        xl !== undefined && xlGridColMap[xl]
+        xl !== undefined && xlGridColMap[xl],
+        justify !== undefined && justifySelfMap[justify]
       )}
     >
       {children}

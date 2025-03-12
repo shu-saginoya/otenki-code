@@ -110,6 +110,16 @@ export const justifyContentMap = {
 
 export type JustifyContent = keyof typeof justifyContentMap;
 
+export const justifySelfMap = {
+  auto: "justify-self-auto",
+  start: "justify-self-start",
+  end: "justify-self-end",
+  center: "justify-self-center",
+  stretch: "justify-self-stretch",
+} as const;
+
+export type JustifySelf = keyof typeof justifySelfMap;
+
 export const alignItemsMap = {
   start: "items-start",
   end: "items-end",
