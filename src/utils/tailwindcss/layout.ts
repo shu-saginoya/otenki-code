@@ -112,10 +112,10 @@ export type JustifyContent = keyof typeof justifyContentMap;
 
 export const alignItemsMap = {
   start: "items-start",
-  end: "align-end",
-  center: "align-center",
-  baseline: "align-baseline",
-  stretch: "align-stretch",
+  end: "items-end",
+  center: "items-center",
+  baseline: "items-baseline",
+  stretch: "items-stretch",
 } as const;
 
 export type AlignItems = keyof typeof alignItemsMap;
