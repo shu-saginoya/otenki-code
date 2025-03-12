@@ -1,6 +1,6 @@
 import { ReactNode, ComponentProps, FC, createElement } from "react";
-import { iconOptions, IconOptions } from "@/utils/useIcons";
-import Flex from "@/components/layout/Flex";
+import { iconOptions, IconOptions } from "@/utils";
+import Flow from "@/components/layout/Flow";
 import clsx from "clsx";
 
 type ButtonProps = {
@@ -52,11 +52,11 @@ const Button: FC<ButtonProps> = ({
       disabled={disabled}
       {...props}
     >
-      <Flex className="items-center justify-between gap-1">
+      <Flow justify="between" align="center" gap={1}>
         {prependIcon && createElement(iconOptions[prependIcon])}
         {children}
         {appendIcon && createElement(iconOptions[appendIcon])}
-      </Flex>
+      </Flow>
     </button>
   );
 };
