@@ -1,6 +1,6 @@
 // キーをEnumで一元管理（必要に応じてプレフィックスを追加）
 export enum StorageKey {
-  AREA = "fukusobiyori_area",
+  AREA = "otenki-code_area",
   // 他のキーもここに追加
 }
 
