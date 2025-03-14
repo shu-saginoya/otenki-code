@@ -3,6 +3,9 @@ import {
   gapMap,
   Gap,
   flexDirectionMap,
+  FlexDirection,
+  justifyContentMap,
+  JustifyContent,
   alignItemsMap,
   AlignItems,
 } from "@/utils";
@@ -11,35 +14,42 @@ import clsx from "clsx";
 type StackProps = {
   children: ReactNode;
   as?: keyof JSX.IntrinsicElements;
+  className?: string;
   gap?: Gap;
-  reverse?: boolean;
+  direction?: FlexDirection;
+  justify?: JustifyContent;
   align?: AlignItems;
 };
 
 /**
  * Stackコンポーネント
- * 要素を縦並びに整列するレイアウトコンポーネントです。
+ * 要素を横並びに整列するレイアウトコンポーネントです
  *
- * @param gap - 子要素同士の間隔。
- * @param reverse - 並び順を逆にする。真偽値
- * @param align - 子要素の整列方法
+ * @param gap - 子要素同士の間隔
+ * @param direction - 縦並び・横並びの設定
+ * @param justify - 行揃え
+ * @param align - 縦方向の揃え
+ * @param className - 追加のクラス
  * @returns
  */
 const Stack: FC<StackProps> = ({
   gap,
   children,
   as: Component = "div",
-  reverse = false,
+  direction,
+  justify,
   align,
+  className,
 }) => {
   return (
     <Component
       className={clsx(
         "flex",
         gap !== undefined && gapMap[gap],
-        flexDirectionMap[reverse ? "colReverse" : "col"],
+        direction !== undefined && flexDirectionMap[direction],
+        justify !== undefined && justifyContentMap[justify],
         align !== undefined && alignItemsMap[align],
-        "items-center"
+        className
       )}
     >
       {children}
