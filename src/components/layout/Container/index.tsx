@@ -16,25 +16,30 @@ type ContainerProps = {
   children: ReactNode;
   as?: keyof JSX.IntrinsicElements;
   gap?: Gap;
+  className?: string;
 };
 
 /**
  * Containerコンポーネント
  * レイアウトを担当するコンポーネントです。子要素にはColコンポーネントを利用してください。
  *
- * @param gap - 子要素同士の間隔。
+ * @param as - タグの指定
+ * @param gap - 子要素同士の間隔
+ * @param className - 追加のクラス
  * @returns
  */
 export const Container: FC<ContainerProps> = ({
-  gap,
   children,
+  gap,
+  className,
   as: Component = "div",
 }) => {
   return (
     <Component
       className={clsx(
-        "container mx-auto grid grid-cols-12",
-        gap !== undefined && gapMap[gap]
+        "grid grid-cols-12",
+        gap !== undefined && gapMap[gap],
+        className
       )}
     >
       {children}
