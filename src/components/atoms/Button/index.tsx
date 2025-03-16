@@ -1,6 +1,6 @@
-import { ReactNode, ComponentProps, FC, createElement } from "react";
+import { ReactNode, ComponentProps, JSX, createElement } from "react";
 import { iconOptions, IconOptions } from "@/utils";
-import Flow from "@/components/layout/Flow";
+import Stack from "@/components/layout/Stack";
 import clsx from "clsx";
 
 type ButtonProps = {
@@ -30,7 +30,7 @@ type Color = keyof typeof colorOptions;
  * @param onClick 実行する関数
  * @returns
  */
-const Button: FC<ButtonProps> = ({
+const Button = ({
   children,
   color = "primary",
   disabled = false,
@@ -39,7 +39,7 @@ const Button: FC<ButtonProps> = ({
   appendIcon,
   onClick,
   ...props
-}) => {
+}: ButtonProps): JSX.Element => {
   return (
     <button
       type={"button"}
@@ -52,11 +52,11 @@ const Button: FC<ButtonProps> = ({
       disabled={disabled}
       {...props}
     >
-      <Flow justify="between" align="center" gap={1}>
+      <Stack justify="between" align="center" gap={1}>
         {prependIcon && createElement(iconOptions[prependIcon])}
         {children}
         {appendIcon && createElement(iconOptions[appendIcon])}
-      </Flow>
+      </Stack>
     </button>
   );
 };

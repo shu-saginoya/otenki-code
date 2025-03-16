@@ -1,4 +1,4 @@
-import { ReactNode, ComponentProps, FC } from "react";
+import { ReactNode, ComponentProps, JSX } from "react";
 import clsx from "clsx";
 
 type ListItemProps = {
@@ -12,7 +12,11 @@ type ListItemProps = {
  * @param className 追加のクラス名（任意）
  * @returns リスト要素を表示するコンポーネント
  */
-const ListItem: FC<ListItemProps> = ({ children, className, ...props }) => {
+const ListItem = ({
+  children,
+  className,
+  ...props
+}: ListItemProps): JSX.Element => {
   return (
     <li className={clsx(["p-2", className])} {...props}>
       {children}

@@ -1,4 +1,4 @@
-import { ReactNode, FC, JSX } from "react";
+import { ReactNode, JSX } from "react";
 import {
   gapMap,
   Gap,
@@ -32,7 +32,7 @@ type StackProps = {
  * @param className - 追加のクラス
  * @returns
  */
-const Stack: FC<StackProps> = ({
+const Stack = ({
   gap,
   children,
   as: Component = "div",
@@ -40,7 +40,7 @@ const Stack: FC<StackProps> = ({
   justify,
   align,
   className,
-}) => {
+}: StackProps): JSX.Element => {
   return (
     <Component
       className={clsx(

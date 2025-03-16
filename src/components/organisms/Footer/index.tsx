@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { JSX } from "react";
 import clsx from "clsx";
 import Stack from "@/components/layout/Stack";
 
@@ -9,7 +9,7 @@ export type FooterProps = {
 /**
  * フッター
  */
-const Footer: FC<FooterProps> = ({ className }) => {
+const Footer = ({ className }: FooterProps): JSX.Element => {
   return (
     <Stack
       as="footer"

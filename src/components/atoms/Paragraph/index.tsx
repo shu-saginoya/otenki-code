@@ -1,4 +1,4 @@
-import { ReactNode, ComponentProps } from "react";
+import { ReactNode, ComponentProps, JSX } from "react";
 
 export type ParagraphProps = {
   children: ReactNode;
@@ -12,11 +12,11 @@ export type ParagraphProps = {
  * @param className 追加のクラス名（任意）
  * @returns
  */
-const Paragraph: React.FC<ParagraphProps> = ({
+const Paragraph = ({
   children,
   className,
   ...props
-}) => {
+}: ParagraphProps): JSX.Element => {
   return (
     <p {...props} className={className}>
       {children}

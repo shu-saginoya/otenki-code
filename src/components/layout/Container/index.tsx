@@ -1,4 +1,4 @@
-import { ReactNode, FC, JSX } from "react";
+import { ReactNode, JSX } from "react";
 import {
   gapMap,
   Gap,
@@ -28,12 +28,12 @@ type ContainerProps = {
  * @param className - 追加のクラス
  * @returns
  */
-export const Container: FC<ContainerProps> = ({
+export const Container = ({
   children,
   gap,
   className,
   as: Component = "div",
-}) => {
+}: ContainerProps): JSX.Element => {
   return (
     <Component
       className={clsx(
@@ -71,7 +71,7 @@ type ColProps = {
  * @param justify - 行揃え
  * @returns
  */
-export const Col: FC<ColProps> = ({
+export const Col = ({
   cols,
   md,
   lg,
@@ -79,7 +79,7 @@ export const Col: FC<ColProps> = ({
   children,
   justify,
   as: Component = "div",
-}) => {
+}: ColProps): JSX.Element => {
   return (
     <Component
       className={clsx(

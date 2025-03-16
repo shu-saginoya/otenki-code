@@ -1,4 +1,4 @@
-import { ReactNode, ComponentProps } from "react";
+import { ReactNode, ComponentProps, JSX } from "react";
 
 export type TextProps = {
   children: ReactNode;
@@ -12,7 +12,7 @@ export type TextProps = {
  * @param className 追加のクラス名（任意）
  * @returns
  */
-const Text: React.FC<TextProps> = ({ children, className, ...props }) => {
+const Text = ({ children, className, ...props }: TextProps): JSX.Element => {
   return (
     <span {...props} className={className}>
       {children}

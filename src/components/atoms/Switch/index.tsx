@@ -1,5 +1,5 @@
 import { Switch as HUSwitch } from "@headlessui/react";
-import { FC } from "react";
+import { JSX } from "react";
 
 type SwitchProps = {
   checked: boolean;
@@ -13,7 +13,11 @@ type SwitchProps = {
  * @param onChange - 状態変更時のコールバック
  * @param disabled - 無効状態
  */
-const Switch: FC<SwitchProps> = ({ checked, onChange, disabled = false }) => {
+const Switch = ({
+  checked,
+  onChange,
+  disabled = false,
+}: SwitchProps): JSX.Element => {
   return (
     <HUSwitch
       checked={checked}

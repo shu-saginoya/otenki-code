@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { JSX, ReactNode } from "react";
 import clsx from "clsx";
 
 type CardProps = {
@@ -30,12 +30,12 @@ type Padding = keyof typeof paddings;
  * @param children - カード内に表示するコンテンツ
  * @param className - 追加のスタイリングのためのクラス名
  */
-const Card: FC<CardProps> = ({
+const Card = ({
   children,
   className,
   variant = "default",
   padding = "small",
-}) => {
+}: CardProps): JSX.Element => {
   return (
     <div
       role="region"

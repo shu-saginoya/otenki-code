@@ -1,5 +1,5 @@
 import Image, { ImageProps } from "next/image";
-import { FC } from "react";
+import { JSX } from "react";
 import clsx from "clsx";
 
 type ShapeImageProps = {
@@ -18,12 +18,12 @@ const variants = {
 
 type ImageShape = keyof typeof variants;
 
-const ShapeImage: FC<ShapeImageProps> = ({
+const ShapeImage = ({
   alt,
   shape = "circle",
   className,
   ...props
-}) => {
+}: ShapeImageProps): JSX.Element => {
   return (
     <Image {...props} alt={alt} className={clsx(variants[shape], className)} />
   );

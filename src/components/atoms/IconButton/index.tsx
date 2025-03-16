@@ -1,4 +1,4 @@
-import { ComponentProps, FC, createElement } from "react";
+import { ComponentProps, JSX, createElement } from "react";
 import { iconOptions, IconOptions } from "@/utils";
 
 type IconButtonProps = {
@@ -15,13 +15,13 @@ type IconButtonProps = {
  * @param onClick 実行する関数
  * @returns
  */
-const IconButton: FC<IconButtonProps> = ({
+const IconButton = ({
   icon,
   disabled = false,
   className,
   onClick,
   ...props
-}) => {
+}: IconButtonProps): JSX.Element => {
   return (
     <button
       type={"button"}

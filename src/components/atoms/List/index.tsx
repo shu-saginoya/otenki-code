@@ -1,4 +1,4 @@
-import { ReactNode, ComponentProps, FC } from "react";
+import { ReactNode, ComponentProps, JSX } from "react";
 import clsx from "clsx";
 
 type ListProps = {
@@ -14,12 +14,12 @@ type ListProps = {
  * @param className 追加のクラス名（任意）
  * @returns リスト要素を表示するコンポーネント
  */
-const List: FC<ListProps> = ({
+const List = ({
   children,
   divided = true,
   className,
   ...props
-}) => {
+}: ListProps): JSX.Element => {
   return (
     <ul className={clsx([divided && "divide-y", className])} {...props}>
       {children}

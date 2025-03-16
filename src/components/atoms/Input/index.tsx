@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, FC } from "react";
+import { InputHTMLAttributes, JSX } from "react";
 import clsx from "clsx";
 
 export type InputProps = {
@@ -11,7 +11,11 @@ export type InputProps = {
  * @param hasError - エラー状態を示すフラグ。trueの場合、赤い枠線で表示
  * @param props - 標準のinput要素の属性
  */
-const Input: FC<InputProps> = ({ type, hasError = false, ...rest }) => {
+const Input = ({
+  type,
+  hasError = false,
+  ...rest
+}: InputProps): JSX.Element => {
   const baseStyles =
     "box-border w-full border rounded p-3 placeholder:text-disabled  text-foreground dark:text-background-light disabled:opacity-25 bg-background-light dark:bg-foreground-light";
   const variants = {
