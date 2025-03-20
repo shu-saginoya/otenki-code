@@ -9,6 +9,8 @@ import {
   GridCol,
   justifySelfMap,
   JustifySelf,
+  alignItemsMap,
+  AlignItems,
 } from "@/utils";
 import clsx from "clsx";
 
@@ -16,6 +18,7 @@ type ContainerProps = {
   children: ReactNode;
   as?: keyof JSX.IntrinsicElements;
   gap?: Gap;
+  align?: AlignItems;
   className?: string;
 };
 
@@ -31,6 +34,7 @@ type ContainerProps = {
 export const Container = ({
   children,
   gap,
+  align,
   className,
   as: Component = "div",
 }: ContainerProps): JSX.Element => {
@@ -39,6 +43,7 @@ export const Container = ({
       className={clsx(
         "grid grid-cols-12",
         gap !== undefined && gapMap[gap],
+        align !== undefined && alignItemsMap[align],
         className
       )}
     >
