@@ -14,7 +14,7 @@ import {
 } from "@/utils";
 import clsx from "clsx";
 
-type ContainerProps = {
+type GridProps = {
   children: ReactNode;
   as?: keyof JSX.IntrinsicElements;
   gap?: Gap;
@@ -23,7 +23,7 @@ type ContainerProps = {
 };
 
 /**
- * Containerコンポーネント
+ * Gridコンポーネント
  * レイアウトを担当するコンポーネントです。子要素にはColコンポーネントを利用してください。
  *
  * @param as - タグの指定
@@ -31,13 +31,13 @@ type ContainerProps = {
  * @param className - 追加のクラス
  * @returns
  */
-export const Container = ({
+export const Grid = ({
   children,
   gap,
   align,
   className,
   as: Component = "div",
-}: ContainerProps): JSX.Element => {
+}: GridProps): JSX.Element => {
   return (
     <Component
       className={clsx(

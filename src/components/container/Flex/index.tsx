@@ -11,7 +11,7 @@ import {
 } from "@/utils";
 import clsx from "clsx";
 
-type StackProps = {
+type FlexProps = {
   children: ReactNode;
   as?: keyof JSX.IntrinsicElements;
   className?: string;
@@ -22,8 +22,8 @@ type StackProps = {
 };
 
 /**
- * Stackコンポーネント
- * 要素を横並びに整列するレイアウトコンポーネントです
+ * Flexコンポーネント
+ * 要素を整列するレイアウトコンポーネントです
  *
  * @param gap - 子要素同士の間隔
  * @param direction - 縦並び・横並びの設定
@@ -32,7 +32,7 @@ type StackProps = {
  * @param className - 追加のクラス
  * @returns
  */
-const Stack = ({
+const Flex = ({
   gap,
   children,
   as: Component = "div",
@@ -40,7 +40,7 @@ const Stack = ({
   justify,
   align,
   className,
-}: StackProps): JSX.Element => {
+}: FlexProps): JSX.Element => {
   return (
     <Component
       className={clsx(
@@ -57,4 +57,4 @@ const Stack = ({
   );
 };
 
-export default Stack;
+export default Flex;
