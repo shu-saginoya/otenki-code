@@ -3,8 +3,7 @@ import "./globals.css";
 import { ReactNode } from "react";
 import { Metadata } from "next";
 
-import Header from "@/components/organisms/Header";
-import Footer from "@/components/organisms/Footer";
+import { Header, Footer } from "@/components";
 
 export const metadata: Metadata = {
   title: "お天気コーデ",
