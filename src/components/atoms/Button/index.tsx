@@ -1,5 +1,5 @@
 import { ReactNode, ComponentProps, JSX, createElement } from "react";
-import { iconOptions, IconOptions } from "@/utils";
+import { iconMap, Icon } from "@/utils";
 import Stack from "@/components/layout/Stack";
 import clsx from "clsx";
 
@@ -8,8 +8,8 @@ type ButtonProps = {
   color?: Color;
   disabled?: boolean;
   block?: boolean;
-  prependIcon?: IconOptions;
-  appendIcon?: IconOptions;
+  prependIcon?: Icon;
+  appendIcon?: Icon;
   onClick?: () => void;
 } & ComponentProps<"button">;
 
@@ -53,9 +53,9 @@ const Button = ({
       {...props}
     >
       <Stack justify="between" align="center" gap={1}>
-        {prependIcon && createElement(iconOptions[prependIcon])}
+        {prependIcon && createElement(iconMap[prependIcon])}
         {children}
-        {appendIcon && createElement(iconOptions[appendIcon])}
+        {appendIcon && createElement(iconMap[appendIcon])}
       </Stack>
     </button>
   );

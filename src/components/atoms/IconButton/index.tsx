@@ -1,8 +1,8 @@
 import { ComponentProps, JSX, createElement } from "react";
-import { iconOptions, IconOptions } from "@/utils";
+import { iconMap, Icon } from "@/utils";
 
 type IconButtonProps = {
-  icon: IconOptions;
+  icon: Icon;
   disabled?: boolean;
   className?: string;
   onClick?: () => void;
@@ -25,12 +25,12 @@ const IconButton = ({
   return (
     <button
       type={"button"}
-      className={`rounded-full border-0 p-1 hover:opacity-80 focus:opacity-80 disabled:cursor-not-allowed disabled:opacity-25 ${className}`}
+      className={`rounded-full border-0 p-1 text-xl hover:bg-overlay-light hover:shadow-sm disabled:cursor-not-allowed disabled:opacity-25 ${className}`}
       onClick={onClick}
       disabled={disabled}
       {...props}
     >
-      {createElement(iconOptions[icon])}
+      {createElement(iconMap[icon])}
     </button>
   );
 };
