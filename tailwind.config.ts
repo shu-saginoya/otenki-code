@@ -29,6 +29,11 @@ export default {
           DEFAULT: "#737373", // neutral-500
           dark: "#525252", // neutral-600
         },
+        overlay: {
+          light: "rgba(255, 255, 255, 0.25)", // white/25
+          DEFAULT: "rgba(255, 255, 255, 0.5)", // white/50
+          dark: "rgba(255, 255, 255, 0.75)", // white/75
+        },
         link: {
           light: "#7dd3fc", // sky-300
           DEFAULT: "#0ea5e9", // sky-500
