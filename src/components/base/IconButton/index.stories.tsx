@@ -12,6 +12,14 @@ export default {
         type: { summary: "string" },
       },
     },
+    color: {
+      control: { type: "text" },
+      defaultValue: "none",
+      description: "ボタンの色",
+      table: {
+        type: { summary: "string" },
+      },
+    },
     disabled: {
       control: { type: "boolean" },
       defaultValue: false,
@@ -52,7 +60,7 @@ export const Default: Story = {
 export const Background: Story = {
   args: {
     icon: "close",
-    className: "bg-primary text-background-light",
+    color: "primary",
     onClick: sampleFunc,
   },
 };

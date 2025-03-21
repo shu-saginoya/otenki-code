@@ -1,5 +1,5 @@
 import { ReactNode, ComponentProps, JSX, createElement } from "react";
-import { iconMap, Icon } from "@/utils";
+import { iconMap, Icon, colorMap, Color } from "@/utils";
 import { Stack } from "@/components";
 import clsx from "clsx";
 
@@ -12,14 +12,6 @@ type ButtonProps = {
   appendIcon?: Icon;
   onClick?: () => void;
 } & ComponentProps<"button">;
-
-const colorOptions = {
-  primary:
-    "bg-primary text-white hover:bg-primary-dark disabled:bg-primary-light",
-  none: "bg-transparent text-foreground dark:text-background hover:bg-black/20 disabled:text-disabled disabled:hover:bg-transparent",
-};
-
-type Color = keyof typeof colorOptions;
 
 /**
  * Button Component
@@ -43,11 +35,11 @@ export const Button = ({
   return (
     <button
       type={"button"}
-      className={clsx([
+      className={clsx(
         "rounded-full  border-0 px-4 py-1 transition-colors disabled:cursor-not-allowed",
-        colorOptions[color],
-        block && "block w-full",
-      ])}
+        colorMap[color],
+        block && "block w-full"
+      )}
       onClick={onClick}
       disabled={disabled}
       {...props}
