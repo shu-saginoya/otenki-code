@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { AppLogo } from "./index";
+import { AppLogo } from "@/components";
 
 export default {
   title: "Templates/AppLogo",

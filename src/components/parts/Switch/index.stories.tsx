@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Switch } from "./index";
+import { Switch } from "@/components";
 
 export default {
   title: "Parts/Switch",

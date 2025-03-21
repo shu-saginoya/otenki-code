@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Card } from "./index";
+import { Card } from "@/components";
 
 export default {
   title: "Parts/Card",
