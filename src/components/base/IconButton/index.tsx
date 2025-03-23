@@ -1,5 +1,6 @@
 import { ComponentProps, JSX, createElement } from "react";
-import { iconMap, Icon, colorMap, Color } from "@/utils";
+import { iconMap, Icon } from "@/utils";
+import { colorMap, Color, buttonBase } from "@/styles";
 import clsx from "clsx";
 
 type IconButtonProps = {
@@ -29,11 +30,7 @@ export const IconButton = ({
   return (
     <button
       type={"button"}
-      className={clsx(
-        "rounded-full border-0 p-1 text-xl hover:opacity-50 hover:shadow-sm focus:opacity-50 focus:shadow-sm disabled:cursor-not-allowed disabled:opacity-25",
-        colorMap[color],
-        className
-      )}
+      className={clsx(buttonBase, "p-1 text-xl", colorMap[color], className)}
       onClick={onClick}
       disabled={disabled}
       {...props}

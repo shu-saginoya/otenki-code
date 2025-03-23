@@ -1,5 +1,6 @@
 import { ReactNode, ComponentProps, JSX, createElement } from "react";
-import { iconMap, Icon, colorMap, Color } from "@/utils";
+import { iconMap, Icon } from "@/utils";
+import { colorMap, Color, buttonBase } from "@/styles";
 import { Stack } from "@/components";
 import clsx from "clsx";
 
@@ -36,7 +37,8 @@ export const Button = ({
     <button
       type={"button"}
       className={clsx(
-        "rounded-full  border-0 px-4 py-1 transition-colors disabled:cursor-not-allowed",
+        buttonBase,
+        "px-4 py-1",
         colorMap[color],
         block && "block w-full"
       )}
