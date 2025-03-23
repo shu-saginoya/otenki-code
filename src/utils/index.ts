@@ -1,4 +1,3 @@
-export * from "./tailwindcss";
 export * from "./fetch";
 export * from "./formatForecast";
 export * from "./icons";

@@ -9,7 +9,7 @@ import {
   FontWeight,
   letterSpacingMap,
   LetterSpacing,
-} from "@/utils";
+} from "@/styles";
 
 export type TextProps = {
   children: ReactNode;

@@ -11,7 +11,7 @@ import {
   JustifySelf,
   alignItemsMap,
   AlignItems,
-} from "@/utils";
+} from "@/styles";
 import clsx from "clsx";
 
 type GridProps = {

@@ -8,7 +8,7 @@ import {
   JustifyContent,
   alignItemsMap,
   AlignItems,
-} from "@/utils";
+} from "@/styles";
 import clsx from "clsx";
 
 type StackProps = {
