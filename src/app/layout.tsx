@@ -23,7 +23,7 @@ export default function RootLayout({
       <body>
         <div className="flex h-svh flex-col">
           <Header className="flex-none"></Header>
-          <main className="grow overflow-y-auto overflow-x-hidden px-1 py-section">
+          <main className="grow overflow-y-auto overflow-x-hidden">
             {children}
           </main>
           <Footer className="flex-none"></Footer>
