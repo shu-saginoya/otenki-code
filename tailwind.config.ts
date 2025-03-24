@@ -56,12 +56,6 @@ export default {
           dark: "#c2410c", // orange-700
         },
       },
-      spacing: {
-        section: "3rem",
-        container: "1rem",
-        element: "0.5rem",
-        inline: "0.125rem",
-      },
     },
   },
   plugins: [],
