@@ -3,7 +3,7 @@ import "./globals.css";
 import { ReactNode } from "react";
 import { Metadata } from "next";
 
-import { Header, Footer } from "@/components";
+import { Header, Footer, Main } from "@/components";
 
 export const metadata: Metadata = {
   title: "お天気コーデ",
@@ -23,9 +23,9 @@ export default function RootLayout({
       <body>
         <div className="flex h-svh flex-col">
           <Header className="flex-none"></Header>
-          <main className="grow overflow-y-auto overflow-x-hidden">
+          <Main className="grow overflow-y-auto overflow-x-hidden">
             {children}
-          </main>
+          </Main>
           <Footer className="flex-none"></Footer>
         </div>
       </body>
