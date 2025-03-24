@@ -1,12 +1,19 @@
 import { ReactNode, ComponentProps, JSX, createElement } from "react";
 import { iconMap, Icon } from "@/utils";
-import { colorMap, Color, buttonBase } from "@/styles";
+import {
+  buttonBase,
+  buttonColorMap,
+  ButtonColor,
+  fontSizeMap,
+  FontSize,
+} from "@/styles";
 import { Stack } from "@/components";
 import clsx from "clsx";
 
 type ButtonProps = {
   children: ReactNode;
-  color?: Color;
+  size?: FontSize;
+  color?: ButtonColor;
   disabled?: boolean;
   block?: boolean;
   prependIcon?: Icon;
@@ -17,6 +24,7 @@ type ButtonProps = {
 /**
  * Button Component
  * @param children 子要素
+ * @param size ボタンのサイズ
  * @param color 色の選択
  * @param disabled 押せない状態(真偽値)
  * @param block ボタンをブロック要素にする(真偽値)
@@ -25,6 +33,7 @@ type ButtonProps = {
  */
 export const Button = ({
   children,
+  size = "base",
   color = "primary",
   disabled = false,
   block = false,
@@ -38,8 +47,9 @@ export const Button = ({
       type={"button"}
       className={clsx(
         buttonBase,
+        fontSizeMap[size],
+        buttonColorMap[color],
         "px-4 py-1",
-        colorMap[color],
         block && "block w-full"
       )}
       onClick={onClick}

@@ -13,6 +13,14 @@ export default {
         type: { summary: "string" },
       },
     },
+    size: {
+      control: { type: "text" },
+      defaultValue: "base",
+      description: "ボタンのサイズ",
+      table: {
+        type: { summary: "string" },
+      },
+    },
     color: {
       control: { type: "text" },
       defaultValue: "primary",
