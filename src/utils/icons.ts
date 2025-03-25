@@ -7,6 +7,8 @@ import { MdCheck } from "react-icons/md";
 import { MdClose } from "react-icons/md";
 import { MdHelp } from "react-icons/md";
 import { MdLogin } from "react-icons/md";
+import { MdMap } from "react-icons/md";
+import { MdPublishedWithChanges } from "react-icons/md";
 
 export const iconMap = {
   add: MdAdd,
@@ -18,6 +20,8 @@ export const iconMap = {
   close: MdClose,
   help: MdHelp,
   login: MdLogin,
+  map: MdMap,
+  publishedWithChanges: MdPublishedWithChanges,
 };
 
 export type Icon = keyof typeof iconMap;
