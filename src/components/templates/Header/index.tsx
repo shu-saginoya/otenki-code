@@ -15,7 +15,7 @@ const showAlert = (): void => alert("準備中");
  */
 export const Header = ({ className }: HeaderProps): JSX.Element => {
   return (
-    <header className={clsx(className, "bg-primary px-4 py-2")}>
+    <header className={clsx(className, "px-4 py-2")}>
       <Grid align="center">
         <Col cols={6}>
           <AppLogo></AppLogo>
