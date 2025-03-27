@@ -1,5 +1,6 @@
 import { MdAdd } from "react-icons/md";
 import { MdArrowBack } from "react-icons/md";
+import { TbArrowBackUp } from "react-icons/tb";
 import { MdArrowForward } from "react-icons/md";
 import { GoBell } from "react-icons/go";
 import { MdCached } from "react-icons/md";
@@ -13,6 +14,7 @@ import { MdPublishedWithChanges } from "react-icons/md";
 export const iconMap = {
   add: MdAdd,
   arrowBack: MdArrowBack,
+  arrowBackUp: TbArrowBackUp,
   arrowForward: MdArrowForward,
   bell: GoBell,
   cached: MdCached,

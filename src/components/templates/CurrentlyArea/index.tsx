@@ -1,3 +1,5 @@
+"use client";
+
 import { JSX } from "react";
 import { Stack, Text, IconButton } from "@/components";
 
@@ -16,11 +18,19 @@ export const CurrentlyArea = ({
   area,
   note,
 }: CurrentlyAreaProps): JSX.Element => {
+  const open = (): void => {
+    location.href = "/select-area";
+  };
+
   return (
     <Stack direction="col" align="center" gap={1}>
       <Stack align="center" gap={2}>
         <Text size="xl">{area || "地域を選択してください"}</Text>
-        <IconButton icon="publishedWithChanges" color="primary" />
+        <IconButton
+          icon="publishedWithChanges"
+          color="primary"
+          onClick={open}
+        />
       </Stack>
       <Text>{note}</Text>
     </Stack>
