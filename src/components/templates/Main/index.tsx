@@ -15,9 +15,12 @@ export type MainProps = {
 export const Main = ({ children, className }: MainProps): JSX.Element => {
   return (
     <main
-      className={clsx(className, "bg-background px-4 py-2 dark:bg-foreground")}
+      className={clsx(
+        className,
+        "bg-background-light p-4 dark:bg-foreground-dark"
+      )}
     >
-      <Stack justify="center" align="center" className="h-full">
+      <Stack justify="center" align="center" className="min-h-full">
         <div className="w-full max-w-2xl">{children}</div>
       </Stack>
     </main>
