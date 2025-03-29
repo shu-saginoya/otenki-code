@@ -1,6 +1,7 @@
 "use client";
 
 import { JSX } from "react";
+import { useRouter } from "next/navigation";
 import { Stack, Text, IconButton } from "@/components";
 
 export type CurrentlyAreaProps = {
@@ -18,8 +19,9 @@ export const CurrentlyArea = ({
   area,
   note,
 }: CurrentlyAreaProps): JSX.Element => {
+  const router = useRouter();
   const open = (): void => {
-    location.href = "/select-area";
+    router.push("/select-area");
   };
 
   return (

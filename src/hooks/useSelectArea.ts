@@ -2,23 +2,26 @@
 
 import type { Area, JmaCenter, JmaClass10, JmaOffice } from "@/types";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useJmaArea } from "@/hooks";
 import { useDispatch } from "react-redux";
-import { setArea } from "@/lib/reducers/areasSlice";
+import { setArea } from "@/lib/features/areas/areasSlice";
 
 type Option = "center" | "office" | "class10";
 
 export const useSelectArea = () => {
   const [currentOptions, setCurrentOptions] = useState<Option>();
-  const [newCenter, setNewCenter] = useState<Area>();
-  const [newOffice, setNewOffice] = useState<Area>();
-  const [newClass10, setNewClass10] = useState<Area>();
-  const [options, setOptions] =
-    useState<Record<string, JmaCenter | JmaOffice | JmaClass10>>();
+  const [newCenter, setNewCenter] = useState<Area | undefined>();
+  const [newOffice, setNewOffice] = useState<Area | undefined>();
+  const [newClass10, setNewClass10] = useState<Area | undefined>();
+  const [options, setOptions] = useState<
+    Record<string, JmaCenter | JmaOffice | JmaClass10> | undefined
+  >();
 
   const { centers, offices, class10s, loading, error } = useJmaArea();
+  const dispatch = useDispatch();
 
-  // 選択状況によってcurrentOptionsを変更
+  // currentOptionsの更新を適切に処理
   useEffect(() => {
     if (newOffice) {
       setCurrentOptions("class10");
@@ -29,15 +32,28 @@ export const useSelectArea = () => {
     }
   }, [newCenter, newOffice]);
 
+  // Redux の state 更新処理
+  useEffect(() => {
+    if (newCenter && newOffice && newClass10) {
+      dispatch(
+        setArea({
+          areaLv1: newCenter,
+          areaLv2: newOffice,
+          areaLv3: newClass10,
+        })
+      );
+    }
+  }, [newCenter, newOffice, newClass10, dispatch]);
+
   // Centersの選択肢をoptionsに代入
-  const setCenterOptions = (): void => {
+  const setCenterOptions = () => {
     if (centers) {
       setOptions(centers);
     }
   };
 
   // Officesの選択肢をoptionsに代入
-  const setOfficeOptions = (): void => {
+  const setOfficeOptions = () => {
     if (newCenter && offices) {
       const filteredOffices = Object.fromEntries(
         Object.entries(offices).filter(
@@ -49,7 +65,7 @@ export const useSelectArea = () => {
   };
 
   // class10sの選択肢をoptionsに代入
-  const setClass10Options = (): void => {
+  const setClass10Options = () => {
     if (newOffice && class10s) {
       const filteredClass10s = Object.fromEntries(
         Object.entries(class10s).filter(
@@ -62,7 +78,7 @@ export const useSelectArea = () => {
 
   // currentOptionsをもとにoptionsを設定
   useEffect(() => {
-    if (loading || error) return; // データがまだロード中またはエラーの場合は何もしない
+    if (loading || error) return;
 
     switch (currentOptions) {
       case "center":
@@ -77,14 +93,16 @@ export const useSelectArea = () => {
     }
   }, [currentOptions, loading, error]);
 
+  // useRouter instance
+  const router = useRouter();
+
   // Homeに戻る
-  const backToHome = (): void => {
-    location.href = "/";
+  const backToHome = () => {
+    router.push("/");
   };
 
-  const dispatch = useDispatch();
-  //
-  const setNewArea = (area: Area): void => {
+  // 新しいエリアをセット
+  const setNewArea = (area: Area) => {
     switch (currentOptions) {
       case "center":
         setNewCenter(area);
@@ -94,28 +112,24 @@ export const useSelectArea = () => {
         break;
       case "class10":
         setNewClass10(area);
-        dispatch(
-          setArea({
-            areaLv1: newCenter,
-            areaLv2: newOffice,
-            areaLv3: newClass10,
-          })
-        );
         backToHome();
         break;
     }
   };
 
-  const removeNewArea = (): void => {
+  // エリアの選択を取り消し
+  const removeNewArea = () => {
     switch (currentOptions) {
       case "center":
         backToHome();
         break;
       case "office":
         setNewCenter(undefined);
+        setCurrentOptions("center");
         break;
       case "class10":
         setNewOffice(undefined);
+        setCurrentOptions("office");
         break;
     }
   };

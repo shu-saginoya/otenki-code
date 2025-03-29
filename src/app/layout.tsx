@@ -21,13 +21,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body>
-        <div className="flex h-svh flex-col">
-          <Header className="flex-none"></Header>
-          <Main className="grow overflow-y-auto overflow-x-hidden ">
-            <StoreProvider>{children}</StoreProvider>
-          </Main>
-        </div>
+      <body className="h-svh">
+        <StoreProvider>
+          <div className="flex h-full flex-col">
+            <Header className="flex-none" />
+            <Main className="grow overflow-y-auto overflow-x-hidden">
+              {children}
+            </Main>
+          </div>
+        </StoreProvider>
       </body>
     </html>
   );
