@@ -11,7 +11,7 @@ export type AreaOptionsListProps = {
 };
 
 /**
- * 現在選択されている地域名を表示するためのコンポーネント
+ * エリア選択肢リスト
  *
  * @param {Record<string, { name: string }>} options - 選択肢オブジェクト
  * @param {() => void} action - 選択時の関数
@@ -22,6 +22,10 @@ export const AreaOptionsList = ({
   action,
   goBackAction,
 }: AreaOptionsListProps): JSX.Element => {
+  if (!options || Object.keys(options).length === 0) {
+    return <p>選択肢がありません。</p>;
+  }
+
   return (
     <List>
       {Object.entries(options).map(([key, value]) => (
@@ -31,6 +35,7 @@ export const AreaOptionsList = ({
             appendIcon="arrowForward"
             block
             onClick={() => action({ name: value.name, code: key })}
+            aria-label={`選択: ${value.name}`}
           >
             {value.name}
           </Button>
