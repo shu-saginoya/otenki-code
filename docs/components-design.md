@@ -25,6 +25,7 @@ utils/              # 共通のユーティリティ関数
 ```
 
 ---
+
 ## 📂 `app/`
 
 `app/` ディレクトリはNext.jsのApp Routerに対応したディレクトリです。
@@ -45,7 +46,7 @@ utils/              # 共通のユーティリティ関数
   - 依存関係: 依存なし
   - `parts`：コンポーネントを構成する部品。
   - 例: `Text.tsx`, `Icon.tsx`
-  - 依存関係: Container
+  - 依存関係: 依存なし
 - `templates`：プロジェクトでよく利用される組み合わせ。
   - 例: `Header.tsx`, `SideBar.tsx`
   - 依存関係: Container・Parts・Base
@@ -86,7 +87,7 @@ CSS関連のユーティリティー関数を格納します。
 
 ## 📂 `utils/`
 
-プロジェクト全体で使うユーティリティ関数を格納します。
+プロジェクト全体で使うユーティリティ関数を格納します。(Reactに依存しない)
 
 - 例: `formatDate.ts`, `debounce.ts`
 
