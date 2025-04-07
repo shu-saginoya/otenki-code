@@ -1,5 +1,5 @@
 // 気象庁の天気予報APIのレスポンス型定義
-export type JmaForecastResponse = [LatestWeather, OneWeekWeather];
+export type JmaForecastResponse = [LatestWeather, OneWeekWeather | undefined];
 
 // 直近(1～3)日の天気予報
 type LatestWeather = {
