@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { fetcher } from "@/utils/index";
 import { useSelector } from "react-redux";
-import { RootState } from "@/store";
+import { RootState } from "@/lib/store";
 
 import type { JmaForecastResponse } from "@/types";
 
