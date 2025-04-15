@@ -1,8 +1,8 @@
 // 気象庁の天気予報APIのレスポンス型定義
-export type JmaForecastResponse = [LatestWeather, OneWeekWeather | undefined];
+export type JmaForecastResponse = [LatestWeather, OneWeekWeather];
 
 // 直近(1～3)日の天気予報
-type LatestWeather = {
+export type LatestWeather = {
   publishingOffice: string; // 発表官署（例：東京地方気象台）,
   reportDatetime: string; // 発表日時（ISO8601形式）,
   timeSeries: [
@@ -22,7 +22,7 @@ type LatestWeather = {
 };
 
 // 1週間の天気予報
-type OneWeekWeather = {
+export type OneWeekWeather = {
   publishingOffice: string; // 発表官署（例：東京地方気象台）,
   reportDatetime: string; // 発表日時（ISO8601形式）,
   timeSeries: [
