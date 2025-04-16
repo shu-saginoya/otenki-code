@@ -1,3 +1,3 @@
-export * from "./buttonStyles";
-export * from "./layoutStyles";
-export * from "./typographyStyles";
+export * from "./atoms";
+export * from "./consepts";
+export * from "./components";
