@@ -1,7 +1,7 @@
 "use client";
 
 import { JSX } from "react";
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
 import { Grid, Col, AppLogo, IconButton, Stack } from "@/components";
 
 export type HeaderProps = {
@@ -15,7 +15,7 @@ const showAlert = (): void => alert("準備中");
  */
 export const Header = ({ className }: HeaderProps): JSX.Element => {
   return (
-    <header className={clsx(className, "px-4 py-2")}>
+    <header className={cn(className, "px-4 py-2")}>
       <Grid align="center">
         <Col cols={6}>
           <AppLogo></AppLogo>

@@ -28,3 +28,11 @@ export const variantOutlinedConcept = (color: Color) => {
 export const variantTonalConcept = (color: Color) => {
   return cn("bg-current/20", textColorMap[color]);
 };
+
+export const variantConceptMap = {
+  paint: variantPaintConcept,
+  outlined: variantOutlinedConcept,
+  tonal: variantTonalConcept,
+};
+
+export type VariantConcept = keyof typeof variantConceptMap;

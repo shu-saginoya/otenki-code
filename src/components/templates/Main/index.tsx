@@ -1,7 +1,7 @@
 "use client";
 
 import { JSX, ReactNode } from "react";
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
 import { Stack } from "@/components";
 
 export type MainProps = {
@@ -15,7 +15,7 @@ export type MainProps = {
 export const Main = ({ children, className }: MainProps): JSX.Element => {
   return (
     <main
-      className={clsx(
+      className={cn(
         className,
         "bg-background-light p-4 dark:bg-foreground-dark"
       )}

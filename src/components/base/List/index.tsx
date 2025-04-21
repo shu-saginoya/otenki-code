@@ -1,5 +1,5 @@
 import { ReactNode, ComponentProps, JSX } from "react";
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
 
 type ListProps = {
   children: ReactNode;
@@ -21,7 +21,7 @@ export const List = ({
   ...props
 }: ListProps): JSX.Element => {
   return (
-    <ul className={clsx([divided && "divide-y", className])} {...props}>
+    <ul className={cn([divided && "divide-y", className])} {...props}>
       {children}
     </ul>
   );
@@ -44,7 +44,7 @@ export const ListItem = ({
   ...props
 }: ListItemProps): JSX.Element => {
   return (
-    <li className={clsx(["p-2", className])} {...props}>
+    <li className={cn(["p-2", className])} {...props}>
       {children}
     </li>
   );

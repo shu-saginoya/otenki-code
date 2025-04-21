@@ -1,5 +1,5 @@
 import { JSX } from "react";
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
 import { Stack } from "@/components";
 
 export type FooterProps = {
@@ -14,7 +14,7 @@ export const Footer = ({ className }: FooterProps): JSX.Element => {
     <Stack
       as="footer"
       justify="center"
-      className={clsx(className, "bg-primary p-1")}
+      className={cn(className, "bg-primary p-1")}
     >
       フッター
     </Stack>

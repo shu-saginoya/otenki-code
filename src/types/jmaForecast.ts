@@ -98,7 +98,7 @@ type AreasOneWeekPrecip = {
 };
 
 // エリア指定の基本形(共通事項)
-type Area = {
+export type Area = {
   name: string; // 地域名（例：東京地方）
   code: string; // 地域コード（例：130010）
 };

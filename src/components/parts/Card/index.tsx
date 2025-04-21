@@ -1,5 +1,5 @@
 import { JSX, ReactNode } from "react";
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
 
 type CardProps = {
   children: ReactNode;
@@ -40,7 +40,7 @@ export const Card = ({
     <div
       role="region"
       aria-label="Content section"
-      className={clsx([
+      className={cn([
         // 基本スタイル
         "box-border rounded-lg",
         // Padding

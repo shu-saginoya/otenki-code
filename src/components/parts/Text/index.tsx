@@ -1,5 +1,5 @@
 import { ReactNode, JSX } from "react";
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
 import {
   fontFamilyMap,
   FontFamily,
@@ -44,7 +44,7 @@ export const Text = ({
 }: TextProps): JSX.Element => {
   return (
     <Component
-      className={clsx(
+      className={cn(
         family !== undefined && fontFamilyMap[family],
         size !== undefined && fontSizeMap[size],
         weight !== undefined && fontWeightMap[weight],

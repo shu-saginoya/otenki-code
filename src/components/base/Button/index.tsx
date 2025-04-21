@@ -1,19 +1,14 @@
 import { ReactNode, ComponentProps, JSX, createElement } from "react";
 import { iconMap, Icon } from "@/utils";
-import {
-  buttonBase,
-  buttonColorMap,
-  ButtonColor,
-  fontSizeMap,
-  FontSize,
-} from "@/styles";
+import { variantConceptMap, VariantConcept } from "@/styles";
+import type { Color } from "@/types";
 import { Stack } from "@/components";
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
 
 type ButtonProps = {
   children: ReactNode;
-  size?: FontSize;
-  color?: ButtonColor;
+  variant?: VariantConcept;
+  color?: Color;
   disabled?: boolean;
   block?: boolean;
   prependIcon?: Icon;
@@ -24,7 +19,7 @@ type ButtonProps = {
 /**
  * Button Component
  * @param children 子要素
- * @param size ボタンのサイズ
+ * @param variant ボタンのバリアント
  * @param color 色の選択
  * @param disabled 押せない状態(真偽値)
  * @param block ボタンをブロック要素にする(真偽値)
@@ -33,7 +28,7 @@ type ButtonProps = {
  */
 export const Button = ({
   children,
-  size = "base",
+  variant = "paint",
   color = "primary",
   disabled = false,
   block = false,
@@ -45,10 +40,8 @@ export const Button = ({
   return (
     <button
       type={"button"}
-      className={clsx(
-        buttonBase,
-        fontSizeMap[size],
-        buttonColorMap[color],
+      className={cn(
+        variantConceptMap[variant](color),
         "px-4 py-1",
         block && "block w-full"
       )}

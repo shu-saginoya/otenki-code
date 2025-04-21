@@ -1,5 +1,5 @@
 import { JSX } from "react";
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
 import { Text } from "@/components";
 
 export type BadgeProps = {
@@ -20,7 +20,7 @@ export const Badge = ({ content, className }: BadgeProps): JSX.Element => {
   const baseStyle =
     "h-5 min-w-5 items-center justify-center rounded-full px-1 inline-flex";
   return (
-    <div className={clsx(baseStyle, className)}>
+    <div className={cn(baseStyle, className)}>
       <Text className="text-xs text-white">{content}</Text>
     </div>
   );

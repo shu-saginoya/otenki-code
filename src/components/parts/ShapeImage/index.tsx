@@ -1,6 +1,6 @@
 import Image, { ImageProps } from "next/image";
 import { JSX } from "react";
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
 
 type ShapeImageProps = {
   /** 代替テキスト（アクセシビリティのため必須） */
@@ -25,6 +25,6 @@ export const ShapeImage = ({
   ...props
 }: ShapeImageProps): JSX.Element => {
   return (
-    <Image {...props} alt={alt} className={clsx(variants[shape], className)} />
+    <Image {...props} alt={alt} className={cn(variants[shape], className)} />
   );
 };

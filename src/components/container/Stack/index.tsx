@@ -9,7 +9,7 @@ import {
   alignItemsMap,
   AlignItems,
 } from "@/styles";
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
 
 type StackProps = {
   children: ReactNode;
@@ -43,7 +43,7 @@ export const Stack = ({
 }: StackProps): JSX.Element => {
   return (
     <Component
-      className={clsx(
+      className={cn(
         "flex",
         gap !== undefined && gapMap[gap],
         direction !== undefined && flexDirectionMap[direction],

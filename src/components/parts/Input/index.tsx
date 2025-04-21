@@ -1,5 +1,5 @@
 import { InputHTMLAttributes, JSX } from "react";
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
 
 export type InputProps = {
   type: "email" | "tel" | "text" | "url"; // typeを必須に
@@ -27,7 +27,7 @@ export const Input = ({
     <input
       type={type}
       aria-invalid={hasError}
-      className={clsx(baseStyles, variants[hasError ? "error" : "default"])}
+      className={cn(baseStyles, variants[hasError ? "error" : "default"])}
       {...rest}
     />
   );

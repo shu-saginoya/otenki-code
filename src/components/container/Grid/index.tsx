@@ -12,7 +12,7 @@ import {
   alignItemsMap,
   AlignItems,
 } from "@/styles";
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
 
 type GridProps = {
   children: ReactNode;
@@ -40,7 +40,7 @@ export const Grid = ({
 }: GridProps): JSX.Element => {
   return (
     <Component
-      className={clsx(
+      className={cn(
         "grid grid-cols-12",
         gap !== undefined && gapMap[gap],
         align !== undefined && alignItemsMap[align],
@@ -87,7 +87,7 @@ export const Col = ({
 }: ColProps): JSX.Element => {
   return (
     <Component
-      className={clsx(
+      className={cn(
         cols !== undefined && gridColMap[cols],
         md !== undefined && mdGridColMap[md],
         lg !== undefined && lgGridColMap[lg],

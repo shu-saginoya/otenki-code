@@ -1,18 +1,19 @@
 import { ComponentProps, JSX, createElement } from "react";
 import { iconMap, Icon } from "@/utils";
 import {
-  buttonBase,
-  buttonColorMap,
-  ButtonColor,
+  variantConceptMap,
+  VariantConcept,
   fontSizeMap,
   FontSize,
 } from "@/styles";
-import clsx from "clsx";
+import type { Color } from "@/types";
+import { cn } from "@/lib/cn";
 
 type IconButtonProps = {
   icon: Icon;
   size?: FontSize;
-  color?: ButtonColor;
+  variant?: VariantConcept;
+  color?: Color;
   disabled?: boolean;
   className?: string;
   onClick?: () => void;
@@ -22,6 +23,7 @@ type IconButtonProps = {
  * IconButton Component
  * @param children 子要素
  * @param size ボタンのサイズ
+ * @param variant ボタンのバリアント
  * @param color 色の選択
  * @param disabled 押せない状態(真偽値)
  * @param onClick 実行する関数
@@ -30,7 +32,8 @@ type IconButtonProps = {
 export const IconButton = ({
   icon,
   size = "xl",
-  color = "none",
+  variant = "paint",
+  color = "primary",
   disabled = false,
   className,
   onClick,
@@ -39,11 +42,10 @@ export const IconButton = ({
   return (
     <button
       type={"button"}
-      className={clsx(
-        buttonBase,
+      className={cn(
+        variantConceptMap[variant](color),
         "p-1",
         fontSizeMap[size],
-        buttonColorMap[color],
         className
       )}
       onClick={onClick}
