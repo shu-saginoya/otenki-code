@@ -1,3 +1,4 @@
-export * from "./colors";
-export * from "./layouts";
-export * from "./typographies";
+export * from "./colorStyles";
+export * from "./layoutStyles";
+export * from "./stateStyles";
+export * from "./typographyStyles";
