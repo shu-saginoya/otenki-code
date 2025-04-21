@@ -1,8 +1,9 @@
 // 天気予報を取得する関数
 import { useState, useEffect } from "react";
-import { fetcher } from "@/utils/index";
 import { useSelector } from "react-redux";
+
 import { RootState } from "@/lib/store";
+import { fetcher } from "@/utils/index";
 
 import type { JmaForecastResponse } from "@/types";
 

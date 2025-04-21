@@ -1,5 +1,6 @@
 // 地域情報を取得
 import { useState, useEffect } from "react";
+
 import { fetcher } from "@/utils/index";
 
 // 型定義

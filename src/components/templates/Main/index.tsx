@@ -1,8 +1,9 @@
 "use client";
 
 import { JSX, ReactNode } from "react";
-import { cn } from "@/lib/cn";
+
 import { Stack } from "@/components";
+import { cn } from "@/lib/cn";
 
 export type MainProps = {
   children: ReactNode;

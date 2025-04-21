@@ -1,4 +1,5 @@
 import { JSX } from "react";
+
 import { Text } from "@/components";
 
 const AppName = "お天気コーデ";

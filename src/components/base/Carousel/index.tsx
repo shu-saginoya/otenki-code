@@ -1,8 +1,9 @@
 "use client";
 
-import { ReactNode, JSX, useEffect } from "react";
 import { EmblaOptionsType } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
+import { ReactNode, JSX, useEffect } from "react";
+
 import { Stack } from "@/components";
 
 type CarouselProps = {

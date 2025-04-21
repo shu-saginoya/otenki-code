@@ -1,7 +1,8 @@
 "use client";
 
-import { JSX } from "react";
 import { useRouter } from "next/navigation";
+import { JSX } from "react";
+
 import { Stack, Text, IconButton } from "@/components";
 
 export type CurrentlyAreaProps = {

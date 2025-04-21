@@ -1,5 +1,6 @@
 import Image, { ImageProps } from "next/image";
 import { JSX } from "react";
+
 import { cn } from "@/lib/cn";
 
 type ShapeImageProps = {

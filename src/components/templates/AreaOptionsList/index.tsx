@@ -1,8 +1,10 @@
 "use client";
-import type { Area } from "@/types";
 
 import { JSX } from "react";
+
 import { List, ListItem, Button } from "@/components";
+
+import type { Area } from "@/types";
 
 export type AreaOptionsListProps = {
   options: Record<string, { name: string }>;

@@ -1,6 +1,7 @@
 import { JSX } from "react";
-import { cn } from "@/lib/cn";
+
 import { Text } from "@/components";
+import { cn } from "@/lib/cn";
 
 export type BadgeProps = {
   /**

@@ -1,6 +1,7 @@
-import type { Color } from "@/types";
-import { bgColorMap, textColorMap, borderColorMap } from "@/styles";
 import { cn } from "@/lib/cn";
+import { bgColorMap, textColorMap, borderColorMap } from "@/styles";
+
+import type { Color } from "@/types";
 
 /**
  * 背景を塗りつぶしたデザイン

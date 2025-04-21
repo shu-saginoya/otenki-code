@@ -1,10 +1,10 @@
 import dayjs from "dayjs";
 import "dayjs/locale/ja";
-import relativeTime from "dayjs/plugin/relativeTime";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
 import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
+import relativeTime from "dayjs/plugin/relativeTime";
 import weekday from "dayjs/plugin/weekday";
-import customParseFormat from "dayjs/plugin/customParseFormat";
 
 // プラグイン適用
 dayjs.extend(relativeTime);

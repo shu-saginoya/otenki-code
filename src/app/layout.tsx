@@ -1,9 +1,9 @@
 import "./globals.css";
 
-import { ReactNode } from "react";
 import { Metadata } from "next";
-import StoreProvider from "@/app/StoreProvider";
+import { ReactNode } from "react";
 
+import StoreProvider from "@/app/StoreProvider";
 import { Header, Main } from "@/components";
 
 export const metadata: Metadata = {

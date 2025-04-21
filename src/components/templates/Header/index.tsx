@@ -1,8 +1,9 @@
 "use client";
 
 import { JSX } from "react";
-import { cn } from "@/lib/cn";
+
 import { Grid, Col, AppLogo, IconButton, Stack } from "@/components";
+import { cn } from "@/lib/cn";
 
 export type HeaderProps = {
   className: string;

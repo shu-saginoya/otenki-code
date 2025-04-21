@@ -1,4 +1,6 @@
 import { ReactNode, JSX } from "react";
+
+import { cn } from "@/lib/cn";
 import {
   gapMap,
   Gap,
@@ -12,7 +14,6 @@ import {
   alignItemsMap,
   AlignItems,
 } from "@/styles";
-import { cn } from "@/lib/cn";
 
 type GridProps = {
   children: ReactNode;

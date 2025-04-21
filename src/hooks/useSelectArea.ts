@@ -1,8 +1,10 @@
 "use client";
 
-import type { Area, JmaCenter, JmaOffice, JmaClass10 } from "@/types";
 import { useState, useEffect } from "react";
+
 import { useJmaArea } from "@/hooks";
+
+import type { Area, JmaCenter, JmaOffice, JmaClass10 } from "@/types";
 
 export const useSelectArea = () => {
   // 選択された地域を格納するstate

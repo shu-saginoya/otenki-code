@@ -1,7 +1,8 @@
 "use client";
 
-import type { Area } from "@/types";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+
 import {
   Grid,
   Col,
@@ -12,8 +13,9 @@ import {
   CarouselItem,
 } from "@/components";
 import { useSelectArea, useAppRouter } from "@/hooks";
-import { useDispatch } from "react-redux";
 import { setArea } from "@/lib/features/areas/areasSlice";
+
+import type { Area } from "@/types";
 
 export default function SelectArea() {
   const {

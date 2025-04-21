@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
+
+import { Grid, Col, CurrentlyArea } from "@/components";
 import { useJmaForecast } from "@/hooks";
 import { useAppSelector } from "@/lib/hooks";
 import { extractDailyForecast } from "@/utils";
-import { Grid, Col, CurrentlyArea } from "@/components";
 
 export default function Home() {
   const [area, setArea] = useState<string>("");

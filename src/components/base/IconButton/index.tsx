@@ -1,13 +1,15 @@
 import { ComponentProps, JSX, createElement } from "react";
-import { iconMap, Icon } from "@/utils";
+
+import { cn } from "@/lib/cn";
 import {
   variantConceptMap,
   VariantConcept,
   fontSizeMap,
   FontSize,
 } from "@/styles";
+import { iconMap, Icon } from "@/utils";
+
 import type { Color } from "@/types";
-import { cn } from "@/lib/cn";
 
 type IconButtonProps = {
   icon: Icon;

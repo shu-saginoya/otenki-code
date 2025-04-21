@@ -1,3 +1,5 @@
+import { isSameDate } from "@/utils";
+
 import type {
   JmaForecastResponse,
   OneWeekWeather,
@@ -6,7 +8,6 @@ import type {
   DailyForecastDetail,
   TimeAndValue,
 } from "@/types";
-import { isSameDate } from "@/utils";
 
 /**
  * 気象庁天気予報APIのレスポンスと対象エリアコードを元に、日別の予報を抽出するユーティリティ関数
