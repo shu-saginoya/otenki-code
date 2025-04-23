@@ -2,10 +2,13 @@ import { ComponentProps, JSX, createElement } from "react";
 
 import { cn } from "@/lib/cn";
 import {
-  variantConceptMap,
-  VariantConcept,
+  colorVariantMap,
   fontSizeMap,
+  roundedMap,
+  paddingMap,
+  actionableConcept,
   FontSize,
+  ColorVariant,
 } from "@/styles";
 import { iconMap, Icon } from "@/utils";
 
@@ -13,9 +16,9 @@ import type { Color } from "@/types";
 
 type IconButtonProps = {
   icon: Icon;
-  size?: FontSize;
-  variant?: VariantConcept;
+  variant?: ColorVariant;
   color?: Color;
+  size?: FontSize;
   disabled?: boolean;
   className?: string;
   onClick?: () => void;
@@ -37,7 +40,6 @@ export const IconButton = ({
   variant = "paint",
   color = "primary",
   disabled = false,
-  className,
   onClick,
   ...props
 }: IconButtonProps): JSX.Element => {
@@ -45,10 +47,11 @@ export const IconButton = ({
     <button
       type={"button"}
       className={cn(
-        variantConceptMap[variant](color),
-        "p-1",
+        colorVariantMap[variant](color),
         fontSizeMap[size],
-        className
+        actionableConcept(),
+        roundedMap["full"],
+        paddingMap["1"]
       )}
       onClick={onClick}
       disabled={disabled}
