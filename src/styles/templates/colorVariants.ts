@@ -23,7 +23,7 @@ export const colorVariantPaint: ColorVariantFn = (color: Color) => {
  * @returns - 背景色、文字色、ボーダー色を組み合わせたクラス名
  */
 export const colorVariantOutlined: ColorVariantFn = (color: Color) => {
-  return cn("bg-transparent", textColorMap[color], borderColorMap[color]);
+  return cn("bg-transparent", textColorMap[color], "border-current/80");
 };
 
 /**

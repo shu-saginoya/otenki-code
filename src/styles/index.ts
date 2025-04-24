@@ -1,3 +1,2 @@
-export * from "./atoms";
-export * from "./concepts";
-export * from "./variants";
+export * from "./parts";
+export * from "./templates";

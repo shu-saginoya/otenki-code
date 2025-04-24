@@ -51,7 +51,7 @@ export const IconButton = ({
         fontSizeMap[size],
         actionableConcept(),
         roundedMap["full"],
-        paddingMap["1"]
+        paddingMap[1]
       )}
       onClick={onClick}
       disabled={disabled}

@@ -6,7 +6,8 @@ import {
   colorVariantMap,
   fontSizeMap,
   roundedMap,
-  paddingMap,
+  paddingXMap,
+  paddingYMap,
   actionableConcept,
   FontSize,
   ColorVariant,
@@ -58,7 +59,8 @@ export const Button = ({
         fontSizeMap[size],
         actionableConcept(),
         roundedMap["full"],
-        paddingMap["1"],
+        paddingXMap[4],
+        paddingYMap[1],
         block && "block w-full"
       )}
       onClick={onClick}

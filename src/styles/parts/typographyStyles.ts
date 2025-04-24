@@ -1,3 +1,16 @@
+import { Color } from "@/types";
+
+export const textColorMap: Record<Color, string> = {
+  primary: "text-primary",
+  foreground: "text-foreground dark:text-background",
+  background: "text-background dark:text-foreground",
+  disabled: "text-disabled",
+  link: "text-link",
+  success: "text-success",
+  error: "text-error",
+  warning: "text-warning",
+} as const;
+
 export const fontFamilyMap = {
   sans: "font-sans",
   serif: "font-serif",
