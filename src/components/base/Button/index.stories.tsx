@@ -14,10 +14,10 @@ export default {
         type: { summary: "string" },
       },
     },
-    size: {
+    variant: {
       control: { type: "text" },
-      defaultValue: "base",
-      description: "ボタンのサイズ",
+      defaultValue: "paint",
+      description: "ボタンのデザイン",
       table: {
         type: { summary: "string" },
       },
@@ -26,6 +26,14 @@ export default {
       control: { type: "text" },
       defaultValue: "primary",
       description: "ボタンの色",
+      table: {
+        type: { summary: "string" },
+      },
+    },
+    size: {
+      control: { type: "text" },
+      defaultValue: "base",
+      description: "ボタンのサイズ",
       table: {
         type: { summary: "string" },
       },
@@ -81,6 +89,26 @@ export const Default: Story = {
   },
 };
 
+// アウトラインボタン
+export const Outlined: Story = {
+  args: {
+    children: "Outlined Button",
+    variant: "outlined",
+    color: "error",
+    onClick: sampleFunc,
+  },
+};
+
+// トナルボタン
+export const Tonal: Story = {
+  args: {
+    children: "Tonal Button",
+    variant: "tonal",
+    color: "foreground",
+    onClick: sampleFunc,
+  },
+};
+
 // 無効化ボタン
 export const Disabled: Story = {
   args: {
@@ -95,6 +123,7 @@ export const Block: Story = {
   args: {
     children: "Block Button",
     block: true,
+    color: "link",
     onClick: sampleFunc,
   },
 };
@@ -104,6 +133,7 @@ export const Icon: Story = {
   args: {
     children: "Icon Button",
     appendIcon: "arrowForward",
+    color: "background",
     onClick: sampleFunc,
   },
 };

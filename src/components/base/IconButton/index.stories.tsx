@@ -21,9 +21,17 @@ export default {
         type: { summary: "string" },
       },
     },
+    variant: {
+      control: { type: "text" },
+      defaultValue: "paint",
+      description: "ボタンのデザイン",
+      table: {
+        type: { summary: "string" },
+      },
+    },
     color: {
       control: { type: "text" },
-      defaultValue: "none",
+      defaultValue: "primary",
       description: "ボタンの色",
       table: {
         type: { summary: "string" },
@@ -65,11 +73,12 @@ export const Default: Story = {
   },
 };
 
-// 背景色つきボタン
-export const Background: Story = {
+// 大きいボタン
+export const Size2XL: Story = {
   args: {
     icon: "close",
-    color: "primary",
+    size: "2xl",
+    color: "warning",
     onClick: sampleFunc,
   },
 };

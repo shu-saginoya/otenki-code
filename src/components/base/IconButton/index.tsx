@@ -6,7 +6,7 @@ import {
   fontSizeMap,
   roundedMap,
   paddingMap,
-  actionableConcept,
+  actionableButton,
   FontSize,
   ColorVariant,
 } from "@/styles";
@@ -49,7 +49,7 @@ export const IconButton = ({
       className={cn(
         colorVariantMap[variant](color),
         fontSizeMap[size],
-        actionableConcept(),
+        actionableButton,
         roundedMap["full"],
         paddingMap[1]
       )}

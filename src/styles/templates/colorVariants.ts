@@ -1,5 +1,12 @@
 import { cn } from "@/lib/cn";
-import { bgColorMap, textColorMap, borderColorMap } from "@/styles";
+import {
+  bgColorMap,
+  bgOpacityColorMap,
+  bgHoverColorMap,
+  bgHoverDarkColorMap,
+  bgHoverOpacityColorMap,
+  textColorMap,
+} from "@/styles";
 
 import type { Color } from "@/types";
 
@@ -13,7 +20,7 @@ type ColorVariantFn = (color: Color) => string;
  * @returns - 背景色、文字色、ボーダー色を組み合わせたクラス名
  */
 export const colorVariantPaint: ColorVariantFn = (color: Color) => {
-  return cn(bgColorMap[color], "text-white", borderColorMap[color]);
+  return cn(bgColorMap[color], bgHoverDarkColorMap[color], "text-white");
 };
 
 /**
@@ -23,7 +30,13 @@ export const colorVariantPaint: ColorVariantFn = (color: Color) => {
  * @returns - 背景色、文字色、ボーダー色を組み合わせたクラス名
  */
 export const colorVariantOutlined: ColorVariantFn = (color: Color) => {
-  return cn("bg-transparent", textColorMap[color], "border-current/80");
+  return cn(
+    "bg-transparent",
+    bgHoverColorMap[color],
+    textColorMap[color],
+    "hover:text-inherit",
+    "border border-current hover:border-inherit"
+  );
 };
 
 /**
@@ -33,7 +46,11 @@ export const colorVariantOutlined: ColorVariantFn = (color: Color) => {
  * @returns - 背景色、文字色、ボーダー色を組み合わせたクラス名
  */
 export const colorVariantTonal: ColorVariantFn = (color: Color) => {
-  return cn("bg-current/20", textColorMap[color], "border-current/20");
+  return cn(
+    bgOpacityColorMap[color],
+    textColorMap[color],
+    bgHoverOpacityColorMap[color]
+  );
 };
 
 export const colorVariantMap = {
