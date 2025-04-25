@@ -27,7 +27,7 @@ type ColorVariantFn = (color: Color, options?: Options ) => string;
  * @returns - 背景色、文字色を組み合わせたクラス名
  */
 export const colorVariantPaint: ColorVariantFn = (color: Color, options?: Options) => {
-  const actionableStyles = options?.actionable ?? cn(actionableBtnBase, bgHoverDarkColorMap[color])
+  const actionableStyles = options?.actionable && cn(actionableBtnBase, bgHoverDarkColorMap[color])
   return cn(bgColorMap[color], "text-white", actionableStyles);
 };
 
@@ -39,7 +39,7 @@ export const colorVariantPaint: ColorVariantFn = (color: Color, options?: Option
  * @returns - 背景色、文字色、ボーダー色を組み合わせたクラス名
  */
 export const colorVariantOutlined: ColorVariantFn = (color: Color, options?: Options) => {
-  const actionableStyles = options?.actionable ?? cn(
+  const actionableStyles = options?.actionable && cn(
     actionableBtnBase,
     bgHoverColorMap[color],
     "hover:text-inherit hover:border-inherit"
@@ -61,7 +61,7 @@ export const colorVariantOutlined: ColorVariantFn = (color: Color, options?: Opt
  * @returns - 背景色、文字色を組み合わせたクラス名
  */
 export const colorVariantTonal: ColorVariantFn = (color: Color, options?: Options) => {
-  const actionableStyles = options?.actionable ?? cn(
+  const actionableStyles = options?.actionable && cn(
     actionableBtnBase,
     bgHoverOpacityColorMap[color]
   );
