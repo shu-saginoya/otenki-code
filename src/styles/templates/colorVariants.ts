@@ -13,11 +13,11 @@ import type { Color } from "@/types";
 
 // オプション
 type Options = {
-  actionable?: boolean
-}
+  actionable?: boolean;
+};
 
 // カラーバリデーションを返す型
-type ColorVariantFn = (color: Color, options?: Options ) => string;
+type ColorVariantFn = (color: Color, options?: Options) => string;
 
 /**
  * 背景を塗りつぶしたデザイン
@@ -26,8 +26,12 @@ type ColorVariantFn = (color: Color, options?: Options ) => string;
  * @param options - オプション
  * @returns - 背景色、文字色を組み合わせたクラス名
  */
-export const colorVariantPaint: ColorVariantFn = (color: Color, options?: Options) => {
-  const actionableStyles = options?.actionable && cn(actionableBtnBase, bgHoverDarkColorMap[color])
+export const colorVariantPaint: ColorVariantFn = (
+  color: Color,
+  options?: Options
+) => {
+  const actionableStyles =
+    options?.actionable && cn(actionableBtnBase, bgHoverDarkColorMap[color]);
   return cn(bgColorMap[color], "text-white", actionableStyles);
 };
 
@@ -38,12 +42,17 @@ export const colorVariantPaint: ColorVariantFn = (color: Color, options?: Option
  * @param options - オプション
  * @returns - 背景色、文字色、ボーダー色を組み合わせたクラス名
  */
-export const colorVariantOutlined: ColorVariantFn = (color: Color, options?: Options) => {
-  const actionableStyles = options?.actionable && cn(
-    actionableBtnBase,
-    bgHoverColorMap[color],
-    "hover:text-inherit hover:border-inherit"
-  )
+export const colorVariantOutlined: ColorVariantFn = (
+  color: Color,
+  options?: Options
+) => {
+  const actionableStyles =
+    options?.actionable &&
+    cn(
+      actionableBtnBase,
+      bgHoverColorMap[color],
+      "hover:text-inherit hover:border-inherit"
+    );
 
   return cn(
     "bg-transparent",
@@ -60,17 +69,14 @@ export const colorVariantOutlined: ColorVariantFn = (color: Color, options?: Opt
  * @param options - オプション
  * @returns - 背景色、文字色を組み合わせたクラス名
  */
-export const colorVariantTonal: ColorVariantFn = (color: Color, options?: Options) => {
-  const actionableStyles = options?.actionable && cn(
-    actionableBtnBase,
-    bgHoverOpacityColorMap[color]
-  );
+export const colorVariantTonal: ColorVariantFn = (
+  color: Color,
+  options?: Options
+) => {
+  const actionableStyles =
+    options?.actionable && cn(actionableBtnBase, bgHoverOpacityColorMap[color]);
 
-  return cn(
-    bgOpacityColorMap[color],
-    textColorMap[color],
-    actionableStyles
-  );
+  return cn(bgOpacityColorMap[color], textColorMap[color], actionableStyles);
 };
 
 /**

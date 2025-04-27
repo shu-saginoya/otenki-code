@@ -54,7 +54,7 @@ export const Button = ({
     <button
       type={"button"}
       className={cn(
-        colorVariantMap[variant](color, {actionable: true}),
+        colorVariantMap[variant](color, { actionable: true }),
         fontSizeMap[size],
         roundedMap["full"],
         paddingXMap[4],
