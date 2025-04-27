@@ -1,6 +1,7 @@
 import { ReactNode, ComponentProps, JSX } from "react";
 
 import { cn } from "@/lib/cn";
+import { paddingMap } from "@/styles";
 
 type ListProps = {
   children: ReactNode;
@@ -45,7 +46,7 @@ export const ListItem = ({
   ...props
 }: ListItemProps): JSX.Element => {
   return (
-    <li className={cn(["p-2", className])} {...props}>
+    <li className={cn([paddingMap[2], className])} {...props}>
       {children}
     </li>
   );
