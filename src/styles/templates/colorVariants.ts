@@ -1,5 +1,6 @@
 import { cn } from "@/lib/cn";
 import {
+  actionableBtnBase,
   bgColorMap,
   bgOpacityColorMap,
   bgHoverColorMap,
@@ -10,32 +11,45 @@ import {
 
 import type { Color } from "@/types";
 
+// オプション
+type Options = {
+  actionable?: boolean
+}
+
 // カラーバリデーションを返す型
-type ColorVariantFn = (color: Color) => string;
+type ColorVariantFn = (color: Color, options?: Options ) => string;
 
 /**
  * 背景を塗りつぶしたデザイン
  *
  * @param color - 色
- * @returns - 背景色、文字色、ボーダー色を組み合わせたクラス名
+ * @param options - オプション
+ * @returns - 背景色、文字色を組み合わせたクラス名
  */
-export const colorVariantPaint: ColorVariantFn = (color: Color) => {
-  return cn(bgColorMap[color], bgHoverDarkColorMap[color], "text-white");
+export const colorVariantPaint: ColorVariantFn = (color: Color, options?: Options) => {
+  const actionableStyles = options?.actionable && cn(actionableBtnBase, bgHoverDarkColorMap[color])
+  return cn(bgColorMap[color], "text-white", actionableStyles);
 };
 
 /**
  * ボーダーのあるデザイン
  *
  * @param color - 色
+ * @param options - オプション
  * @returns - 背景色、文字色、ボーダー色を組み合わせたクラス名
  */
-export const colorVariantOutlined: ColorVariantFn = (color: Color) => {
+export const colorVariantOutlined: ColorVariantFn = (color: Color, options?: Options) => {
+  const actionableStyles = options?.actionable && cn(
+    actionableBtnBase,
+    bgHoverColorMap[color],
+    "hover:text-inherit hover:border-inherit"
+  )
+
   return cn(
     "bg-transparent",
-    bgHoverColorMap[color],
     textColorMap[color],
-    "hover:text-inherit",
-    "border border-current hover:border-inherit"
+    "border border-current",
+    actionableStyles
   );
 };
 
@@ -43,16 +57,29 @@ export const colorVariantOutlined: ColorVariantFn = (color: Color) => {
  * 背景に文字色と同じ不透明度を下げた色を使用したデザイン
  *
  * @param color - 色
- * @returns - 背景色、文字色、ボーダー色を組み合わせたクラス名
+ * @param options - オプション
+ * @returns - 背景色、文字色を組み合わせたクラス名
  */
-export const colorVariantTonal: ColorVariantFn = (color: Color) => {
+export const colorVariantTonal: ColorVariantFn = (color: Color, options?: Options) => {
+  const actionableStyles = options?.actionable && cn(
+    actionableBtnBase,
+    bgHoverOpacityColorMap[color]
+  );
+
   return cn(
     bgOpacityColorMap[color],
     textColorMap[color],
-    bgHoverOpacityColorMap[color]
+    actionableStyles
   );
 };
 
+/**
+ * 複数のデザインをまとめたオブジェクト
+ *
+ * @param color - 色
+ * @param options - オプション
+ * @returns - スタイルを組み合わせたクラス名
+ */
 export const colorVariantMap = {
   paint: colorVariantPaint,
   outlined: colorVariantOutlined,

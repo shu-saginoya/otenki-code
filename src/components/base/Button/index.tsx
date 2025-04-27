@@ -8,7 +8,6 @@ import {
   roundedMap,
   paddingXMap,
   paddingYMap,
-  actionableButton,
   FontSize,
   ColorVariant,
 } from "@/styles";
@@ -55,9 +54,8 @@ export const Button = ({
     <button
       type={"button"}
       className={cn(
-        colorVariantMap[variant](color),
+        colorVariantMap[variant](color, {actionable: true}),
         fontSizeMap[size],
-        actionableButton,
         roundedMap["full"],
         paddingXMap[4],
         paddingYMap[1],
