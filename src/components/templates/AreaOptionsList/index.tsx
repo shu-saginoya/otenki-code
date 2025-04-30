@@ -33,7 +33,7 @@ export const AreaOptionsList = ({
       {Object.entries(options).map(([key, value]) => (
         <ListItem key={key}>
           <Button
-            color="foreground"
+            color="background"
             appendIcon="arrowForward"
             block
             onClick={() => action({ name: value.name, code: key })}
@@ -45,7 +45,7 @@ export const AreaOptionsList = ({
       ))}
       <ListItem>
         <Button
-          color="foreground"
+          color="background"
           appendIcon="arrowBackUp"
           block
           onClick={goBackAction}

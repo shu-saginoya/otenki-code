@@ -23,8 +23,16 @@ export const Header = ({ className }: HeaderProps): JSX.Element => {
         </Col>
         <Col cols={6} justify="end">
           <Stack gap={2}>
-            <IconButton icon="bell" onClick={showAlert}></IconButton>
-            <IconButton icon="login" onClick={showAlert}></IconButton>
+            <IconButton
+              icon="bell"
+              color="background"
+              onClick={showAlert}
+            ></IconButton>
+            <IconButton
+              icon="login"
+              color="background"
+              onClick={showAlert}
+            ></IconButton>
           </Stack>
         </Col>
       </Grid>
