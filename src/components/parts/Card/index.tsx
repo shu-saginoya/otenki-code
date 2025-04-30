@@ -1,41 +1,32 @@
 import { JSX, ReactNode } from "react";
 
 import { cn } from "@/lib/cn";
+import { paddingMap, colorVariantMap, Padding, ColorVariant } from "@/styles";
+
+import type { Color } from "@/types";
 
 type CardProps = {
   children: ReactNode;
-  className?: string;
-  variant?: Variant;
+  color?: Color;
+  variant?: ColorVariant;
   padding?: Padding;
+  className?: string;
 };
-
-const variants = {
-  default: "",
-  elevated: "shadow-md",
-  outlined: "border border-foreground-light dark:border-background-light",
-};
-
-type Variant = keyof typeof variants;
-
-const paddings = {
-  none: "p-0",
-  small: "p-2",
-  medium: "p-4",
-  large: "p-6",
-};
-
-type Padding = keyof typeof paddings;
 
 /**
  * コンテンツをグループ化するカードコンポーネント
  * @param children - カード内に表示するコンテンツ
+ * @param color - カードの色
+ * @param variant - カードのデザインの異型
+ * @param padding - カード内のコンテンツのパディング
  * @param className - 追加のスタイリングのためのクラス名
  */
 export const Card = ({
   children,
   className,
-  variant = "default",
-  padding = "small",
+  color = "foreground",
+  variant = "outlined",
+  padding = 2,
 }: CardProps): JSX.Element => {
   return (
     <div
@@ -45,13 +36,9 @@ export const Card = ({
         // 基本スタイル
         "box-border rounded-lg",
         // Padding
-        paddings[padding],
-        // 背景と境界
-        "bg-background-light dark:bg-foreground-light",
+        paddingMap[padding],
         // デザインの異型
-        variants[variant],
-        // シャドウ効果
-        "shadow-sm",
+        colorVariantMap[variant](color),
         // カスタムクラス
         className,
       ])}

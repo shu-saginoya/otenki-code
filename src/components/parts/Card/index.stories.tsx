@@ -48,18 +48,19 @@ export const Default: Story = {
   },
 };
 
-// Elevatedカード
-export const Elevated: Story = {
+// Paintカード
+export const Paint: Story = {
   args: {
-    children: "Elevated Card",
-    variant: "elevated",
+    children: "Paint Card",
+    color: "error",
+    variant: "paint",
   },
 };
 
-// Outlinedカード
-export const Outlined: Story = {
+// Tonalカード
+export const Tonal: Story = {
   args: {
-    children: "Outlined Card",
-    variant: "outlined",
+    children: "Tonal Card",
+    variant: "tonal",
   },
 };
