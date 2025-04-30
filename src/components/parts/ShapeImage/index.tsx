@@ -2,6 +2,7 @@ import Image, { ImageProps } from "next/image";
 import { JSX } from "react";
 
 import { cn } from "@/lib/cn";
+import { roundedMap } from "@/styles";
 
 type ShapeImageProps = {
   /** 代替テキスト（アクセシビリティのため必須） */
@@ -13,8 +14,8 @@ type ShapeImageProps = {
 } & Omit<ImageProps, "alt">; // alt を必須にするため除外
 
 const variants = {
-  circle: "rounded-full", // 円形
-  square: "rounded-none", // 四角形
+  circle: roundedMap["full"], // 円形
+  square: roundedMap["none"], // 四角形
 } as const;
 
 type ImageShape = keyof typeof variants;
