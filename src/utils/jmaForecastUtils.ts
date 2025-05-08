@@ -1,4 +1,4 @@
-import { isSameDate } from "@/utils";
+import { isSameDate, toHalfWidth, WeatherCode } from "@/utils";
 
 import type {
   JmaForecastResponse,
@@ -165,10 +165,10 @@ const createDailyForecastDetail = (
   dates.forEach((date, index) => {
     result.push({
       date: date,
-      weatherCodes: weatherCodes[index],
-      weatherText: weatherTexts[index],
-      wind: winds[index],
-      wave: waves[index],
+      weatherCode: weatherCodes[index] as WeatherCode,
+      weatherText: toHalfWidth(weatherTexts[index]),
+      wind: toHalfWidth(winds[index]),
+      wave: toHalfWidth(waves[index]),
       pops: pops.filter((pop) => isSameDate(pop.time, date)),
       temps: temps.filter((temp) => isSameDate(temp.time, date)),
     });
@@ -190,7 +190,7 @@ const createDailyForecastSimple = (
   dates.forEach((date, index) => {
     result.push({
       date: date,
-      weatherCodes: weatherCodes[index],
+      weatherCode: weatherCodes[index] as WeatherCode,
       pop: pops[index],
       tempMin: tempsMin[index],
       tempMax: tempsMax[index],
