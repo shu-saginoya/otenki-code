@@ -13,6 +13,21 @@ export default {
         type: { summary: "string" },
       },
     },
+    variant: {
+      control: { type: "select" },
+      options: ["paint", "outlined", "tonal"],
+      description: "バッジのバリアント",
+      table: {
+        type: { summary: "string" },
+      },
+    },
+    color: {
+      control: { type: "text" },
+      description: "バッジの色",
+      table: {
+        type: { summary: "string" },
+      },
+    },
   },
 } as Meta<typeof Badge>;
 
@@ -22,7 +37,13 @@ type Story = StoryObj<typeof Badge>;
 export const Default: Story = {
   args: {
     content: "2",
-    className: "bg-primary",
+  },
+};
+
+// 空のバッジ
+export const Empty: Story = {
+  args: {
+    color: "error",
   },
 };
 
@@ -30,6 +51,7 @@ export const Default: Story = {
 export const Text: Story = {
   args: {
     content: "あした",
-    className: "bg-warning",
+    variant: "tonal",
+    color: "warning",
   },
 };
