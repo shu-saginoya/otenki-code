@@ -54,14 +54,14 @@ export const sortWeatherByDate = <T>(
 
 /**
  * 今日・明日・明後日を特定の文字列で返す
- * 例: "今日", "明日", "明後日", "4/3(木)"
+ * 例: "きょう", "あした", "あさって", false
  */
-export const formatWeatherDate = (date: dayjs.ConfigType) => {
+export const getRelativeDayLabel = (date: dayjs.ConfigType): string | false => {
   const d = dayjs(date);
-  if (d.isSame(dayjs(), "day")) return "今日";
-  if (d.isSame(dayjs().add(1, "day"), "day")) return "明日";
-  if (d.isSame(dayjs().add(2, "day"), "day")) return "明後日";
-  return d.format("M/D(ddd)");
+  if (d.isSame(dayjs(), "day")) return "きょう";
+  if (d.isSame(dayjs().add(1, "day"), "day")) return "あした";
+  if (d.isSame(dayjs().add(2, "day"), "day")) return "あさって";
+  return false;
 };
 
 /**

@@ -1,7 +1,12 @@
 import { JSX } from "react";
 
-import { Card, Text, Stack } from "@/components";
-import { weatherCodeMap, WeatherCode } from "@/utils";
+import { Card, Text, Stack, Badge } from "@/components";
+import {
+  weatherCodeMap,
+  WeatherCode,
+  formatDate,
+  getRelativeDayLabel,
+} from "@/utils";
 
 import type { TimeAndValue } from "@/types";
 
@@ -29,20 +34,25 @@ export const ForecastCard = ({
   tempMax,
   tempMin,
 }: ForecastCardProps): JSX.Element => {
+  const relativeDayLabel = getRelativeDayLabel(date);
+
   return (
     <Card>
-      <Text>date: {date}</Text>
+      <Stack justify="center" align="center" gap={2}>
+        {relativeDayLabel && <Badge content={relativeDayLabel}></Badge>}
+        <Text>{formatDate(date)}</Text>
+      </Stack>
       <hr />
       <Stack justify="center">
         <Text>{tempMin || "-"}</Text>
         <Text>/</Text>
         <Text>{tempMax || "-"}</Text>
       </Stack>
-      <Text>{weatherCodeMap[weatherCode]}</Text>
-      <Text>{weather}</Text>
-      <Text>{wind}</Text>
-      {wave && <Text>{wave}</Text>}
-      {pops && <Text>{pops.join(",")}</Text>}
+      <Text as={"p"}>天気コード: {weatherCodeMap[weatherCode]}</Text>
+      <Text as={"p"}>天気: {weather}</Text>
+      <Text as={"p"}>風: {wind}</Text>
+      {wave && <Text as={"p"}>波: {wave}</Text>}
+      {pops && <Text as={"p"}>降水確率: {pops.join(",")}</Text>}
     </Card>
   );
 };
