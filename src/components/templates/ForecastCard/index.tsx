@@ -1,6 +1,6 @@
 import { JSX } from "react";
 
-import { Card, Text, Stack, Badge } from "@/components";
+import { Card, Text, Stack, Badge, Temp } from "@/components";
 import {
   weatherCodeMap,
   WeatherCode,
@@ -44,9 +44,9 @@ export const ForecastCard = ({
       </Stack>
       <hr />
       <Stack justify="center">
-        <Text>{tempMin || "-"}</Text>
+        <Temp number={Number(tempMin)} type={"lowest"}></Temp>
         <Text>/</Text>
-        <Text>{tempMax || "-"}</Text>
+        <Temp number={Number(tempMax)} type={"highest"}></Temp>
       </Stack>
       <Text as={"p"}>天気コード: {weatherCodeMap[weatherCode]}</Text>
       <Text as={"p"}>天気: {weather}</Text>

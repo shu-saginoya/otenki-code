@@ -3,4 +3,5 @@ export * from "./Card";
 export * from "./Input";
 export * from "./ShapeImage";
 export * from "./Switch";
+export * from "./Temp";
 export * from "./Text";
