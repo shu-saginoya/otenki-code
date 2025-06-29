@@ -1,9 +1,5 @@
 import { WeatherCode } from "@/utils";
 
-export type TimeSeries = {
-  [time: `${string}T${string}+09:00`]: string;
-};
-
 /**
  * 日別の予報をまとめた型(詳細)
  */
@@ -13,8 +9,14 @@ export type DailyForecastDetail = {
   weatherText: string; // その日の天気のテキスト
   wind: string; // その日の風のテキスト
   wave: string; // その日の波のテキスト
-  pops?: TimeSeries[]; // その日の各時刻の降水確率の配列
-  temps?: TimeSeries[]; // その日の最高・最低気温
+  pops?: {
+    "00": string;
+    "06": string;
+    "12": string;
+    "18": string;
+  }; // その日の各時刻の降水確率のオブジェクト
+  tempMax?: string; // その日の最高気温
+  tempMin?: string; // その日の最低気温
 };
 
 /**

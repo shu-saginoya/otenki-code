@@ -6,8 +6,22 @@ import type {
   LatestWeather,
   DailyForecastSimple,
   DailyForecastDetail,
-  TimeAndValue,
 } from "@/types";
+
+type TimeSeries = {
+  time: string;
+  value: string;
+};
+
+const createTimeSeriesList = (
+  dateList: string[],
+  valueList: string[]
+): TimeSeries[] => {
+  return dateList.map((date, index) => ({
+    time: date,
+    value: valueList[index],
+  }));
+};
 
 /**
  * 気象庁天気予報APIのレスポンスと対象エリアコードを元に、日別の予報を抽出するユーティリティ関数
@@ -63,21 +77,6 @@ export const extractDailyForecast = (
   };
 };
 
-// 日時と値を1つのオブジェクトにまとめた配列を生成
-const createTimeAndValueList = (
-  dateList: string[],
-  valueList: string[]
-): TimeAndValue[] => {
-  return dateList
-    .map((date, index) => {
-      return {
-        time: date,
-        value: valueList[index],
-      };
-    })
-    .filter((value): value is TimeAndValue => value !== undefined);
-};
-
 // 気象庁の天気予報の情報を整理する(直近)
 const extractLatestWeather = (weather: LatestWeather, code: string) => {
   // 天気オブジェクト
@@ -96,16 +95,16 @@ const extractLatestWeather = (weather: LatestWeather, code: string) => {
   const popObj = weather.timeSeries[1].areas.find(
     (obj) => obj.area.code === code
   );
-  const pops: TimeAndValue[] = popObj
-    ? createTimeAndValueList(popDates, popObj.pops)
+  const pops: TimeSeries[] = popObj
+    ? createTimeSeriesList(popDates, popObj.pops)
     : [];
 
   // 最高・最低気温オブジェクト
   const tempDates: string[] = weather.timeSeries[2].timeDefines;
   const tempObj = weather.timeSeries[2].areas[weatherObjIndex];
   const tempArea = tempObj?.area || {};
-  const temps: TimeAndValue[] = tempObj
-    ? createTimeAndValueList(tempDates, tempObj.temps)
+  const temps: TimeSeries[] = tempObj
+    ? createTimeSeriesList(tempDates, tempObj.temps)
     : [];
 
   return {
@@ -157,20 +156,56 @@ const createDailyForecastDetail = (
   weatherTexts: string[],
   winds: string[],
   waves: string[],
-  pops: TimeAndValue[],
-  temps: TimeAndValue[]
+  pops: TimeSeries[],
+  temps: TimeSeries[]
 ): DailyForecastDetail[] => {
   const result: DailyForecastDetail[] = [];
 
   dates.forEach((date, index) => {
+    // pops
+    const popsForDay = { "00": "", "06": "", "12": "", "18": "" };
+    pops
+      .filter((pop) => isSameDate(pop.time, date))
+      .forEach((pop) => {
+        const hour = pop.time.slice(11, 13);
+        if (["00", "06", "12", "18"].includes(hour)) {
+          popsForDay[hour as "00" | "06" | "12" | "18"] = pop.value;
+        }
+      });
+
+    // temps
+    const tempsForDay = temps.filter((temp) => isSameDate(temp.time, date));
+    let tempMin = "";
+    let tempMax = "";
+    if (tempsForDay.length === 2) {
+      const hour0 = tempsForDay[0].time.slice(11, 13);
+      const hour1 = tempsForDay[1].time.slice(11, 13);
+      if (hour0 === "00" && hour1 === "09") {
+        tempMin = tempsForDay[0].value;
+        tempMax = tempsForDay[1].value;
+      } else if (hour0 === "09" && hour1 === "00") {
+        tempMin = "";
+        tempMax = tempsForDay[0].value;
+      }
+    } else if (tempsForDay.length === 1) {
+      const hour = tempsForDay[0].time.slice(11, 13);
+      if (hour === "09") {
+        tempMax = tempsForDay[0].value;
+        tempMin = "";
+      } else if (hour === "00") {
+        tempMin = tempsForDay[0].value;
+        tempMax = "";
+      }
+    }
     result.push({
       date: date,
       weatherCode: weatherCodes[index] as WeatherCode,
       weatherText: toHalfWidth(weatherTexts[index]),
       wind: toHalfWidth(winds[index]),
       wave: toHalfWidth(waves[index]),
-      pops: pops.filter((pop) => isSameDate(pop.time, date)),
-      temps: temps.filter((temp) => isSameDate(temp.time, date)),
+      pops: popsForDay,
+      tempMax,
+      tempMin,
     });
   });
 
