@@ -12,7 +12,7 @@ const tempTypeMap = {
 type TempType = keyof typeof tempTypeMap;
 
 export type TempProps = {
-  number: number;
+  number?: number;
   type?: TempType;
 };
 

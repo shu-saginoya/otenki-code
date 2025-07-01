@@ -79,3 +79,7 @@ export const isSameDate = (date1: string, date2: string): boolean => {
   }
   return dayjs(date1).isSame(dayjs(date2), "day");
 };
+
+export const getHour = (date: string): number => {
+  return dayjs(date).hour();
+};

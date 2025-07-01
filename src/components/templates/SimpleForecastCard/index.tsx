@@ -1,11 +1,11 @@
 import { JSX } from "react";
 
 import { Card, Text, Stack } from "@/components";
-import { weatherCodeMap, WeatherCode } from "@/utils";
+import { jmaWeatherCodeMap, type JmaWeatherCode } from "@/utils";
 
 export type SimpleForecastCardProps = {
   date: string;
-  weatherCode: WeatherCode;
+  weatherCode: JmaWeatherCode;
   pop: string;
   tempMax: string | undefined;
   tempMin: string | undefined;
@@ -30,7 +30,7 @@ export const SimpleForecastCard = ({
         <Text>/</Text>
         <Text>{tempMax || "-"}</Text>
       </Stack>
-      <Text>{weatherCodeMap[weatherCode]}</Text>
+      <Text>{jmaWeatherCodeMap[weatherCode]}</Text>
       <Text>{pop}</Text>
     </Card>
   );

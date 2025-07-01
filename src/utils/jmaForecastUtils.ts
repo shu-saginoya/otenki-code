@@ -1,4 +1,4 @@
-import { isSameDate, toHalfWidth, WeatherCode } from "@/utils";
+import { isSameDate, toHalfWidth, getHour, type JmaWeatherCode } from "@/utils";
 
 import type {
   JmaForecastResponse,
@@ -163,13 +163,25 @@ const createDailyForecastDetail = (
 
   dates.forEach((date, index) => {
     // pops
-    const popsForDay = { "00": "", "06": "", "12": "", "18": "" };
+    const popsForDay = {
+      "00:00-06:00": "",
+      "06:00-12:00": "",
+      "12:00-18:00": "",
+      "18:00-24:00": "",
+    };
     pops
       .filter((pop) => isSameDate(pop.time, date))
       .forEach((pop) => {
-        const hour = pop.time.slice(11, 13);
-        if (["00", "06", "12", "18"].includes(hour)) {
-          popsForDay[hour as "00" | "06" | "12" | "18"] = pop.value;
+        const hour = getHour(pop.time);
+        const hourToRange: Record<number, keyof typeof popsForDay> = {
+          0: "00:00-06:00",
+          6: "06:00-12:00",
+          12: "12:00-18:00",
+          18: "18:00-24:00",
+        };
+        const range = hourToRange[hour];
+        if (range) {
+          popsForDay[range] = pop.value;
         }
       });
 
@@ -199,7 +211,7 @@ const createDailyForecastDetail = (
     }
     result.push({
       date: date,
-      weatherCode: weatherCodes[index] as WeatherCode,
+      weatherCode: weatherCodes[index] as JmaWeatherCode,
       weatherText: toHalfWidth(weatherTexts[index]),
       wind: toHalfWidth(winds[index]),
       wave: toHalfWidth(waves[index]),
@@ -225,7 +237,7 @@ const createDailyForecastSimple = (
   dates.forEach((date, index) => {
     result.push({
       date: date,
-      weatherCode: weatherCodes[index] as WeatherCode,
+      weatherCode: weatherCodes[index] as JmaWeatherCode,
       pop: pops[index],
       tempMin: tempsMin[index],
       tempMax: tempsMax[index],

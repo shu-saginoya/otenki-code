@@ -64,27 +64,31 @@ export default function Home() {
         <CurrentlyArea area={area} />
       </Col>
       <Col cols={12}>
-        {forecastsDetail && (
-          <ForecastCard
-            date={forecastsDetail[0].date}
-            weather={forecastsDetail[0].weatherText}
-            weatherCode={forecastsDetail[0].weatherCode}
-            wind={forecastsDetail[0].wind}
-            wave={forecastsDetail[0].wave}
-            pops={forecastsDetail[0].pops}
-            tempMax={forecastsDetail[0].temps?.[0]?.value}
-            tempMin={forecastsDetail[0].temps?.[1]?.value}
-          ></ForecastCard>
-        )}
-        {forecastsSimple && (
-          <SimpleForecastCard
-            date={forecastsSimple[3].date}
-            weatherCode={forecastsSimple[3].weatherCode}
-            pop={forecastsSimple[3].pop}
-            tempMax={forecastsSimple[3].tempMax}
-            tempMin={forecastsSimple[3].tempMin}
-          ></SimpleForecastCard>
-        )}
+        {forecastsDetail &&
+          forecastsDetail.map((forecast) => (
+            <ForecastCard
+              key={forecast.date}
+              date={forecast.date}
+              weather={forecast.weatherText}
+              weatherCode={forecast.weatherCode}
+              wind={forecast.wind}
+              wave={forecast.wave}
+              pops={forecast.pops}
+              tempMax={forecast.tempMax}
+              tempMin={forecast.tempMin}
+            ></ForecastCard>
+          ))}
+        {forecastsSimple &&
+          forecastsSimple.map((forecast) => (
+            <SimpleForecastCard
+              key={forecast.date}
+              date={forecast.date}
+              weatherCode={forecast.weatherCode}
+              pop={forecast.pop}
+              tempMax={forecast.tempMax}
+              tempMin={forecast.tempMin}
+            ></SimpleForecastCard>
+          ))}
       </Col>
     </Grid>
   );
