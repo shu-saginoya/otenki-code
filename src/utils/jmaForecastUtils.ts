@@ -190,21 +190,21 @@ const createDailyForecastDetail = (
     let tempMin = "";
     let tempMax = "";
     if (tempsForDay.length === 2) {
-      const hour0 = tempsForDay[0].time.slice(11, 13);
-      const hour1 = tempsForDay[1].time.slice(11, 13);
-      if (hour0 === "00" && hour1 === "09") {
+      const hour0 = getHour(tempsForDay[0].time);
+      const hour1 = getHour(tempsForDay[1].time);
+      if (hour0 === 0 && hour1 === 9) {
         tempMin = tempsForDay[0].value;
         tempMax = tempsForDay[1].value;
-      } else if (hour0 === "09" && hour1 === "00") {
+      } else if (hour0 === 9 && hour1 === 0) {
         tempMin = "";
         tempMax = tempsForDay[0].value;
       }
     } else if (tempsForDay.length === 1) {
-      const hour = tempsForDay[0].time.slice(11, 13);
-      if (hour === "09") {
+      const hour = getHour(tempsForDay[0].time);
+      if (hour === 9) {
         tempMax = tempsForDay[0].value;
         tempMin = "";
-      } else if (hour === "00") {
+      } else if (hour === 0) {
         tempMin = tempsForDay[0].value;
         tempMax = "";
       }
