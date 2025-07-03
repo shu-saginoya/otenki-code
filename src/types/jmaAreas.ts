@@ -46,3 +46,19 @@ export type JmaAreas = {
   class15s: Record<string, JmaClass15>;
   class20s: Record<string, JmaClass20>;
 };
+
+// 地域選択のための型定義
+export type SelectedArea = {
+  center?: JmaCenter & { code: string };
+  office?: JmaOffice & { code: string };
+  class10?: JmaClass10 & { code: string };
+  class15?: JmaClass15 & { code: string };
+  class20?: JmaClass20 & { code: string };
+};
+
+// 地域選択の状態
+export type AreaSelectionState = {
+  selectedArea: SelectedArea;
+  isLoading: boolean;
+  error: string | null;
+};
