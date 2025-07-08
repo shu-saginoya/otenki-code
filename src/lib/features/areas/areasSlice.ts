@@ -14,36 +14,11 @@ const areasSlice = createSlice({
   name: "areas",
   initialState,
   reducers: {
-    // class20sを起点として全階層の地域情報を設定
+    // 選択地域を保存
     setSelectedArea: (state, action: PayloadAction<SelectedArea>) => {
       state.selectedArea = action.payload;
-      // ローカルストレージに保存
+      // ローカルストレージにも保存
       localStorage.setItem("selectedArea", JSON.stringify(action.payload));
-    },
-
-    // 特定の階層の地域情報を設定
-    setCenter: (
-      state,
-      action: PayloadAction<{ center: SelectedArea["center"] }>
-    ) => {
-      state.selectedArea.center = action.payload.center;
-      localStorage.setItem("selectedArea", JSON.stringify(state.selectedArea));
-    },
-
-    setOffice: (
-      state,
-      action: PayloadAction<{ office: SelectedArea["office"] }>
-    ) => {
-      state.selectedArea.office = action.payload.office;
-      localStorage.setItem("selectedArea", JSON.stringify(state.selectedArea));
-    },
-
-    setClass20: (
-      state,
-      action: PayloadAction<{ class20: SelectedArea["class20"] }>
-    ) => {
-      state.selectedArea.class20 = action.payload.class20;
-      localStorage.setItem("selectedArea", JSON.stringify(state.selectedArea));
     },
 
     // 地域選択をクリア
@@ -79,9 +54,6 @@ const areasSlice = createSlice({
 
 export const {
   setSelectedArea,
-  setCenter,
-  setOffice,
-  setClass20,
   clearSelectedArea,
   initSelectedArea,
   setLoading,
