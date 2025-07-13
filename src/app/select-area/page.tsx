@@ -13,8 +13,6 @@ import {
 } from "@/components";
 import { useSelectArea, useAppRouter } from "@/hooks";
 
-import type { JmaAreaCode } from "@/types";
-
 export default function SelectArea() {
   const {
     setProvisionalCenter,
@@ -66,7 +64,7 @@ export default function SelectArea() {
             <Card>
               <AreaOptionsList
                 options={centerOptions || {}}
-                action={(code: JmaAreaCode) => {
+                action={(code) => {
                   setProvisionalCenter(code);
                   setFocus(1);
                 }}
@@ -78,7 +76,7 @@ export default function SelectArea() {
             <Card>
               <AreaOptionsList
                 options={officeOptions || {}}
-                action={(code: JmaAreaCode) => {
+                action={(code) => {
                   setProvisionalOffice(code);
                   setFocus(2);
                 }}
@@ -93,7 +91,7 @@ export default function SelectArea() {
             <Card>
               <AreaOptionsList
                 options={class20Options || {}}
-                action={(code: JmaAreaCode) => {
+                action={(code) => {
                   selectClass20(code);
                   navigateTo("home");
                 }}
