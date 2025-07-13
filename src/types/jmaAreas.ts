@@ -57,11 +57,11 @@ export type JmaAreas = {
 
 // 地域選択のための型定義
 export type SelectedArea = {
-  center?: JmaCenter & { JmaAreaCode: JmaAreaCode };
-  office?: JmaOffice & { JmaAreaCode: JmaAreaCode };
-  class10?: JmaClass10 & { JmaAreaCode: JmaAreaCode };
-  class15?: JmaClass15 & { JmaAreaCode: JmaAreaCode };
-  class20?: JmaClass20 & { JmaAreaCode: JmaAreaCode };
+  center?: JmaCenter & { code: JmaAreaCode };
+  office?: JmaOffice & { code: JmaAreaCode };
+  class10?: JmaClass10 & { code: JmaAreaCode };
+  class15?: JmaClass15 & { code: JmaAreaCode };
+  class20?: JmaClass20 & { code: JmaAreaCode };
 };
 
 // 地域選択の状態

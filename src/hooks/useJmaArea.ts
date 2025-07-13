@@ -1,4 +1,5 @@
-// 地域情報を取得
+// 地域情報を取得するカスタムフック
+
 import { useState, useEffect } from "react";
 
 import { fetcher } from "@/utils/index";
@@ -6,11 +7,12 @@ import { fetcher } from "@/utils/index";
 // 型定義
 import type {
   JmaAreas,
-  JmaCenter,
-  JmaOffice,
-  JmaClass10,
-  JmaClass15,
-  JmaClass20,
+  JmaAreaCode,
+  JmaCenterMap,
+  JmaOfficeMap,
+  JmaClass10Map,
+  JmaClass15Map,
+  JmaClass20Map,
   SelectedArea,
 } from "@/types";
 
@@ -26,28 +28,26 @@ const isAreas = (data: Partial<JmaAreas>): data is JmaAreas => {
   );
 };
 
+/**
+ * JMA（気象庁）エリア情報を取得・管理するカスタムフック
+ */
 export const useJmaArea = () => {
-  const [centers, setCenters] = useState<Record<string, JmaCenter> | null>(
-    null
-  );
-  const [offices, setOffices] = useState<Record<string, JmaOffice> | null>(
-    null
-  );
-  const [class10s, setClass10s] = useState<Record<string, JmaClass10> | null>(
-    null
-  );
-  const [class15s, setClass15s] = useState<Record<string, JmaClass15> | null>(
-    null
-  );
-  const [class20s, setClass20s] = useState<Record<string, JmaClass20> | null>(
-    null
-  );
+  // 各エリア情報のステート
+  const [centers, setCenters] = useState<JmaCenterMap | null>(null);
+  const [offices, setOffices] = useState<JmaOfficeMap | null>(null);
+  const [class10s, setClass10s] = useState<JmaClass10Map | null>(null);
+  const [class15s, setClass15s] = useState<JmaClass15Map | null>(null);
+  const [class20s, setClass20s] = useState<JmaClass20Map | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  // class20コードから親を辿ってSelectedArea型を返す関数
+  /**
+   * class20コードから親エリアを辿り、SelectedArea型で返す関数
+   * @param class20Code - 最下層のエリアコード
+   * @returns SelectedArea | undefined
+   */
   const getSelectedAreaByClass20Code = (
-    class20Code: string
+    class20Code: JmaAreaCode
   ): SelectedArea | undefined => {
     if (!centers || !offices || !class10s || !class15s || !class20s)
       return undefined;
@@ -61,6 +61,7 @@ export const useJmaArea = () => {
     if (!office) return undefined;
     const center = centers[office.parent];
     if (!center) return undefined;
+    // 各階層のエリア情報をSelectedArea型で返す
     return {
       center: { ...center, code: office.parent },
       office: { ...office, code: class10.parent },
@@ -70,6 +71,7 @@ export const useJmaArea = () => {
     };
   };
 
+  // 初回レンダリング時にエリア情報を取得
   useEffect(() => {
     const url = "https://www.jma.go.jp/bosai/common/const/area.json";
 
@@ -77,6 +79,7 @@ export const useJmaArea = () => {
       try {
         const result = await fetcher<JmaAreas>(url);
 
+        // データがJmaAreas型なら各ステートにセット
         if (isAreas(result)) {
           setCenters(result.centers);
           setOffices(result.offices);
