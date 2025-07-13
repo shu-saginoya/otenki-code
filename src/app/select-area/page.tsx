@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 
 import {
   Grid,
@@ -13,70 +12,28 @@ import {
   CarouselItem,
 } from "@/components";
 import { useSelectArea, useAppRouter } from "@/hooks";
-import { setArea } from "@/lib/features/areas/areasSlice";
 
-import type { Area } from "@/types";
+import type { JmaAreaCode } from "@/types";
 
 export default function SelectArea() {
   const {
-    newCenter,
-    newOffice,
-    newClass10,
-    setNewCenter,
-    setNewOffice,
-    setNewClass10,
-    removeNewCenter,
-    removeNewOffice,
+    setProvisionalCenter,
+    setProvisionalOffice,
+    selectClass20,
+    // リセット関数
+    removeProvisionalCenter,
+    removeProvisionalOffice,
+    // 選択肢
     centerOptions,
     officeOptions,
-    class10Options,
+    class20Options,
+    // ローディング・エラー
     loading,
     error,
   } = useSelectArea();
 
   const { navigateTo, goBack } = useAppRouter();
-
   const [focus, setFocus] = useState(0);
-
-  const dispatch = useDispatch();
-  // Redux の state 更新処理
-  const saveStore = (areaLv1: Area, areaLv2: Area, areaLv3: Area) => {
-    dispatch(
-      setArea({
-        areaLv1,
-        areaLv2,
-        areaLv3,
-      })
-    );
-  };
-
-  const selectNewCenter = (area: Area) => {
-    setNewCenter(area);
-    setFocus(1);
-  };
-
-  const selectNewOffice = (area: Area) => {
-    setNewOffice(area);
-    setFocus(2);
-  };
-
-  const finalizeSelection = (area: Area) => {
-    setNewClass10(area);
-    if (newCenter && newOffice && newClass10) {
-      saveStore(newCenter, newOffice, newClass10);
-      navigateTo("home");
-    }
-  };
-
-  const goBackCenter = () => {
-    removeNewCenter();
-    setFocus(0);
-  };
-
-  const goBackOffice = () => {
-    removeNewOffice();
-    setFocus(1);
-  };
 
   if (loading)
     return (
@@ -109,7 +66,10 @@ export default function SelectArea() {
             <Card>
               <AreaOptionsList
                 options={centerOptions || {}}
-                action={selectNewCenter}
+                action={(code: JmaAreaCode) => {
+                  setProvisionalCenter(code);
+                  setFocus(1);
+                }}
                 goBackAction={goBack}
               />
             </Card>
@@ -118,17 +78,29 @@ export default function SelectArea() {
             <Card>
               <AreaOptionsList
                 options={officeOptions || {}}
-                action={selectNewOffice}
-                goBackAction={goBackCenter}
+                action={(code: JmaAreaCode) => {
+                  setProvisionalOffice(code);
+                  setFocus(2);
+                }}
+                goBackAction={() => {
+                  removeProvisionalCenter();
+                  setFocus(0);
+                }}
               />
             </Card>
           </CarouselItem>
           <CarouselItem>
             <Card>
               <AreaOptionsList
-                options={class10Options || {}}
-                action={finalizeSelection}
-                goBackAction={goBackOffice}
+                options={class20Options || {}}
+                action={(code: JmaAreaCode) => {
+                  selectClass20(code);
+                  navigateTo("home");
+                }}
+                goBackAction={() => {
+                  removeProvisionalOffice();
+                  setFocus(1);
+                }}
               />
             </Card>
           </CarouselItem>

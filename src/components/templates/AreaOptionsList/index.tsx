@@ -4,11 +4,11 @@ import { JSX } from "react";
 
 import { List, ListItem, Button } from "@/components";
 
-import type { Area } from "@/types";
+import type { JmaAreaCode } from "@/types";
 
 export type AreaOptionsListProps = {
   options: Record<string, { name: string }>;
-  action: (area: Area) => void;
+  action: (code: JmaAreaCode) => void;
   goBackAction: () => void;
 };
 
@@ -36,7 +36,7 @@ export const AreaOptionsList = ({
             color="background"
             appendIcon="arrowForward"
             block
-            onClick={() => action({ name: value.name, code: key })}
+            onClick={() => action(key)}
             aria-label={`選択: ${value.name}`}
           >
             {value.name}
