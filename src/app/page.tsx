@@ -16,10 +16,10 @@ import { extractDailyForecast } from "@/utils";
 import type { DailyForecastSimple, DailyForecastDetail } from "@/types";
 
 export default function Home() {
-  const [area, setArea] = useState<string>("");
+  const [currentlyAreaName, setCurrentlyAreaName] = useState<string>("");
 
   // Reduxの状態を取得
-  const areas = useAppSelector((state) => state.areas);
+  const { selectedArea } = useAppSelector((state) => state.areas);
   const { forecast, loading, error } = useJmaForecast();
   const [forecastsDetail, setForecastsDetail] =
     useState<DailyForecastDetail[]>();
@@ -27,18 +27,18 @@ export default function Home() {
     useState<DailyForecastSimple[]>();
 
   useEffect(() => {
-    if (!areas.areaLv1 || !areas.areaLv2 || !areas.areaLv3 || !forecast) return;
+    if (!selectedArea || !forecast) return;
     const { detailList, simpleList } = extractDailyForecast(
       forecast,
-      areas.areaLv3.code
+      selectedArea
     );
     setForecastsDetail(detailList);
     setForecastsSimple(simpleList);
 
-    setArea(
-      `${areas.areaLv1.name} ${areas.areaLv2.name} ${areas.areaLv3.name}`
+    setCurrentlyAreaName(
+      `${selectedArea.office?.name} ${selectedArea.class20?.name}`
     );
-  }, [areas, forecast]);
+  }, [selectedArea, forecast]);
 
   if (loading)
     return (
@@ -61,7 +61,7 @@ export default function Home() {
   return (
     <Grid gap={4}>
       <Col cols={12}>
-        <CurrentlyArea area={area} />
+        <CurrentlyArea area={currentlyAreaName} />
       </Col>
       <Col cols={12}>
         {forecastsDetail &&

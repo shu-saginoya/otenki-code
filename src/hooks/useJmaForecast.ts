@@ -15,16 +15,20 @@ const isForecastResponse = (
 };
 
 export const useJmaForecast = () => {
-  const { areaLv2 } = useSelector((state: RootState) => state.areas);
+  // Reduxの状態から選択された地域情報を取得
+  const { selectedArea } = useSelector((state: RootState) => state.areas);
+  const office = selectedArea?.office;
+
+  // フェッチするURLを生成
   const [forecast, setForecast] = useState<JmaForecastResponse | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    if (!areaLv2) return;
+    if (!office) return;
 
     const accessPoint = "https://www.jma.go.jp/bosai/forecast/data/forecast/";
-    const url = `${accessPoint}${areaLv2.code}.json`;
+    const url = `${accessPoint}${office.code}.json`;
 
     const getData = async () => {
       setLoading(true);
@@ -46,7 +50,7 @@ export const useJmaForecast = () => {
     };
 
     getData();
-  }, [areaLv2]); // areaLv2を依存配列に追加
+  }, [office]);
 
   return {
     forecast,
