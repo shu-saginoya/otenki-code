@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/lib/store";
 import { fetcher } from "@/utils/index";
 
-import type { JmaForecastResponse } from "@/types";
+import type { JmaForecastResponse } from "./types";
 
 // 型ガード関数
 const isForecastResponse = (

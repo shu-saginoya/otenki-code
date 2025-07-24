@@ -1,15 +1,15 @@
-import { isSameDate, toHalfWidth, getHour, type JmaWeatherCode } from "@/utils";
+import { isSameDate, toHalfWidth, getHour } from "@/utils";
 
 import type {
   JmaForecastResponse,
   OneWeekWeather,
   LatestWeather,
-  DailyForecastSimple,
-  DailyForecastDetail,
   JmaAreas,
   SelectedArea,
   JmaAreaCode,
-} from "@/types";
+  JmaWeatherCode,
+} from "@/lib/jma";
+import type { DailyForecastSimple, DailyForecastDetail } from "@/types";
 
 // 型定義: timeSeriesのarea
 type AreaObj = { area: { code: JmaAreaCode } };

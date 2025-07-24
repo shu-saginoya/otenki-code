@@ -14,7 +14,7 @@ import type {
   JmaClass15Map,
   JmaClass20Map,
   SelectedArea,
-} from "@/types";
+} from "./types";
 
 // 型ガード関数
 const isAreas = (data: Partial<JmaAreas>): data is JmaAreas => {
