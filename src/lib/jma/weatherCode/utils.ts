@@ -120,3 +120,26 @@ export const jmaWeatherCodeMap = {
 } as const;
 
 export type JmaWeatherCode = keyof typeof jmaWeatherCodeMap;
+
+/**
+ * 気象庁の天気コードから対応する天気の文字列を取得
+ * @param code 気象庁の天気コード
+ * @param fallback 不明なコードの場合のデフォルト値（省略時は "不明"）
+ * @returns 天気を表す文字列
+ */
+export const getWeatherText = (
+  code: string,
+  fallback: string = "不明"
+): string => {
+  // codeがjmaWeatherCodeMapのキーとして存在するか型安全にチェック
+  if (code in jmaWeatherCodeMap) {
+    return jmaWeatherCodeMap[code as JmaWeatherCode];
+  }
+
+  // 開発時のデバッグ用にコンソールに警告を出力
+  if (process.env.NODE_ENV === "development") {
+    console.warn(`未定義の天気コードです: ${code}`);
+  }
+
+  return fallback;
+};
