@@ -55,18 +55,8 @@ export type JmaAreas = {
   class20s: JmaClass20Map;
 };
 
-// 地域選択のための型定義
-export type SelectedArea = {
-  center?: JmaCenter & { code: JmaAreaCode };
-  office?: JmaOffice & { code: JmaAreaCode };
-  class10?: JmaClass10 & { code: JmaAreaCode };
-  class15?: JmaClass15 & { code: JmaAreaCode };
-  class20?: JmaClass20 & { code: JmaAreaCode };
-};
-
-// 地域選択の状態
-export type AreaSelectionState = {
-  selectedArea: SelectedArea;
-  isLoading: boolean;
-  error: string | null;
+// エラー型
+export type JmaAreaError = {
+  message: string;
+  code: "FETCH_ERROR" | "INVALID_FORMAT" | "MISSING_DATA";
 };
