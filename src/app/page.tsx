@@ -9,9 +9,8 @@ import {
   ForecastCard,
   SimpleForecastCard,
 } from "@/components";
-import { useJmaForecast } from "@/hooks";
 import { useAppSelector } from "@/lib/hooks";
-import { extractDailyForecast } from "@/utils";
+import { useJmaForecast, extractDailyForecast } from "@/lib/jma";
 
 import type { DailyForecastSimple, DailyForecastDetail } from "@/types";
 

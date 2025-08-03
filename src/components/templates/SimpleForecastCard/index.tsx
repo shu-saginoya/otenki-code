@@ -1,7 +1,7 @@
 import { JSX } from "react";
 
 import { Card, Text, Stack } from "@/components";
-import { jmaWeatherCodeMap, type JmaWeatherCode } from "@/utils";
+import { jmaWeatherCodeMap, type JmaWeatherCode } from "@/lib/jma";
 
 export type SimpleForecastCardProps = {
   date: string;

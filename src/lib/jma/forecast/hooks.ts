@@ -1,3 +1,5 @@
+"use client";
+
 // 天気予報を取得する関数
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";

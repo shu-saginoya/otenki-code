@@ -1,12 +1,8 @@
 import { JSX } from "react";
 
 import { Card, Text, Stack, Badge, Temp } from "@/components";
-import {
-  JmaWeatherCode,
-  formatDate,
-  getRelativeDayLabel,
-  jmaWeatherCodeMap,
-} from "@/utils";
+import { type JmaWeatherCode, jmaWeatherCodeMap } from "@/lib/jma";
+import { formatDate, getRelativeDayLabel } from "@/utils";
 
 export type ForecastCardProps = {
   date: string;
