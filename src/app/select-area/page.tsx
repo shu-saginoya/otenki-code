@@ -11,7 +11,8 @@ import {
   Carousel,
   CarouselItem,
 } from "@/components";
-import { useSelectArea, useAppRouter } from "@/hooks";
+import { useAppRouter } from "@/hooks";
+import { useSelectArea } from "@/lib/jma";
 
 export default function SelectArea() {
   const {

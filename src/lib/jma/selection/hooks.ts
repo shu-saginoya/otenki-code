@@ -2,9 +2,11 @@
 
 import { useMemo, useState, useCallback } from "react";
 
-import { useJmaArea } from "@/hooks";
 import { setSelectedArea } from "@/lib/features/areas/areasSlice";
 import { useAppDispatch } from "@/lib/hooks";
+import { useJmaArea } from "@/lib/jma";
+
+import { getSelectedAreaByClass20Code } from "./utils";
 
 import type {
   JmaAreaCode,
@@ -13,7 +15,7 @@ import type {
   JmaClass10Map,
   JmaClass15Map,
   JmaClass20Map,
-} from "@/types";
+} from "@/lib/jma";
 
 /**
  * 地域選択のためのカスタムフック
@@ -22,16 +24,8 @@ import type {
 export const useSelectArea = () => {
   const dispatch = useAppDispatch();
   // 地域マスタデータを取得
-  const {
-    centers,
-    offices,
-    class10s,
-    class15s,
-    class20s,
-    loading,
-    error,
-    getSelectedAreaByClass20Code,
-  } = useJmaArea();
+  const { areas, loading, error } = useJmaArea();
+  const { centers, offices, class10s, class15s, class20s } = areas || {};
 
   // --- 共通関数 ---
   // 親データのkey配列をもとに、子データの選択肢を生成する共通関数
@@ -74,11 +68,10 @@ export const useSelectArea = () => {
    * class20（市区町村）を選択
    * 地域の選択を確定し、Reduxストアに反映する
    */
-  const selectClass20 = (JmaAreaCode: string) => {
-    const area = getSelectedAreaByClass20Code(JmaAreaCode);
-    if (area) {
-      dispatch(setSelectedArea(area));
-    }
+  const selectClass20 = (jmaAreaCode: string) => {
+    if (!areas) return;
+    const area = getSelectedAreaByClass20Code(areas, jmaAreaCode);
+    dispatch(setSelectedArea(area));
   };
 
   // --- リセット関数 ---
