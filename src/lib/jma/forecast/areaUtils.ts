@@ -36,12 +36,33 @@ export const resolveAreaCode = (
 ): JmaAreaCode | null => matchAreaCode(getAreaCodes(timeSeries), selectedArea);
 
 /**
+ * timeSeries データからインデックスに一致するエリアオブジェクトのコードを取得する
+ */
+export const resolveAreaCodeByIndex = <T extends AreaObj>(
+  timeSeries: { areas?: T[] },
+  index: number
+): JmaAreaCode | null => {
+  const area = timeSeries?.areas?.[index];
+  return area ? area.area.code : null;
+};
+
+/**
  * timeSeries データからエリアコードに一致するエリアオブジェクトを取得する
  */
 export const findAreaObj = <T extends AreaObj>(
   timeSeries: { areas?: T[] },
   code: JmaAreaCode
 ): T | undefined => timeSeries?.areas?.find((obj) => obj.area.code === code);
+
+/**
+ * timeSeries データからエリアコードに一致するエリアオブジェクトのインデックスを取得する
+ */
+export const findAreaIndex = <T extends AreaObj>(
+  timeSeries: { areas?: T[] },
+  code: JmaAreaCode
+): number => {
+  return timeSeries?.areas?.findIndex((obj) => obj.area.code === code) ?? -1;
+};
 
 /**
  * class20のコードから全階層の地域情報を解決する

@@ -1,6 +1,11 @@
 import { isSameDate, getHour } from "@/utils";
 
-import { findAreaObj, resolveAreaCode } from "./areaUtils";
+import {
+  findAreaObj,
+  findAreaIndex,
+  resolveAreaCodeByIndex,
+  resolveAreaCode,
+} from "./areaUtils";
 import { TIME_RANGES } from "./constants";
 import { sanitizeWeatherText, convertTemperatureData } from "./weatherUtils";
 
@@ -14,6 +19,12 @@ import type {
 } from "@/lib/jma";
 import type { DailyForecastSimple, DailyForecastDetail } from "@/types";
 
+/**
+ * 時系列データから時間と値のペアを作成する
+ * @param dateList 日付のリスト
+ * @param valueList 値のリスト
+ * @returns 時系列データの配列
+ */
 export const createTimeSeriesList = (
   dateList: string[],
   valueList: string[]
@@ -23,6 +34,12 @@ export const createTimeSeriesList = (
     value: valueList[index],
   }));
 
+/**
+ * 最新の天気予報データを抽出する
+ * @param weather 最新の天気予報データ
+ * @param codes エリアコードのマッピング
+ * @returns 抽出された天気予報データ
+ */
 export const extractLatestWeather = (
   weather: LatestWeather,
   codes: { weather: JmaAreaCode; pop: JmaAreaCode; temp: JmaAreaCode }
@@ -49,6 +66,12 @@ export const extractLatestWeather = (
   })(),
 });
 
+/**
+ * 週間天気予報データを抽出する
+ * @param week 週間天気予報データ
+ * @param codes エリアコードのマッピング
+ * @returns 抽出された週間天気予報データ
+ */
 export const extractOneWeekWeather = (
   week: OneWeekWeather,
   codes: { weather: JmaAreaCode; temp: JmaAreaCode }
@@ -61,6 +84,17 @@ export const extractOneWeekWeather = (
   tempsMax: findAreaObj(week.timeSeries[1], codes.temp)?.tempsMax ?? [],
 });
 
+/**
+ * 最新の天気予報データをもとに、日ごとの詳細な天気予報を作成する
+ * @param dates 日時のリスト
+ * @param weatherCodes 天気コードのリスト
+ * @param weatherTexts 天気予報のテキストリスト
+ * @param winds 風のテキストリスト
+ * @param waves 波のテキストリスト
+ * @param pops 降水確率のリスト
+ * @param temps 気温のリスト
+ * @returns 日ごとの詳細な天気予報のリスト
+ */
 export const createDailyForecastDetail = (
   dates: string[],
   weatherCodes: string[],
@@ -111,6 +145,15 @@ export const createDailyForecastDetail = (
     };
   });
 
+/**
+ * 週間の天気予報データをもとに、日ごとの簡易的な天気予報を作成する
+ * @param dates 日時のリスト
+ * @param weatherCodes 天気コードのリスト
+ * @param pops 降水確率のリスト
+ * @param tempsMin 最低気温のリスト
+ * @param tempsMax 最高気温のリスト
+ * @returns 日ごとの簡易的な天気予報のリスト
+ */
 export const createDailyForecastSimple = (
   dates: string[],
   weatherCodes: string[],
@@ -140,8 +183,9 @@ export const extractDailyForecast = (
   const tempTS = forecastResponse[0].timeSeries[2];
 
   const weatherAreaCode = resolveAreaCode(weatherTS, selectedArea);
+  const weatherAreaIndex = findAreaIndex(weatherTS, weatherAreaCode || "0");
   const popAreaCode = resolveAreaCode(popTS, selectedArea) || weatherAreaCode;
-  const tempAreaCode = resolveAreaCode(tempTS, selectedArea) || weatherAreaCode;
+  const tempAreaCode = resolveAreaCodeByIndex(tempTS, weatherAreaIndex);
 
   if (!weatherAreaCode || !popAreaCode || !tempAreaCode) {
     throw new Error(
@@ -168,8 +212,13 @@ export const extractDailyForecast = (
     const weekTempTS = forecastResponse[1].timeSeries[1];
 
     const weekWeatherAreaCode = resolveAreaCode(weekWeatherTS, selectedArea);
+    const weekWeatherAreaIndex = findAreaIndex(
+      weekWeatherTS,
+      weekWeatherAreaCode || "0"
+    );
     const weekTempAreaCode =
-      resolveAreaCode(weekTempTS, selectedArea) || weekWeatherAreaCode;
+      resolveAreaCodeByIndex(weekTempTS, weekWeatherAreaIndex) ||
+      weekWeatherAreaCode;
 
     if (!weekWeatherAreaCode || !weekTempAreaCode) {
       throw new Error(
