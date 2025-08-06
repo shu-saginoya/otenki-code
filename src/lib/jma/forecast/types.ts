@@ -1,3 +1,6 @@
+import type { TIME_RANGES } from "./constants";
+import type { JmaAreaCode } from "@/lib/jma";
+
 // 気象庁の天気予報APIのレスポンス型定義
 export type JmaForecastResponse = [LatestWeather, OneWeekWeather];
 
@@ -105,3 +108,21 @@ export type Area = {
 
 // 予報の対象日時（ISO8601形式 | 共通事項)
 type TimeDefines = string[];
+
+export type AreaObj = {
+  area: {
+    code: JmaAreaCode;
+  };
+};
+
+export type TimeSeriesData = {
+  time: string;
+  value: string;
+};
+
+export type PopsByTimeRange = {
+  [TIME_RANGES.EARLY_MORNING]: string;
+  [TIME_RANGES.MORNING]: string;
+  [TIME_RANGES.AFTERNOON]: string;
+  [TIME_RANGES.NIGHT]: string;
+};
