@@ -35,7 +35,9 @@ export const useSelectArea = () => {
   const selectClass20 = (code: JmaAreaCode) => {
     if (!areas) return;
     const area = getSelectedAreaByClass20Code(areas, code);
-    dispatch(setSelectedArea(area));
+    if (area) {
+      dispatch(setSelectedArea(area));
+    }
   };
 
   // リセット関数

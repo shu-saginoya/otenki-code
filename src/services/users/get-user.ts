@@ -1,4 +1,4 @@
-import { fetcher } from "utils";
+import { fetcher } from "@/utils";
 
 import type { ApiContext, User } from "types/data";
 

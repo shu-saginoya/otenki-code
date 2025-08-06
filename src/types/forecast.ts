@@ -1,4 +1,4 @@
-import type { JmaWeatherCode } from "@/utils";
+import type { JmaWeatherCode } from "@/lib/jma";
 
 export type PopsTimeSeries = {
   "00:00-06:00": string;

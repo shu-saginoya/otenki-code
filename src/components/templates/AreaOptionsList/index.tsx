@@ -4,7 +4,7 @@ import { JSX } from "react";
 
 import { List, ListItem, Button } from "@/components";
 
-import type { JmaAreaCode } from "@/types";
+import type { JmaAreaCode } from "@/lib/jma";
 
 export type AreaOptionsListProps = {
   options: Record<string, { name: string }>;
