@@ -1,4 +1,5 @@
 import { isSameDate, toHalfWidth, getHour } from "@/utils";
+import { fetcher } from "@/utils/index";
 
 import type {
   JmaForecastResponse,
@@ -13,6 +14,32 @@ import type { DailyForecastSimple, DailyForecastDetail } from "@/types";
 
 // 型定義: timeSeriesのarea
 type AreaObj = { area: { code: JmaAreaCode } };
+
+/**
+ * 天気予報レスポンスの型ガード関数
+ */
+export const isForecastResponse = (
+  data: Partial<JmaForecastResponse>
+): data is JmaForecastResponse => {
+  return data && typeof data !== "undefined";
+};
+
+/**
+ * 気象庁APIから天気予報データを取得する
+ */
+export const fetchForecast = async (
+  officeCode: string
+): Promise<JmaForecastResponse> => {
+  const accessPoint = "https://www.jma.go.jp/bosai/forecast/data/forecast/";
+  const url = `${accessPoint}${officeCode}.json`;
+
+  const result = await fetcher<JmaForecastResponse>(url);
+  if (!isForecastResponse(result)) {
+    throw new Error("Invalid forecast response format");
+  }
+
+  return result;
+};
 
 // 汎用: 指定した timeSeries の availableAreaCodes を取得
 const getAreaCodes = (timeSeries: { areas?: AreaObj[] }): JmaAreaCode[] =>
