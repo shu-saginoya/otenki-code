@@ -1,17 +1,15 @@
 "use client";
 
-// 地域情報を取得するカスタムフック
+// 地域の区分を取得するカスタムフック
 
 import { useState, useEffect } from "react";
 
-import { fetchAreaData } from "./utils";
-
-import type { JmaAreas } from "./types";
+import { fetchAreaData, type JmaAreas } from "@/lib/jma";
 
 /**
  * JMA（気象庁）エリア情報を取得・管理するカスタムフック
  */
-export const useJmaArea = () => {
+export const useAreaOptions = () => {
   // 各エリア情報のステート
   const [areas, setAreas] = useState<JmaAreas | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
