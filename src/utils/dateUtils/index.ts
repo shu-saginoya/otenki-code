@@ -18,8 +18,10 @@ export const validateDateFormat = (date: string): boolean => {
 };
 
 /**
- * 日付を「YYYY/MM/DD (ddd)」の形式でフォーマット
+ * 日付をフォーマット
  * 例: 2025/04/03 (木)
+ * @param date - 日付
+ * @param format - フォーマット文字列（デフォルトは "YYYY/MM/DD (ddd)"）
  */
 export const formatDate = (
   date: dayjs.ConfigType,
