@@ -9,7 +9,10 @@ import { MdHelp } from "react-icons/md";
 import { MdLogin } from "react-icons/md";
 import { MdMap } from "react-icons/md";
 import { MdPublishedWithChanges } from "react-icons/md";
+import { RiWindyFill } from "react-icons/ri";
 import { TbArrowBackUp } from "react-icons/tb";
+import { TiWeatherPartlySunny } from "react-icons/ti";
+import { TiWaves } from "react-icons/ti";
 
 export const iconMap = {
   add: MdAdd,
@@ -24,6 +27,9 @@ export const iconMap = {
   login: MdLogin,
   map: MdMap,
   publishedWithChanges: MdPublishedWithChanges,
+  partlySunny: TiWeatherPartlySunny,
+  windy: RiWindyFill,
+  waves: TiWaves,
 };
 
 export type Icon = keyof typeof iconMap;
