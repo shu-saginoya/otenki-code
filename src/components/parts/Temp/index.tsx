@@ -2,6 +2,7 @@ import { JSX } from "react";
 
 import { Text } from "@/components";
 import { cn } from "@/lib/cn";
+import { fontSizeMap, type FontSize } from "@/styles";
 
 const tempTypeMap = {
   default: "text-current",
@@ -14,6 +15,7 @@ type TempType = keyof typeof tempTypeMap;
 export type TempProps = {
   number?: number;
   type?: TempType;
+  size?: FontSize;
 };
 
 /**
@@ -23,15 +25,20 @@ export type TempProps = {
  * @param type 温度のタイプ（default, highest, lowest）
  * @returns
  */
-export const Temp = ({ number, type = "default" }: TempProps): JSX.Element => {
-  if (typeof number !== "number" || isNaN(number)) return <Text>-</Text>;
+export const Temp = ({
+  number,
+  type = "default",
+  size,
+}: TempProps): JSX.Element => {
+  if (typeof number !== "number" || isNaN(number))
+    return <Text className={size && fontSizeMap[size]}>-</Text>;
   return (
     <span
-      className={cn("flex items-center gap-1", tempTypeMap[type])}
+      className={cn(tempTypeMap[type], size && fontSizeMap[size])}
       aria-label={`${number}度`}
     >
       <Text>{number}</Text>
-      <Text>℃</Text>
+      <Text className="text-[0.75em]">℃</Text>
     </span>
   );
 };
