@@ -1,7 +1,12 @@
 import { JSX } from "react";
 
-import { Card, Text, Stack } from "@/components";
-import { jmaWeatherCodeMap, type JmaWeatherCode } from "@/lib/jma";
+import { Card, Text, Stack, Temp, ShapeImage } from "@/components";
+import {
+  jmaWeatherCodeMap,
+  type JmaWeatherCode,
+  getJmaWeatherIcon,
+} from "@/lib/jma";
+import { formatDate } from "@/utils";
 
 export type SimpleForecastCardProps = {
   date: string;
@@ -21,17 +26,38 @@ export const SimpleForecastCard = ({
   tempMax,
   tempMin,
 }: SimpleForecastCardProps): JSX.Element => {
+  const jmaWeatherIcon = getJmaWeatherIcon(weatherCode);
   return (
     <Card>
-      <Text>date: {date}</Text>
-      <hr />
-      <Stack justify="center">
-        <Text>{tempMin || "-"}</Text>
-        <Text>/</Text>
-        <Text>{tempMax || "-"}</Text>
+      <Stack justify="center" className="py-1">
+        <Text>{formatDate(date, "M/D (ddd)")}</Text>
       </Stack>
-      <Text>{jmaWeatherCodeMap[weatherCode]}</Text>
-      <Text>{pop}</Text>
+      <hr />
+      <Stack justify="center" align="center" gap={1}>
+        <Temp
+          number={tempMin ? Number(tempMin) : undefined}
+          type={"lowest"}
+          size={"lg"}
+        ></Temp>
+        <Text>/</Text>
+        <Temp
+          number={tempMax ? Number(tempMax) : undefined}
+          type={"highest"}
+          size={"lg"}
+        ></Temp>
+      </Stack>
+      <Stack direction="col" align="center">
+        {jmaWeatherIcon && (
+          <ShapeImage
+            src={jmaWeatherIcon.dayIcon}
+            alt=""
+            width={48}
+            height={48}
+          ></ShapeImage>
+        )}
+        <Text size={"sm"}>{jmaWeatherCodeMap[weatherCode]}</Text>
+        <Text>{pop ? `${pop}%` : "-"}</Text>
+      </Stack>
     </Card>
   );
 };
