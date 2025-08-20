@@ -6,13 +6,7 @@ import dayjs from "@/lib/dayjs";
  * @returns {boolean}
  */
 export const validateDateFormat = (date: string): boolean => {
-  const formats = [
-    "YYYY-MM-DD",
-    "YYYY-MM-DDTHH:mm:ssZ",
-    "YYYY-MM-DD HH:mm:ssZ",
-    "YYYY-MM-DDTHH:mm:ss",
-    "YYYY-MM-DD HH:mm:ss",
-  ];
+  const formats = ["YYYY-MM-DD", "YYYY-MM-DDTHH:mm:ss", "YYYY-MM-DD HH:mm:ss"];
   const flag = dayjs(date, formats, true);
   return flag.isValid();
 };
