@@ -2,6 +2,7 @@ import { ReactNode, ComponentProps, JSX, createElement } from "react";
 
 import { Stack } from "@/components";
 import { cn } from "@/lib/cn";
+import { iconMap, Icon } from "@/lib/reactIcons";
 import {
   colorVariantMap,
   fontSizeMap,
@@ -11,7 +12,6 @@ import {
   FontSize,
   ColorVariant,
 } from "@/styles";
-import { iconMap, Icon } from "@/utils";
 
 import type { Color } from "@/types";
 

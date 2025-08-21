@@ -6,12 +6,8 @@ import {
   jmaWeatherCodeMap,
   getJmaWeatherIcon,
 } from "@/lib/jma";
-import {
-  formatDate,
-  getRelativeDayLabel,
-  toHalfWidthSpace,
-  iconMap,
-} from "@/utils";
+import { iconMap } from "@/lib/reactIcons";
+import { formatDate, getRelativeDayLabel, toHalfWidthSpace } from "@/utils";
 
 export type ForecastCardProps = {
   date: string;
