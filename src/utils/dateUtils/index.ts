@@ -2,11 +2,23 @@ import dayjs from "@/lib/dayjs";
 
 /**
  *  日時を指定する方法が正しいかのバリデーション
+ * サポートする形式:
+ * - YYYY-MM-DD (例: 2023-08-21)
+ * - YYYY-MM-DDTHH:mm:ss (例: 2023-08-21T15:30:00)
+ * - YYYY-MM-DD HH:mm:ss (例: 2023-08-21 15:30:00)
+ * - YYYY-MM-DDTHH:mm:ssZ (例: 2023-08-21T06:30:00Z)
+ * - YYYY-MM-DDTHH:mm:ssZZ (例: 2023-08-21T15:30:00+09:00)
  * @param {string} date
  * @returns {boolean}
  */
 export const validateDateFormat = (date: string): boolean => {
-  const formats = ["YYYY-MM-DD", "YYYY-MM-DDTHH:mm:ss", "YYYY-MM-DD HH:mm:ss"];
+  const formats = [
+    "YYYY-MM-DD",
+    "YYYY-MM-DDTHH:mm:ss",
+    "YYYY-MM-DD HH:mm:ss",
+    "YYYY-MM-DDTHH:mm:ssZ", // UTCタイムゾーン (例: 2023-08-21T06:30:00Z)
+    "YYYY-MM-DDTHH:mm:ssZZ", // タイムゾーンオフセット (例: 2023-08-21T15:30:00+09:00)
+  ];
   const flag = dayjs(date, formats, true);
   return flag.isValid();
 };

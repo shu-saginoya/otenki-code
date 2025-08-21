@@ -13,14 +13,10 @@ import {
 describe("dateUtils", () => {
   describe("validateDateFormat", () => {
     it("正しい日付形式を検証できる", () => {
-      // YYYY-MM-DD形式
       expect(validateDateFormat("2025-04-03")).toBeTruthy();
-
-      // YYYY-MM-DDTHH:mm:ss形式
       expect(validateDateFormat("2025-04-03T15:30:00")).toBeTruthy();
-
-      // YYYY-MM-DD HH:mm:ss形式
       expect(validateDateFormat("2025-04-03 15:30:00")).toBeTruthy();
+      expect(validateDateFormat("2023-08-21T15:30:00+09:00")).toBeTruthy();
     });
     it("不正な日付形式を検出できる", () => {
       expect(validateDateFormat("2025/04/03")).toBeFalsy();
