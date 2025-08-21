@@ -1,4 +1,4 @@
-import { isSameDate, getHour, toHalfWidth } from "@/utils";
+import { isSameDate, getHour, convertText } from "@/utils";
 
 import { TIME_RANGES } from "./constants";
 
@@ -65,5 +65,11 @@ export const convertPopsData = (
 };
 
 export const sanitizeWeatherText = (text: string): string => {
-  return toHalfWidth(text).replace(/[<>]/g, "");
+  return convertText(text, {
+    toHalfAlpha: true,
+    toHalfNum: true,
+    toHalfSymbol: true,
+    toHalfSpace: true,
+    removeChars: /[<>]/g,
+  });
 };

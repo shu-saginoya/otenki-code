@@ -7,7 +7,7 @@ import {
   getJmaWeatherIcon,
 } from "@/lib/jma";
 import { iconMap } from "@/lib/reactIcons";
-import { formatDate, getRelativeDayLabel, toHalfWidthSpace } from "@/utils";
+import { formatDate, getRelativeDayLabel, convertText } from "@/utils";
 
 export type ForecastCardProps = {
   date: string;
@@ -40,6 +40,9 @@ export const ForecastCard = ({
 }: ForecastCardProps): JSX.Element => {
   const relativeDayLabel = getRelativeDayLabel(date);
   const jmaWeatherIcon = getJmaWeatherIcon(weatherCode);
+  const convertOptions = {
+    toHalfSpace: true,
+  };
 
   return (
     <Card>
@@ -77,16 +80,16 @@ export const ForecastCard = ({
         <Stack direction="col">
           <Stack align="center" gap={2}>
             天気{createElement(iconMap["partlySunny"])}
-            {toHalfWidthSpace(weather)}
+            {convertText(weather, convertOptions)}
           </Stack>
           <Stack align="center" gap={2}>
             風{createElement(iconMap["windy"])}
-            {toHalfWidthSpace(wind)}
+            {convertText(wind, convertOptions)}
           </Stack>
           {wave && (
             <Stack align="center" gap={2}>
               波{createElement(iconMap["waves"])}
-              {toHalfWidthSpace(wave)}
+              {convertText(wave, convertOptions)}
             </Stack>
           )}
           {pops && (
