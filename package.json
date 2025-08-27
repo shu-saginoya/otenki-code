@@ -16,6 +16,9 @@
   "dependencies": {
     "@headlessui/react": "^2.2.0",
     "@reduxjs/toolkit": "^2.5.1",
+    "@supabase/auth-helpers-nextjs": "^0.10.0",
+    "@supabase/auth-helpers-react": "^0.5.0",
+    "@supabase/supabase-js": "^2.56.0",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
     "embla-carousel-react": "^8.5.2",
