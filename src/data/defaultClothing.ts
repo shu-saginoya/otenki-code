@@ -6,7 +6,7 @@ export const defaultClothingItems: Omit<ClothingItem, "id" | "userId">[] = [
   {
     name: "半袖シャツ",
     category: "tops",
-    temperatureRange: { min: 24, max: "none" },
+    temperatureRange: { min: 24, max: Infinity },
     imageUrl: "/images/clothing/kids_kodomofuku_shirt_boy.png",
     isDefault: true,
   },
@@ -20,7 +20,7 @@ export const defaultClothingItems: Omit<ClothingItem, "id" | "userId">[] = [
   {
     name: "トレーナー",
     category: "tops",
-    temperatureRange: { min: "none", max: 12 },
+    temperatureRange: { min: -Infinity, max: 12 },
     imageUrl: "/images/clothing/kodomofuku_boy.png",
     isDefault: true,
   },
@@ -29,7 +29,7 @@ export const defaultClothingItems: Omit<ClothingItem, "id" | "userId">[] = [
   {
     name: "半ズボン",
     category: "bottoms",
-    temperatureRange: { min: 24, max: "none" },
+    temperatureRange: { min: 24, max: Infinity },
     imageUrl: "/images/clothing/shorts.png",
     isDefault: true,
   },
@@ -50,7 +50,7 @@ export const defaultClothingItems: Omit<ClothingItem, "id" | "userId">[] = [
   {
     name: "厚手の長ズボン",
     category: "bottoms",
-    temperatureRange: { min: "none", max: 8 },
+    temperatureRange: { min: -Infinity, max: 8 },
     imageUrl: "/images/clothing/shorts.png",
     isDefault: true,
   },
@@ -59,7 +59,7 @@ export const defaultClothingItems: Omit<ClothingItem, "id" | "userId">[] = [
   {
     name: "帽子や日傘",
     category: "outer",
-    temperatureRange: { min: 24, max: "none" },
+    temperatureRange: { min: 24, max: Infinity },
     imageUrl: "/images/clothing/hiyake_goods.png",
     isDefault: true,
   },
@@ -87,7 +87,7 @@ export const defaultClothingItems: Omit<ClothingItem, "id" | "userId">[] = [
   {
     name: "ダウンジャケット",
     category: "outer",
-    temperatureRange: { min: "none", max: 8 },
+    temperatureRange: { min: -Infinity, max: 8 },
     imageUrl: "/images/clothing/fashion_down_jacket.png",
     isDefault: true,
   },

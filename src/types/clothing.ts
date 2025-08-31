@@ -2,8 +2,8 @@ export type ClothingCategory = "tops" | "bottoms" | "outer";
 
 // 温度帯
 export type TemperatureRange = {
-  min: number | "none";
-  max: number | "none";
+  min: number; // -Infinity で下限なし
+  max: number; // Infinity で上限なし
 };
 
 export type ClothingItem = {
