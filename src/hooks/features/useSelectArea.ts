@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 
-import { useAreaOptions } from "@/hooks";
 import { setSelectedArea } from "@/lib/features/areas/areasSlice";
 import { useAppDispatch } from "@/lib/hooks";
 import { getSelectedAreaByClass20Code, generateAreaOptions } from "@/lib/jma";
+
+import { useAreaOptions } from "./";
 
 import type { JmaAreaCode } from "@/lib/jma";
 
