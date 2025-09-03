@@ -1,6 +1,6 @@
 import { JSX } from "react";
 
-import { Text } from "@/components";
+import { Text } from "@/components/ui";
 import { cn } from "@/lib/cn";
 import { fontSizeMap, type FontSize } from "@/styles";
 

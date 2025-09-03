@@ -3,13 +3,12 @@
 import { useState, useEffect } from "react";
 
 import {
-  Grid,
-  Col,
   CurrentlyArea,
   ForecastCard,
   SimpleForecastCard,
-} from "@/components";
-import { useJmaForecast } from "@/hooks";
+} from "@/components/features";
+import { Grid, Col } from "@/components/ui";
+import { useJmaForecast } from "@/hooks/features";
 import { useAppSelector } from "@/lib/hooks";
 import { extractDailyForecast } from "@/lib/jma";
 

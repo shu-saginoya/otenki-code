@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { ReactNode } from "react";
 
 import StoreProvider from "@/app/StoreProvider";
-import { Header, Main } from "@/components";
+import { Header, Main } from "@/components/features";
 
 export const metadata: Metadata = {
   title: "お天気コーデ",

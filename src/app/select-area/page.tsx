@@ -2,16 +2,9 @@
 
 import { useState } from "react";
 
-import {
-  Grid,
-  Col,
-  Text,
-  Card,
-  AreaOptionsList,
-  Carousel,
-  CarouselItem,
-} from "@/components";
-import { useAppRouter, useSelectArea } from "@/hooks";
+import { AreaOptionsList } from "@/components/features";
+import { Grid, Col, Text, Card, Carousel, CarouselItem } from "@/components/ui";
+import { useAppRouter, useSelectArea } from "@/hooks/features";
 
 export default function SelectArea() {
   const {
