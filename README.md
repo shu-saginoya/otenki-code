@@ -63,7 +63,7 @@
 - `npm test` - テストの実行
 - `npm run typecheck` - 型チェックの実行
 
-## 開発者向け情報
+## 🐳 ドキュメント
 
 - [コンポーネント設計書](./docs/components-design.md) - UIコンポーネントの構成と設計方針
 
