@@ -1,6 +1,6 @@
 import { defaultClothingItems } from "@/data/defaultClothing";
 import { supabase } from "@/lib/supabase/client";
-import { ClothingItem, ClothingCategory } from "@/types/clothing";
+import { ClothingItem, ClothingCategory } from "@/types";
 
 export const getClothingItems = async (
   userId?: string
@@ -16,6 +16,17 @@ export const getClothingItems = async (
     return [];
   }
 
+  // データベースのフィールド名をTypeScriptの型に合わせる
+  const formattedDefaultItems = (defaultItems || []).map((item) => ({
+    id: item.id,
+    name: item.name,
+    category: item.category,
+    temperatureRange: item.temperature_range,
+    imageUrl: item.image_url,
+    isDefault: item.is_default,
+    userId: item.user_id,
+  }));
+
   // ユーザーIDが提供されている場合、ユーザーのカスタムアイテムも取得
   if (userId) {
     const { data: userItems, error: userError } = await supabase
@@ -26,14 +37,25 @@ export const getClothingItems = async (
 
     if (userError) {
       console.error("User clothing items fetch error:", userError);
-      return defaultItems || [];
+      return formattedDefaultItems;
     }
 
+    // ユーザーアイテムをフォーマット
+    const formattedUserItems = (userItems || []).map((item) => ({
+      id: item.id,
+      name: item.name,
+      category: item.category,
+      temperatureRange: item.temperature_range,
+      imageUrl: item.image_url,
+      isDefault: item.is_default,
+      userId: item.user_id,
+    }));
+
     // ユーザーアイテムとデフォルトアイテムをマージ（同じカテゴリと温度帯のアイテムはユーザーアイテムを優先）
-    return mergeClothingItems(defaultItems || [], userItems || []);
+    return mergeClothingItems(formattedDefaultItems, formattedUserItems);
   }
 
-  return defaultItems || [];
+  return formattedDefaultItems;
 };
 
 // ユーザーアイテムを優先してマージする関数
@@ -48,6 +70,8 @@ const mergeClothingItems = (
     const defaultItemIndex = result.findIndex(
       (item) =>
         item.category === userItem.category &&
+        item.temperatureRange &&
+        userItem.temperatureRange &&
         item.temperatureRange.min === userItem.temperatureRange.min &&
         item.temperatureRange.max === userItem.temperatureRange.max
     );
@@ -105,7 +129,7 @@ export const saveClothingItem = async (
 };
 
 // 気温から適切な服装を取得
-export const getClothingRecommendation = (
+export const getAppropriateClothing = (
   items: ClothingItem[],
   maxTemperature: number,
   minTemperature: number
@@ -131,6 +155,7 @@ const findItemForTemperature = (
     items.find(
       (item) =>
         item.category === category &&
+        item.temperatureRange &&
         temperature >= item.temperatureRange.min &&
         temperature <= item.temperatureRange.max
     ) || null

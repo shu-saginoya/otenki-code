@@ -17,7 +17,7 @@ export type ClothingItem = {
 };
 
 // 服装推薦結果の型
-export type ClothingRecommendation = {
+export type AppropriateClothing = {
   tops: ClothingItem | null;
   bottoms: ClothingItem | null;
   outer: ClothingItem | null;

@@ -1,6 +1,6 @@
 import { JSX, createElement } from "react";
 
-import { Temp } from "@/components/features";
+import { Temp, AppropriateClothing } from "@/components/features";
 import { Card, Text, Stack, Badge, ShapeImage } from "@/components/ui";
 import {
   type JmaWeatherCode,
@@ -66,6 +66,12 @@ export const ForecastCard = ({
             size={"3xl"}
           ></Temp>
         </Stack>
+        {tempMax && tempMin && (
+          <AppropriateClothing
+            maxTemp={Number(tempMax)}
+            minTemp={Number(tempMin)}
+          />
+        )}
         <Stack align="center" gap={2}>
           {jmaWeatherIcon && (
             <ShapeImage

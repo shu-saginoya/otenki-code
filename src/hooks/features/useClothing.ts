@@ -1,13 +1,15 @@
+"use client";
+
 import { useUser } from "@supabase/auth-helpers-react";
 import { useState, useEffect } from "react";
 
 import {
   getClothingItems,
-  getClothingRecommendation,
+  getAppropriateClothing,
   saveClothingItem,
   initializeDefaultClothingItems,
 } from "@/services/clothing";
-import { ClothingItem, ClothingRecommendation } from "@/types/clothing";
+import { ClothingItem, AppropriateClothing } from "@/types/clothing";
 
 export const useClothing = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,15 +34,11 @@ export const useClothing = () => {
   }, [user?.id]);
 
   // 気温から服装を推薦
-  const getRecommendation = (
-    maxTemperature: number,
-    minTemperature: number
-  ): ClothingRecommendation => {
-    return getClothingRecommendation(
-      clothingItems,
-      maxTemperature,
-      minTemperature
-    );
+  const getAppropriate = (
+    maxTemp: number,
+    minTemp: number
+  ): AppropriateClothing => {
+    return getAppropriateClothing(clothingItems, maxTemp, minTemp);
   };
 
   // 服装アイテムを保存
@@ -72,7 +70,7 @@ export const useClothing = () => {
   return {
     isLoading,
     clothingItems,
-    getRecommendation,
+    getAppropriate,
     saveItem,
   };
 };

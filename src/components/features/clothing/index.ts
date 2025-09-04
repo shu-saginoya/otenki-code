@@ -1,1 +1,1 @@
-export * from "./ClothingRecommendation";
+export * from "./AppropriateClothing";

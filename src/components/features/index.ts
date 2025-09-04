@@ -1,4 +1,4 @@
 export * from "./area";
 export * from "./clothing";
 export * from "./common";
-export * from "./weather";
+export * from "./forecast";
