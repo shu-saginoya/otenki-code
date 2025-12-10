@@ -67,13 +67,28 @@
 
 - [コンポーネント設計書](./docs/components-design.md) - UIコンポーネントの構成と設計方針
 
-## 🤝 コントリビューション
+## ブランチモデル
 
-1. このリポジトリをフォーク
-2. 新しいブランチを作成 (`git checkout -b feature/amazing-feature`)
-3. 変更をコミット (`git commit -m 'Add some amazing feature'`)
-4. ブランチにプッシュ (`git push origin feature/amazing-feature`)
-5. プルリクエストを作成
+- `main`:
+  - 常に安定。公開用の履歴として管理します。
+  - 直接 push は行わず、PR を通して更新します。
+- `staging`:
+  - 機能統合の一時的な確認用。`feature/*` をここに集約して動作確認してから `main` に反映します。
+- `feature/<topic>`:
+  - 機能追加や改善の作業ブランチ。作業が完了したら `staging` へ PR を作成します。
+- `hotfix/<topic>`:
+  - 緊急修正。必要に応じて `main` への直接 PR を作成します（マージ後は `staging` にも反映）。
+
+## 🤝 開発フロー
+
+1. 作業開始: `feature/<topic>` を作成
+2. コミット: 小さく意味のある単位でコミット
+3. PR 作成: `feature/<topic>` → `staging`
+4. セルフレビュー: 差分確認・説明追加
+5. マージ: 問題なければ `staging` にマージ
+6. リリース準備: `staging` → `main` に PR を作成し、同様に確認してマージ
+
+詳細は [CONTRIBUTING.md](./docs/CONTRIBUTING.md) を参照
 
 ## 📄 ライセンス
 
