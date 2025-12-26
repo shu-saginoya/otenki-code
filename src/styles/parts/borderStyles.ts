@@ -2,8 +2,8 @@ import { Color } from "@/types";
 
 export const borderColorMap: Record<Color, string> = {
   primary: "border-primary",
-  foreground: "border-foreground dark:border-background",
-  background: "border-background dark:border-foreground",
+  foreground: "border-foreground",
+  background: "border-background",
   disabled: "border-disabled",
   link: "border-link",
   success: "border-success",

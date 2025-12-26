@@ -29,8 +29,8 @@ export default function SelectArea() {
   if (loading)
     return (
       <div role="status" className="flex h-full animate-pulse flex-col gap-2">
-        <div className="mx-auto h-4 w-full max-w-[320px] rounded-full bg-background-light dark:bg-foreground-light"></div>
-        <div className="h-[800px] w-full rounded bg-background-light dark:bg-foreground-light"></div>
+        <div className="mx-auto h-4 w-full max-w-[320px] rounded-full bg-background-light"></div>
+        <div className="h-[800px] w-full rounded bg-background-light"></div>
         <span className="sr-only">Loading...</span>
       </div>
     );
