@@ -3,19 +3,39 @@
 @tailwind utilities;
 
 :root {
-  --background: theme(colors.background.DEFAULT);
-  --foreground: theme(colors.foreground.DEFAULT);
+  --color-white: theme(colors.white);
+  --color-neutral-100: theme(colors.neutral[100]);
+  --color-neutral-300: theme(colors.neutral[300]);
+  --color-neutral-400: theme(colors.neutral[400]);
+  --color-neutral-500: theme(colors.neutral[500]);
+  --color-neutral-600: theme(colors.neutral[600]);
+  --color-neutral-700: theme(colors.neutral[700]);
+  --color-neutral-800: theme(colors.neutral[800]);
+  --color-neutral-900: theme(colors.neutral[900]);
+
+  /* ライトテーマ */
+  --background-light: var(--color-white);
+  --background-default: var(--color-white);
+  --background-dark: var(--color-neutral-100);
+  --foreground-light: var(--color-neutral-300);
+  --foreground-default: var(--color-neutral-500);
+  --foreground-dark: var(--color-neutral-900);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: theme(colors.foreground.DEFAULT);
-    --foreground: theme(colors.background.DEFAULT);
+    /* ダークテーマ */
+    --background-light: var(--color-neutral-700);
+    --background-default: var(--color-neutral-800);
+    --background-dark: var(--color-neutral-900);
+    --foreground-light: var(--color-neutral-600);
+    --foreground-default: var(--color-neutral-400);
+    --foreground-dark: var(--color-white);
   }
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--foreground-default);
+  background: var(--background-default);
   font-family: Arial, Helvetica, sans-serif;
 }
