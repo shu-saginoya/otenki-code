@@ -18,7 +18,7 @@ export const Input = ({
   ...rest
 }: InputProps): JSX.Element => {
   const baseStyles =
-    "box-border w-full border rounded p-3 placeholder:text-disabled  text-foreground dark:text-background-light disabled:opacity-25 bg-background-light dark:bg-foreground-light";
+    "box-border w-full border rounded p-3 placeholder:text-disabled  text-foreground disabled:opacity-25 bg-background-light";
   const variants = {
     default: "border-transparent",
     error: "border-error",

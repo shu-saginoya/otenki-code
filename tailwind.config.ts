@@ -10,44 +10,44 @@ export default {
     extend: {
       colors: {
         primary: {
-          light: "#a7f3d0", // emerald-200
-          DEFAULT: "#10b981", // emerald-500
-          dark: "#065f46", // emerald-800
+          light: "theme(colors.emerald[200])",
+          DEFAULT: "theme(colors.emerald[500])",
+          dark: "theme(colors.emerald[800])",
         },
         foreground: {
-          light: "#404040", // neutral-700
-          DEFAULT: "#262626", // neutral-800
-          dark: "#171717", // neutral-900
+          light: "var(--foreground-light)",
+          DEFAULT: "var(--foreground-default)",
+          dark: "var(--foreground-dark)",
         },
         background: {
-          light: "#ffffff", // white
-          DEFAULT: "#f4f4f5", // neutral-100
-          dark: "#e4e4e7", // neutral-200
+          light: "var(--background-light)",
+          DEFAULT: "var(--background-default)",
+          dark: "var(--background-dark)",
         },
         disabled: {
-          light: "#a3a3a3", // neutral-400
-          DEFAULT: "#737373", // neutral-500
-          dark: "#525252", // neutral-600
+          light: "var(--color-neutral-400)",
+          DEFAULT: "var(--color-neutral-500)",
+          dark: "var(--color-neutral-600)",
         },
         link: {
-          light: "#7dd3fc", // sky-300
-          DEFAULT: "#0ea5e9", // sky-500
-          dark: "#0369a1", // sky-700
+          light: "theme(colors.sky[300])",
+          DEFAULT: "theme(colors.sky[500])",
+          dark: "theme(colors.sky[700])",
         },
         success: {
-          light: "#86efac", // green-300
-          DEFAULT: "#22c55e", // green-500
-          dark: "#15803d", // green-700
+          light: "theme(colors.green[300])",
+          DEFAULT: "theme(colors.green[500])",
+          dark: "theme(colors.green[700])",
         },
         error: {
-          light: "#fca5a5", // red-300
-          DEFAULT: "#ef4444", // red-500
-          dark: "#b91c1c", // red-700
+          light: "theme(colors.red[300])",
+          DEFAULT: "theme(colors.red[500])",
+          dark: "theme(colors.red[700])",
         },
         warning: {
-          light: "#fdba74", // orange-300
-          DEFAULT: "#f97316", // orange-500
-          dark: "#c2410c", // orange-700
+          light: "theme(colors.orange[300])",
+          DEFAULT: "theme(colors.orange[500])",
+          dark: "theme(colors.orange[700])",
         },
       },
     },
