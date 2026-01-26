@@ -18,11 +18,36 @@ git push -u origin feature/add-weather-client
 
 ## プルリクエスト手順
 
+### 通常フロー（feature ブランチ）
+
 1. `feature/<topic>` → `staging` に PR を作成
 2. PR テンプレートのチェックリストを埋める（説明・影響範囲・動作確認）
 3. Files changed タブでセルフレビュー
 4. 問題なければ `staging` にマージ
 5. `staging` → `main` に PR を作成し、同様に確認してマージ
+6. マージ完了後、ローカルの `main` ブランチを更新
+   ```bash
+   git checkout main
+   git pull origin main
+   ```
+7. 完了した `feature/<topic>` ブランチを削除
+   ```bash
+   git branch -d feature/<topic>
+   git push origin --delete feature/<topic>
+   ```
+
+### 緊急フロー（hotfix ブランチ）
+
+1. `main` から `hotfix/<topic>` を作成
+2. 修正を実施
+3. `hotfix/<topic>` → `main` に PR を作成（緊急リリース）
+4. マージ後、`main` → `staging` に変更を反映（バックマージ）
+   ```bash
+   git checkout staging
+   git merge main
+   git push origin staging
+   ```
+5. hotfix ブランチを削除
 
 ### PR の書き方（推奨）
 
