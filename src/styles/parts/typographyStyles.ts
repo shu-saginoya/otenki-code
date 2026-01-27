@@ -2,8 +2,8 @@ import { Color } from "@/types";
 
 export const textColorMap: Record<Color, string> = {
   primary: "text-primary",
-  foreground: "text-foreground dark:text-background",
-  background: "text-background dark:text-foreground",
+  foreground: "text-foreground",
+  background: "text-background",
   disabled: "text-disabled",
   link: "text-link",
   success: "text-success",

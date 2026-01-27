@@ -77,18 +77,26 @@
 - `feature/<topic>`:
   - 機能追加や改善の作業ブランチ。作業が完了したら `staging` へ PR を作成します。
 - `hotfix/<topic>`:
-  - 緊急修正。必要に応じて `main` への直接 PR を作成します（マージ後は `staging` にも反映）。
+  - 緊急修正用。`main` へ直接 PR を作成し、マージ後は `staging` へバックマージ。
 
 ## 🤝 開発フロー
 
-1. 作業開始: `feature/<topic>` を作成
-2. コミット: 小さく意味のある単位でコミット
-3. PR 作成: `feature/<topic>` → `staging`
-4. セルフレビュー: 差分確認・説明追加
-5. マージ: 問題なければ `staging` にマージ
-6. リリース準備: `staging` → `main` に PR を作成し、同様に確認してマージ
+### 通常の機能開発
 
-詳細は [CONTRIBUTING.md](./docs/CONTRIBUTING.md) を参照
+1. `feature/<topic>` ブランチを作成
+2. 実装・コミット
+3. `feature/<topic>` → `staging` に PR 作成
+4. レビュー後、`staging` にマージ
+5. `staging` → `main` に PR 作成してリリース
+6. ローカルブランチのクリーンアップ
+
+### 緊急修正
+
+1. `hotfix/<topic>` ブランチを作成
+2. `main` に直接 PR 作成・マージ
+3. `staging` へバックマージして同期
+
+詳細な手順、コミット規約、PR の書き方は [CONTRIBUTING.md](./docs/CONTRIBUTING.md) を参照してください。
 
 ## 📄 ライセンス
 
