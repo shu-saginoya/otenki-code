@@ -5,11 +5,13 @@ import { MdAdd } from "react-icons/md";
 import { MdCached } from "react-icons/md";
 import { MdCheck } from "react-icons/md";
 import { MdClose } from "react-icons/md";
+import { FaGoogle } from "react-icons/fa";
 import { MdHelp } from "react-icons/md";
 import { MdLogin } from "react-icons/md";
 import { MdMap } from "react-icons/md";
 import { MdPublishedWithChanges } from "react-icons/md";
 import { RiWindyFill } from "react-icons/ri";
+import { FaSignInAlt } from "react-icons/fa";
 import { TbArrowBackUp } from "react-icons/tb";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { TiWaves } from "react-icons/ti";
@@ -23,11 +25,13 @@ export const iconMap = {
   cached: MdCached,
   check: MdCheck,
   close: MdClose,
+  google: FaGoogle,
   help: MdHelp,
   login: MdLogin,
   map: MdMap,
   publishedWithChanges: MdPublishedWithChanges,
   partlySunny: TiWeatherPartlySunny,
+  signin: FaSignInAlt,
   windy: RiWindyFill,
   waves: TiWaves,
 };
