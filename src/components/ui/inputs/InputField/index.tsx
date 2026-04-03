@@ -1,8 +1,7 @@
+import { Description, Field, Input, Label } from "@headlessui/react";
 import { InputHTMLAttributes, JSX, useId } from "react";
 
 import { cn } from "@/lib/cn";
-
-import { Description, Field, Input, Label } from "@headlessui/react";
 
 export type InputProps = {
   type: "email" | "tel" | "text" | "url" | "password";
