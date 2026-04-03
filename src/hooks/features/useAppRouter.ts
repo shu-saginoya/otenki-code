@@ -7,6 +7,7 @@ export const useAppRouter = () => {
 
   const pathMap = {
     home: "/",
+    login: "/login",
     selectArea: "/select-area",
     // 他のパスを追加する場合はここに追加
   };

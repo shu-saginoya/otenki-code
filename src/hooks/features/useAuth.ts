@@ -1,10 +1,12 @@
 "use client";
 import { useState } from "react";
 
+import { useAppRouter } from "@/hooks/features/useAppRouter";
 import { createClient } from "@/lib/supabase/client";
 
 export function useAuth() {
   const supabase = createClient();
+  const { navigateTo } = useAppRouter();
 
   // ユーザー情報の状態管理
   const [email, setEmail] = useState("");
@@ -21,6 +23,8 @@ export function useAuth() {
 
     if (error) {
       setMessage("ログインに失敗しました: " + error.message);
+    } else {
+      navigateTo("home");
     }
   };
 
@@ -28,19 +32,17 @@ export function useAuth() {
   const handleEmailSignup = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log("登録試行:", { email, passwordLength: password.length });
-
-    const { data, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email,
       password,
     });
 
     if (error) {
-      console.error("登録エラー:", error);
       setMessage("登録に失敗しました: " + error.message);
     } else {
-      console.log("登録成功:", data);
-      setMessage("登録が完了しました！ログインできます。");
+      setMessage(
+        "確認メールを送信しました。メールのリンクをクリックして登録を完了してください。"
+      );
     }
   };
 
