@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import { Input } from "./";
+import { InputField } from "./";
 
 export default {
-  title: "Parts/Input",
-  component: Input,
+  title: "Parts/InputField",
+  component: InputField,
   argTypes: {
     placeholder: {
       control: { type: "text" },
@@ -21,10 +21,17 @@ export default {
         type: { summary: "boolean" },
       },
     },
+    errorMessage: {
+      control: { type: "text" },
+      description: "エラーメッセージ",
+      table: {
+        type: { summary: "string" },
+      },
+    },
   },
-} as Meta<typeof Input>;
+} as Meta<typeof InputField>;
 
-type Story = StoryObj<typeof Input>;
+type Story = StoryObj<typeof InputField>;
 
 // テキスト入力
 export const Default: Story = {
@@ -40,7 +47,7 @@ export const Error: Story = {
   args: {
     type: "text",
     name: "error",
-    hasError: true,
+    errorMessage: "入力内容に誤りがあります",
     placeholder: "プレースホルダー",
   },
 };

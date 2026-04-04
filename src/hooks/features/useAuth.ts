@@ -1,44 +1,73 @@
 "use client";
+import { useState } from "react";
 
-import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
-
+import { useAppRouter } from "@/hooks/features/useAppRouter";
 import { createClient } from "@/lib/supabase/client";
 
-import type { User } from "@supabase/supabase-js";
-
 export function useAuth() {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-  const router = useRouter();
   const supabase = createClient();
+  const { navigateTo } = useAppRouter();
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+  // ユーザー情報の状態管理
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-      if (!user) {
-        router.push("/login");
-        return;
-      }
+  // メールアドレスでログイン
+  const handleEmailLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
 
-      setUser(user);
-      setLoading(false);
-    };
+    if (error) {
+      setMessage("ログインに失敗しました: " + error.message);
+    } else {
+      navigateTo("home");
+    }
+  };
 
-    checkAuth();
-  }, [router, supabase]);
+  // メールアドレスで新規登録
+  const handleEmailSignup = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  const logout = async () => {
-    await supabase.auth.signOut();
-    router.push("/login");
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+
+    if (error) {
+      setMessage("登録に失敗しました: " + error.message);
+    } else {
+      setMessage(
+        "確認メールを送信しました。メールのリンクをクリックして登録を完了してください。"
+      );
+    }
+  };
+
+  // Googleでログイン
+  const handleGoogleLogin = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${location.origin}/auth/callback`,
+      },
+    });
+
+    if (error) {
+      setMessage("Googleログインに失敗しました: " + error.message);
+    }
   };
 
   return {
-    user,
-    loading,
-    logout,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    message,
+    handleEmailLogin,
+    handleEmailSignup,
+    handleGoogleLogin,
   };
 }

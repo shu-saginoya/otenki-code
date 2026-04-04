@@ -1,3 +1,4 @@
 export * from "./Carousel";
-export * from "./Input";
+export * from "./InputField";
 export * from "./Switch";
+export * from "./Tab";

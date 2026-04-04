@@ -1,3 +1,5 @@
+import { FaGoogle } from "react-icons/fa";
+import { FaSignInAlt } from "react-icons/fa";
 import { GoBell } from "react-icons/go";
 import { MdArrowForward } from "react-icons/md";
 import { MdArrowBack } from "react-icons/md";
@@ -23,11 +25,13 @@ export const iconMap = {
   cached: MdCached,
   check: MdCheck,
   close: MdClose,
+  google: FaGoogle,
   help: MdHelp,
   login: MdLogin,
   map: MdMap,
   publishedWithChanges: MdPublishedWithChanges,
   partlySunny: TiWeatherPartlySunny,
+  signin: FaSignInAlt,
   windy: RiWindyFill,
   waves: TiWaves,
 };
