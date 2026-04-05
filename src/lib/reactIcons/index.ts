@@ -9,8 +9,11 @@ import { MdCheck } from "react-icons/md";
 import { MdClose } from "react-icons/md";
 import { MdHelp } from "react-icons/md";
 import { MdLogin } from "react-icons/md";
+import { MdLogout } from "react-icons/md";
 import { MdMap } from "react-icons/md";
+import { MdPerson } from "react-icons/md";
 import { MdPublishedWithChanges } from "react-icons/md";
+import { MdSettings } from "react-icons/md";
 import { RiWindyFill } from "react-icons/ri";
 import { TbArrowBackUp } from "react-icons/tb";
 import { TiWeatherPartlySunny } from "react-icons/ti";
@@ -28,8 +31,11 @@ export const iconMap = {
   google: FaGoogle,
   help: MdHelp,
   login: MdLogin,
+  logout: MdLogout,
   map: MdMap,
+  person: MdPerson,
   publishedWithChanges: MdPublishedWithChanges,
+  settings: MdSettings,
   partlySunny: TiWeatherPartlySunny,
   signin: FaSignInAlt,
   windy: RiWindyFill,

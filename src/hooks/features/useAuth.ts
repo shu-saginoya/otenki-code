@@ -60,6 +60,16 @@ export function useAuth() {
     }
   };
 
+  // ログアウト
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      setMessage("ログアウトに失敗しました: " + error.message);
+    } else {
+      navigateTo("home");
+    }
+  };
+
   return {
     email,
     setEmail,
@@ -69,5 +79,6 @@ export function useAuth() {
     handleEmailLogin,
     handleEmailSignup,
     handleGoogleLogin,
+    handleLogout,
   };
 }
