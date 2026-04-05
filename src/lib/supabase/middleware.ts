@@ -1,7 +1,10 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const PUBLIC_PATHS = ["/login", "/auth/callback"];
+/** 完全一致で公開するパス */
+const PUBLIC_EXACT_PATHS = ["/"];
+/** 前方一致で公開するパス */
+const PUBLIC_PREFIX_PATHS = ["/login", "/select-area", "/auth/callback"];
 
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
@@ -36,7 +39,9 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const pathname = request.nextUrl.pathname;
-  const isPublicPath = PUBLIC_PATHS.some((path) => pathname.startsWith(path));
+  const isPublicPath =
+    PUBLIC_EXACT_PATHS.includes(pathname) ||
+    PUBLIC_PREFIX_PATHS.some((path) => pathname.startsWith(path));
 
   // 未認証ユーザーを /login にリダイレクト
   if (!user && !isPublicPath) {
