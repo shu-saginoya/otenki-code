@@ -132,24 +132,24 @@ export const Button = ({ variant = "paint", color = "primary", size = "base", ..
 ### アプリ実行
 
 ```bash
-pnpm run dev          # 開発サーバー起動（localhost:3000）
-pnpm run build        # プロダクションビルド
-pnpm run start        # プロダクションビルドを実行
-pnpm run typecheck    # TypeScript検証（出力なし）
+pnpm dev          # 開発サーバー起動（localhost:3000）
+pnpm build        # プロダクションビルド
+pnpm start        # プロダクションビルドを実行
+pnpm typecheck    # TypeScript検証（出力なし）
 ```
 
 ### テストと品質管理
 
 ```bash
 pnpm test             # Jestテスト実行
-pnpm run lint         # ESLintチェック
-pnpm run format       # ESLint --fix（自動フォーマット）
-pnpm run storybook    # Storybookをポート6006で起動
+pnpm lint             # ESLintチェック
+pnpm format           # ESLint --fix（自動フォーマット）
+pnpm storybook        # Storybookをポート6006で起動
 ```
 
 ### Nodeバージョン
 
-- **Voltaで固定**: Node 24.13.0、pnpm 10.27.0（`package.json` 参照）
+- **Voltaで固定**: Node 24.13.0（`package.json` 参照）
 - 依存関係の競合を避けるため、これらのバージョンを使用
 
 ## コード品質基準

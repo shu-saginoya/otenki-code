@@ -47,21 +47,21 @@
 1. 開発サーバーの起動
 
    ```bash
-   pnpm run dev
+   pnpm dev
    ```
 
 アプリケーションは [http://localhost:3000](http://localhost:3000) で利用できます。
 
 ## 📦 利用可能なスクリプト
 
-- `pnpm run dev` - 開発サーバーの起動
-- `pnpm run build` - プロダクションビルドの作成
-- `pnpm run start` - プロダクションサーバーの起動
-- `pnpm run lint` - リント実行
-- `pnpm run format` - コードフォーマット
-- `pnpm run storybook` - Storybookの起動
+- `pnpm dev` - 開発サーバーの起動
+- `pnpm build` - プロダクションビルドの作成
+- `pnpm start` - プロダクションサーバーの起動
+- `pnpm lint` - リント実行
+- `pnpm format` - コードフォーマット
+- `pnpm storybook` - Storybookの起動
 - `pnpm test` - テストの実行
-- `pnpm run typecheck` - 型チェックの実行
+- `pnpm typecheck` - 型チェックの実行
 
 ## 🐳 ドキュメント
 
