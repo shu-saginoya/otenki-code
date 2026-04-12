@@ -149,8 +149,8 @@ pnpm storybook        # Storybookをポート6006で起動
 
 ### Nodeバージョン
 
-- **Voltaで固定**: Node 24.13.0（`package.json` 参照）
-- 依存関係の競合を避けるため、これらのバージョンを使用
+- **Voltaで固定**: `package.json` 参照
+- 依存関係の競合を避けるため、プロジェクト全体で同じNodeバージョンを使用
 
 ## コード品質基準
 
