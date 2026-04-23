@@ -28,6 +28,10 @@
 
 [docs/naming-rule.md](../docs/naming-rule.md)を参照。
 
+## 地域選択の仕様について
+
+[docs/area-selection.md](../docs/area-selection.md)を参照。
+
 ## コンポーネントパターン
 
 ### UIコンポーネント (`src/components/ui/`)
