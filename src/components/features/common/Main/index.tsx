@@ -11,7 +11,10 @@ export type MainProps = {
 };
 
 /**
- * メイン
+ * メインコンポーネント
+ *
+ * @param children コンポーネントの子要素
+ * @param className スタイルクラス名
  */
 export const Main = ({ children, className }: MainProps): JSX.Element => {
   return (

@@ -1,3 +1,6 @@
+/**
+ * @file 格子状に要素を整列させるコンポーネント群
+ */
 import { ReactNode, JSX } from "react";
 
 import { cn } from "@/lib/cn";
@@ -25,7 +28,8 @@ type GridProps = {
 
 /**
  * Gridコンポーネント
- * レイアウトを担当するコンポーネントです。子要素にはColコンポーネントを利用してください。
+ * 要素を格子状に整列させるためのコンポーネント
+ * 子要素としてColコンポーネントと組み合わせて利用する
  *
  * @param as - タグの指定
  * @param gap - 子要素同士の間隔
@@ -67,7 +71,7 @@ type ColProps = {
 
 /**
  * Colコンポーネント
- * Containerコンポーネントの子要素
+ * Gridコンポーネントの子要素
  *
  * @param cols - 基本の横幅(カラム数1～12)
  * @param md - レスポンシブ時の横幅(カラム数1～12)

@@ -8,8 +8,8 @@ export type DividerProps = {
 };
 
 /**
- * Divider component
  * 区切り線コンポーネント
+ *
  * @param text 線の上に表示するテキスト
  * @param className 追加のクラス名（任意）
  * @returns

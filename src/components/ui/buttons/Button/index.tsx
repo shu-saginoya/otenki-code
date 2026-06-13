@@ -28,7 +28,8 @@ type ButtonProps = {
 } & ComponentProps<"button">;
 
 /**
- * Button Component
+ * ボタンコンポーネント
+ *
  * @param children 子要素
  * @param variant ボタンのバリアント
  * @param color 色の選択

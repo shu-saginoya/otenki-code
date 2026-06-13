@@ -8,7 +8,9 @@ export type FooterProps = {
 };
 
 /**
- * フッター
+ * フッターコンポーネント
+ *
+ * @param className スタイルクラス名
  */
 export const Footer = ({ className }: FooterProps): JSX.Element => {
   return (

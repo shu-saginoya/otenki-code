@@ -20,6 +20,14 @@ const variants = {
 
 type ImageShape = keyof typeof variants;
 
+/**
+ * 画像を円形・四角形で表示するコンポーネント
+ *
+ * @param alt 画像の代替テキスト（必須）
+ * @param shape 画像の形状（circle または square）。デフォルトは circle。
+ * @param className 追加のクラス名
+ * @param その他画像に付与できる属性値全て
+ */
 export const ShapeImage = ({
   alt,
   shape = "circle",

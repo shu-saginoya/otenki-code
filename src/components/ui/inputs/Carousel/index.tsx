@@ -13,11 +13,11 @@ type CarouselProps = {
 };
 
 /**
- * Carousel component
+ * カルーセルコンポーネント
+ *
  * @param children 子要素
  * @param { number } focus フォーカスするスライドのインデックス
  * @param { boolean } watchDrag ドラッグ機能 (default: true)
- * @returns JSX.Element
  */
 export const Carousel = ({
   children,

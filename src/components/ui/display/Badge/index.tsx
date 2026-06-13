@@ -13,7 +13,7 @@ export type BadgeProps = {
 };
 
 /**
- * バッジ
+ * バッジコンポーネント
  *
  * @param content バッジの内容
  * @param variant バッジのバリアント

@@ -1,3 +1,7 @@
+/**
+ * @file 表示に関するUIコンポーネントをまとめたモジュール
+ */
+
 export * from "./Badge";
 export * from "./Card";
 export * from "./Divider";
