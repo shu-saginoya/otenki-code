@@ -1,3 +1,8 @@
+/**
+ * @file 地域選択ページコンポーネント
+ * @description
+ * - ユーザーになるべく簡単に地域を選択してもらうことを目的とする
+ */
 "use client";
 
 import { useState } from "react";

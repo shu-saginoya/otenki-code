@@ -1,3 +1,9 @@
+/**
+ * @file 「アプリ情報カード」をブラウザに渡す
+ * @description
+ * - PWA（Progressive Web App）として動作するためのメタデータを提供する
+ * - PWAとは、Webサイトを「アプリ化」する技術で、ユーザーがホーム画面に追加したり、オフラインで利用できるようにすることができる
+ */
 import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {

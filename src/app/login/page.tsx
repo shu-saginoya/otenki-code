@@ -1,3 +1,9 @@
+/**
+ * @file ログインページコンポーネント
+ * @description
+ * - ログインと新規登録の両方を担当
+ */
+
 "use client";
 
 import {

@@ -1,3 +1,9 @@
+/**
+ * @file Reduxストアを提供する
+ * @description
+ * - 配下の全ページ・全コンポーネントからReduxのstateを使えるようにする
+ * - `layout.tsx`から呼び出されている
+ */
 "use client";
 
 import { useEffect, useRef } from "react";
