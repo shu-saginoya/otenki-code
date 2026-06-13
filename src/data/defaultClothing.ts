@@ -1,3 +1,6 @@
+/**
+ * @file 気温と服装の設定のデフォルト値を管理するファイル
+ */
 import type { ClothingItem } from "@/types";
 
 // デフォルトの服装データ
