@@ -4,6 +4,11 @@ import { useState } from "react";
 import { useAppRouter } from "@/hooks/features/useAppRouter";
 import { createClient } from "@/lib/supabase/client";
 
+/**
+ * 認証機能のロジックをまとめたカスタムフック
+ * 主にログイン・ログアウト・新規登録の処理を担当
+ * @returns メールアドレス、パスワード、メッセージ、各種ハンドラを含むオブジェクト
+ */
 export function useAuth() {
   const supabase = createClient();
   const { navigateTo } = useAppRouter();

@@ -1,13 +1,13 @@
 "use client";
 
-// 地域の区分を取得するカスタムフック
-
 import { useState, useEffect } from "react";
 
 import { fetchAreaData, type JmaAreas } from "@/lib/jma";
 
 /**
- * JMA（気象庁）エリア情報を取得・管理するカスタムフック
+ * JMA（気象庁）のエリア情報を状態として管理するカスタムフック
+ * このフックは、JMAのエリア情報をAPIから取得し、状態にセットして管理するためのものです。
+ * @returns エリア情報、ローディング状態、エラー情報を含むオブジェクト
  */
 export const useAreaOptions = () => {
   // 各エリア情報のステート

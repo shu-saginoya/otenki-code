@@ -9,6 +9,11 @@ import { getSelectedAreaByClass20Code, generateAreaOptions } from "@/lib/jma";
 
 import type { JmaAreaCode } from "@/lib/jma";
 
+/**
+ * 地域選択の際に暫定的な入力内容の状態を管理するフック
+ * また、入力内容に基づいて選択肢の生成（絞り込み）も行う
+ * @returns 選択関数、選択肢、ステータスを含むオブジェクト
+ */
 export const useSelectArea = () => {
   const dispatch = useAppDispatch();
   const { areas, loading, error } = useAreaOptions();
