@@ -1,4 +1,6 @@
-// filepath: src/utils/clothingImageUtils.ts
+/**
+ * @file 衣類画像に関するユーティリティ関数
+ */
 import { clothingImages } from "@/data/clothingImages";
 
 import type { ClothingImageId, ClothingCategory } from "@/types";

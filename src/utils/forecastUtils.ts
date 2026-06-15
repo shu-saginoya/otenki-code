@@ -1,3 +1,7 @@
+/**
+ * @file 天気予報に関連するユーティリティ関数
+ */
+
 // 最高気温と最低気温の平均
 export const averageTemp = (tempMax: number, tempMin: number) => {
   return (tempMax + tempMin) / 2;
