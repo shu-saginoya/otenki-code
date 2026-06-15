@@ -1,3 +1,7 @@
+/**
+ * @file 型定義のエントリーポイント
+ */
+
 export * from "./clothing";
 export * from "./color";
 export * from "./forecast";

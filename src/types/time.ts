@@ -1,3 +1,7 @@
+/**
+ * @file 時間についての型定義
+ */
+
 export type Hour =
   | 0
   | 1

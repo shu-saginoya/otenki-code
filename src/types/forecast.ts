@@ -1,3 +1,7 @@
+/**
+ * @file 天気予報についての型定義
+ */
+
 import type { JmaWeatherCode } from "@/lib/jma";
 
 export type PopsTimeSeries = {
