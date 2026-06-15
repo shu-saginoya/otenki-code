@@ -1,3 +1,7 @@
+/**
+ * @file 気温に関するユーティリティ関数
+ */
+
 import type { Hour } from "@/types";
 
 type Temp = number;

@@ -1,3 +1,6 @@
+/**
+ * @file 背景色のユーティリティークラスをマッピングしたモジュール群
+ */
 import { Color } from "@/types";
 
 export const bgColorMap: Record<Color, string> = {

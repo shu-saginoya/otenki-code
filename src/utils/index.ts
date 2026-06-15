@@ -1,3 +1,7 @@
+/**
+ * @file ユーティリティ関数のエントリーポイント
+ */
+
 export * from "./dateUtils";
 export * from "./fetchUtils";
 export * from "./forecastUtils";

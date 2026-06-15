@@ -10,7 +10,8 @@ type ListProps = {
 } & ComponentProps<"ul">;
 
 /**
- * List Component
+ * リストコンポーネント
+ *
  * @param children 子要素
  * @param divided 区切り線の表示（デフォルト: true）
  * @param className 追加のクラス名（任意）

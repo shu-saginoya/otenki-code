@@ -12,8 +12,9 @@ export type InputProps = {
 
 /**
  * 基本的なテキスト入力コンポーネント
- * @param errorMessage - エラーメッセージ。存在する場合、赤い枠線とメッセージを表示
- * @param props - 標準のinput要素の属性
+ *
+ * @param errorMessage エラーメッセージ。存在する場合、赤い枠線とメッセージを表示
+ * @param 標準のinput要素の属性
  */
 export const InputField = ({
   type,

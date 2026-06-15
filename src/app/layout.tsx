@@ -1,3 +1,6 @@
+/**
+ * @file アプリケーションのページで共通して利用されるレイアウトコンポーネント
+ */
 import "./globals.css";
 
 import { Metadata } from "next";

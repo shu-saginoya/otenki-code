@@ -1,3 +1,6 @@
+/**
+ * @file スタイルのユーティリティークラスをまとめたエントリーポイント
+ */
 export * from "./actionableStyles";
 export * from "./backgroundStyles";
 export * from "./borderStyles";

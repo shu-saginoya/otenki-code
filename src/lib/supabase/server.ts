@@ -1,3 +1,6 @@
+/**
+ * @file サーバー側で使用するSupabaseクライアントを生成するモジュール
+ */
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 

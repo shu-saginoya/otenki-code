@@ -1,3 +1,6 @@
+/**
+ * @file 気象庁のエリア情報を取得するためのユーティリティ関数
+ */
 import { fetcher } from "@/utils";
 
 import type { JmaAreas, JmaAreaError } from "./types";

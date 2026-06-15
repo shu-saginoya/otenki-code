@@ -1,3 +1,6 @@
+/**
+ * @file スペーシング関連のユーティリティークラスをマッピングしたモジュール群
+ */
 export const paddingMap = {
   px: "p-px",
   1: "p-1",

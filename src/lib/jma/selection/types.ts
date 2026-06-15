@@ -1,3 +1,6 @@
+/**
+ * @file 地域選択状態で使用する型定義をまとめたモジュール
+ */
 import type {
   JmaAreaCode,
   JmaCenter,

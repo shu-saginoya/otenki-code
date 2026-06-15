@@ -1,3 +1,6 @@
+/**
+ * @file ボーダー関連のユーティリティークラスをマッピングしたモジュール群
+ */
 import { Color } from "@/types";
 
 export const borderColorMap: Record<Color, string> = {

@@ -1,3 +1,6 @@
+/**
+ * @file 天気テキストや降水確率・気温データを整形するユーティリティ
+ */
 import { isSameDate, getHour, convertText } from "@/utils";
 
 import { TIME_RANGES } from "./constants";

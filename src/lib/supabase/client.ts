@@ -1,3 +1,6 @@
+/**
+ * @file ブラウザ側で使用するSupabaseクライアントを生成するモジュール
+ */
 import { createBrowserClient } from "@supabase/ssr";
 
 export function createClient() {

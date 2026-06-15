@@ -1,3 +1,6 @@
+/**
+ * @file ブロック要素のカラーバリエーションを生成する関数を定義するファイル
+ */
 import { cn } from "@/lib/cn";
 import {
   actionableBtnBase,

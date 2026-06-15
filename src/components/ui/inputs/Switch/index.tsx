@@ -9,9 +9,10 @@ type SwitchProps = {
 
 /**
  * トグルスイッチコンポーネント
- * @param checked - スイッチの状態
- * @param onChange - 状態変更時のコールバック
- * @param disabled - 無効状態
+ *
+ * @param { boolean } checked - スイッチの状態
+ * @param { (checked: boolean) => void } onChange - 状態変更時のコールバック
+ * @param { boolean } disabled - 無効状態
  */
 export const Switch = ({
   checked,

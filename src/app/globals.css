@@ -1,3 +1,4 @@
+/* アプリ全体で共通利用するグローバルスタイルを定義 */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

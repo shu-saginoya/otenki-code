@@ -18,7 +18,9 @@ export type HeaderProps = {
 const showAlert = (): void => alert("準備中");
 
 /**
- * ヘッダー
+ * ヘッダーコンポーネント
+ *
+ * @param className スタイルクラス名
  */
 export const Header = ({ className }: HeaderProps): JSX.Element => {
   const { user, loading } = useUser();

@@ -1,3 +1,7 @@
+/**
+ * @file 日付に関するユーティリティ関数
+ */
+
 import dayjs from "@/lib/dayjs";
 
 /**

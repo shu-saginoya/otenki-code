@@ -1,3 +1,6 @@
+/**
+ * @file ミドルウェアでSupabaseセッション更新と認証リダイレクトを行うモジュール
+ */
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 

@@ -1,3 +1,6 @@
+/**
+ * @file 気象庁予報レスポンスを日次予報データへ整形するユーティリティ
+ */
 import { isSameDate, getHour } from "@/utils";
 
 import {

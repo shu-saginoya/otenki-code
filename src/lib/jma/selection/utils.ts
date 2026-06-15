@@ -1,3 +1,6 @@
+/**
+ * @file 地域選択データの解決と選択肢生成を行うユーティリティ
+ */
 import type { SelectedArea } from "./types";
 import type {
   JmaAreaCode,

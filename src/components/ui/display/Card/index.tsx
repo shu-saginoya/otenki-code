@@ -15,6 +15,7 @@ type CardProps = {
 
 /**
  * コンテンツをグループ化するカードコンポーネント
+ *
  * @param children - カード内に表示するコンテンツ
  * @param color - カードの色
  * @param variant - カードのデザインの異型

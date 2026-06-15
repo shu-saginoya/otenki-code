@@ -30,6 +30,7 @@ type TabProps = {
 
 /**
  * タブ切り替えコンポーネント
+ *
  * @param items - タブの項目（ラベルとコンテンツ）
  * @param defaultIndex - 初期選択タブのインデックス
  * @param variant - デザインバリアント

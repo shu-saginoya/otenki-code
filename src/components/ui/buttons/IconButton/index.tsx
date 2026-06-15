@@ -24,7 +24,8 @@ type IconButtonProps = {
 } & ComponentProps<"button">;
 
 /**
- * IconButton Component
+ * アイコンボタンコンポーネント
+ *
  * @param children 子要素
  * @param size ボタンのサイズ
  * @param variant ボタンのバリアント

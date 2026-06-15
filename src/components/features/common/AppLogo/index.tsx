@@ -4,6 +4,9 @@ import { Text } from "@/components/ui";
 
 const AppName = "お天気コーデ";
 
+/**
+ * アプリのロゴマークコンポーネント
+ */
 export const AppLogo = (): JSX.Element => {
   return (
     <Text

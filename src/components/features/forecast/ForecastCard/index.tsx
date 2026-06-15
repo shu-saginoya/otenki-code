@@ -28,6 +28,15 @@ export type ForecastCardProps = {
 
 /**
  * 天気予報カード
+ *
+ * @param date 日付
+ * @param weather 天気
+ * @param weatherCode 天気コード
+ * @param wind 風
+ * @param wave 波
+ * @param pops 降水確率
+ * @param tempMax 最高気温
+ * @param tempMin 最低気温
  */
 export const ForecastCard = ({
   date,

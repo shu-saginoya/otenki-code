@@ -1,3 +1,6 @@
+/**
+ * @file トップページのコンポーネント
+ */
 "use client";
 
 import { useState, useEffect } from "react";

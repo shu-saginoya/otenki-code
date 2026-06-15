@@ -1,3 +1,7 @@
+/**
+ * @file 外部からインポートしたアイコンを管理するモジュール
+ */
+
 import { FaGoogle } from "react-icons/fa";
 import { FaSignInAlt } from "react-icons/fa";
 import { GoBell } from "react-icons/go";

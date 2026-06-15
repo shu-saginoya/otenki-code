@@ -1,3 +1,7 @@
+/**
+ * @file 服装についての型定義
+ */
+
 // 服装のカテゴリ
 export type ClothingCategory = "tops" | "bottoms" | "outer";
 

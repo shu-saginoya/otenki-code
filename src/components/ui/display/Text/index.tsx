@@ -23,8 +23,8 @@ export type TextProps = {
 };
 
 /**
- * Text component
  * インライン要素のテキストを扱うコンポーネント
+ *
  * @param children 子要素
  * @param as - タグの指定(デフォルトspan)
  * @param family - フォントファミリー
@@ -32,7 +32,6 @@ export type TextProps = {
  * @param weight - フォントウェイト
  * @param spacing - 文字間隔
  * @param className 追加のクラス名（任意）
- * @returns
  */
 export const Text = ({
   children,

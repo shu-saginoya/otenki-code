@@ -1,3 +1,9 @@
+/**
+ * @file 服装の画像を管理するためのファイル
+ * @description
+ * 服装の画像はアプリで固定でアイコンのように利用されるという前提でマップ形式でまとめている。
+ * そのため、もし仕様が変更（ユーザーが自由に画像を登録できるなど）になった場合はこのファイルは不要となる。
+ */
 import type { ClothingImageMap } from "@/types";
 
 export const clothingImages: ClothingImageMap = {

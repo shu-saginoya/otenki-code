@@ -1,3 +1,7 @@
+/**
+ * @file アプリ固有フックをまとめたモジュール
+ */
+
 export * from "./useAppRouter";
 export * from "./useAreaOptions";
 export * from "./useAuth";

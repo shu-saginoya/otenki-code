@@ -1,3 +1,6 @@
+/**
+ * @file 地域選択のグローバルステート管理を行うReduxスライス
+ */
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import type { SelectedArea, AreaSelectionState } from "@/lib/jma";

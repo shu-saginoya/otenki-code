@@ -1,3 +1,7 @@
+/**
+ * @file localStorageに関するユーティリティ関数
+ */
+
 // キーをEnumで一元管理（必要に応じてプレフィックスを追加）
 export enum StorageKey {
   AREA = "otenki-code_area",

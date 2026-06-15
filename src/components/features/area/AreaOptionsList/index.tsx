@@ -13,7 +13,7 @@ export type AreaOptionsListProps = {
 };
 
 /**
- * エリア選択肢リスト
+ * エリアの選択肢を一覧表示するコンポーネント
  *
  * @param {Record<string, { name: string }>} options - 選択肢オブジェクト
  * @param {() => void} action - 選択時の関数
