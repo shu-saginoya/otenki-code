@@ -1,3 +1,6 @@
+/**
+ * @file タイポグラフィ関連のユーティリティークラスをマッピングしたモジュール群
+ */
 import { Color } from "@/types";
 
 export const textColorMap: Record<Color, string> = {

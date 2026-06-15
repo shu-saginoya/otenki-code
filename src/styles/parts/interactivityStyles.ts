@@ -1,3 +1,6 @@
+/**
+ * @file インタラクティブ関連のユーティリティークラスをマッピングしたモジュール群
+ */
 export const cursorMap = {
   auto: "cursor-auto",
   default: "cursor-default",
