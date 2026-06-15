@@ -1,3 +1,7 @@
+/**
+ * @file Reduxのhooksをアプリ固有型でラップして再利用するためのモジュール
+ *
+ */
 import {
   useDispatch,
   useSelector,

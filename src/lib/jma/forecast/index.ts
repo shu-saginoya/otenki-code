@@ -1,3 +1,6 @@
+/**
+ * @file forecast関連モジュールの公開APIを集約するエントリーポイント
+ */
 // API関連
 export * from "./api";
 

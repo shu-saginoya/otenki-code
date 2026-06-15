@@ -1,3 +1,8 @@
+/**
+ * @file Day.jsの設定とエクスポート
+ * - 日本語ロケールとタイムゾーンを設定
+ * - 必要なプラグインを適用
+ */
 import dayjs from "dayjs";
 import "dayjs/locale/ja";
 import customParseFormat from "dayjs/plugin/customParseFormat";

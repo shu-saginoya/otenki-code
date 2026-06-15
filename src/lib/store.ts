@@ -1,3 +1,6 @@
+/**
+ * @file Reduxのラッパーでプロジェクト内で再利用するためのモジュール
+ */
 import { configureStore } from "@reduxjs/toolkit";
 
 import areasReducer from "@/lib/features/areas/areasSlice";

@@ -1,3 +1,6 @@
+/**
+ * @file 気象庁予報取得で使用する定数を定義するモジュール
+ */
 export const API_ENDPOINTS = {
   FORECAST: "https://www.jma.go.jp/bosai/forecast/data/forecast/",
 } as const;

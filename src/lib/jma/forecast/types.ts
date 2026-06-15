@@ -1,3 +1,6 @@
+/**
+ * @file 気象庁の予報APIレスポンスに関する型定義をまとめたモジュール
+ */
 import type { TIME_RANGES } from "./constants";
 import type { JmaAreaCode } from "@/lib/jma";
 

@@ -1,3 +1,6 @@
+/**
+ * @file 天気予報APIを取得するためのモジュール
+ */
 import { fetcher } from "@/utils/index";
 
 import { API_ENDPOINTS } from "./constants";

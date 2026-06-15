@@ -1,3 +1,6 @@
+/**
+ * @file 気象庁の予報区コードとその構造を定義する型
+ */
 export type JmaAreaCode = string;
 
 // 地方予報区

@@ -1,3 +1,6 @@
+/**
+ * @file 予報データ内のエリアコード解決と階層変換を行うユーティリティ
+ */
 import type { AreaObj } from "./types";
 import type { JmaAreas, SelectedArea, JmaAreaCode } from "@/lib/jma";
 

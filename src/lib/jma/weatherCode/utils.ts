@@ -1,3 +1,6 @@
+/**
+ * @file 気象庁天気コードと表示テキスト・アイコン変換を提供するユーティリティ
+ */
 import type { JmaWeatherIcon } from "./types";
 
 const JMA_FORECAST_IMAGE_BASE_URL = "https://www.jma.go.jp/bosai/forecast/img";
