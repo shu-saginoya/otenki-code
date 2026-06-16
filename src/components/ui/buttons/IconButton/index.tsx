@@ -41,6 +41,7 @@ export const IconButton = ({
   variant = "paint",
   color = "primary",
   disabled = false,
+  className,
   onClick,
   ...rest
 }: IconButtonProps): JSX.Element => {
@@ -51,7 +52,8 @@ export const IconButton = ({
         colorVariantMap[variant](color, { actionable: true }),
         fontSizeMap[size],
         roundedMap["full"],
-        paddingMap[1]
+        paddingMap[1],
+        className
       )}
       onClick={onClick}
       disabled={disabled}
