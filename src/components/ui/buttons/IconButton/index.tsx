@@ -26,12 +26,13 @@ type IconButtonProps = {
 /**
  * アイコンボタンコンポーネント
  *
- * @param children 子要素
+ * @param icon アイコンの種類
  * @param size ボタンのサイズ
  * @param variant ボタンのバリアント
  * @param color 色の選択
  * @param disabled 押せない状態(真偽値)
  * @param onClick 実行する関数
+ * @param rest button要素の標準属性
  * @returns
  */
 export const IconButton = ({
@@ -41,7 +42,7 @@ export const IconButton = ({
   color = "primary",
   disabled = false,
   onClick,
-  ...props
+  ...rest
 }: IconButtonProps): JSX.Element => {
   return (
     <button
@@ -54,7 +55,7 @@ export const IconButton = ({
       )}
       onClick={onClick}
       disabled={disabled}
-      {...props}
+      {...rest}
     >
       {createElement(iconMap[icon])}
     </button>
