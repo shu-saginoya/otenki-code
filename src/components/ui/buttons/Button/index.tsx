@@ -50,6 +50,7 @@ export const Button = ({
   prependIcon,
   appendIcon,
   onClick,
+  className,
   ...rest
 }: ButtonProps): JSX.Element => {
   return (
@@ -61,7 +62,8 @@ export const Button = ({
         roundedMap["full"],
         paddingXMap[4],
         paddingYMap[1],
-        block && "block w-full"
+        block && "block w-full",
+        className
       )}
       onClick={onClick}
       disabled={disabled}
