@@ -24,6 +24,37 @@
 [docs/components-design.md](../docs/components-design.md)を参照。
 もし、新規作成する際に迷った場合は質問する。
 
+## コメントについて
+
+人間が見てもわかりやすいようにコメントを書く。
+
+### ファイルの説明コメント
+
+そのファイルの役割や責任範囲を冒頭で説明する
+
+```ts
+/**
+ * @file ここにファイルの役割を簡潔に説明
+ * @description
+ * もし補足説明がある場合はここに記載
+ */
+```
+
+### 関数の説明コメント
+
+関数の目的、引数、返り値を説明する
+なお、コンポーネントの場合`@return JSX.Element`は省略してもよい
+
+```ts
+/**
+ * @function ここに関数名を記載
+ * @description ここに関数の詳細な説明を記載
+ * @param param1 - ここに引数の説明を記載
+ * @param param2 - ここに引数の説明を記載
+ * @returns ここに返り値の説明を記載
+ */
+```
+
 ## 命名規則（`docs/naming-rule.md` 参照）
 
 [docs/naming-rule.md](../docs/naming-rule.md)を参照。
