@@ -13,8 +13,12 @@ export type InputProps = {
 /**
  * 基本的なテキスト入力コンポーネント
  *
- * @param errorMessage エラーメッセージ。存在する場合、赤い枠線とメッセージを表示
- * @param 標準のinput要素の属性
+ * @param type - 入力フィールドのタイプ
+ * @param label - ラベル（オプション）
+ * @param description - 説明文（オプション）
+ * @param errorMessage - エラーメッセージ。存在する場合、赤い枠線とメッセージを表示
+ * @param id - 入力フィールドのID（オプション。指定なしの場合は自動生成）
+ * @param rest - HTML input要素の標準属性
  */
 export const InputField = ({
   type,

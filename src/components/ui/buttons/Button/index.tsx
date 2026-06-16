@@ -37,6 +37,7 @@ type ButtonProps = {
  * @param disabled 押せない状態(真偽値)
  * @param block ボタンをブロック要素にする(真偽値)
  * @param onClick 実行する関数
+ * @param rest button要素の標準属性
  * @returns
  */
 export const Button = ({
@@ -49,7 +50,8 @@ export const Button = ({
   prependIcon,
   appendIcon,
   onClick,
-  ...props
+  className,
+  ...rest
 }: ButtonProps): JSX.Element => {
   return (
     <button
@@ -60,11 +62,12 @@ export const Button = ({
         roundedMap["full"],
         paddingXMap[4],
         paddingYMap[1],
-        block && "block w-full"
+        block && "block w-full",
+        className
       )}
       onClick={onClick}
       disabled={disabled}
-      {...props}
+      {...rest}
     >
       <Stack justify="between" align="center" gap={1}>
         {prependIcon && createElement(iconMap[prependIcon])}

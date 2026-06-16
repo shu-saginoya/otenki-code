@@ -26,15 +26,15 @@ type ImageShape = keyof typeof variants;
  * @param alt 画像の代替テキスト（必須）
  * @param shape 画像の形状（circle または square）。デフォルトは circle。
  * @param className 追加のクラス名
- * @param その他画像に付与できる属性値全て
+ * @param rest Image要素の標準属性
  */
 export const ShapeImage = ({
   alt,
   shape = "circle",
   className,
-  ...props
+  ...rest
 }: ShapeImageProps): JSX.Element => {
   return (
-    <Image {...props} alt={alt} className={cn(variants[shape], className)} />
+    <Image {...rest} alt={alt} className={cn(variants[shape], className)} />
   );
 };
