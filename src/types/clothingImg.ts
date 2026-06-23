@@ -1,3 +1,7 @@
+/**
+ * @file 衣服の画像（アイコン）を管理するための型定義
+ */
+
 // 衣服画像の型
 export type ClothingImageId = string;
 
