@@ -3,7 +3,7 @@
  */
 
 export * from "./clothing";
-export * from "./clothingImg";
+export * from "./clothingImage";
 export * from "./color";
 export * from "./forecast";
 export * from "./tempClothingRule";
