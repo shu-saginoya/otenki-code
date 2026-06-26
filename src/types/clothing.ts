@@ -1,7 +1,7 @@
 /**
  * @file 服装についての型定義
  */
-import { ClothingImageId } from "./clothingImg";
+import { ClothingImageId } from "./clothingImage";
 
 // 服装のカテゴリ
 export type ClothingCategory = "tops" | "bottoms" | "outer";
