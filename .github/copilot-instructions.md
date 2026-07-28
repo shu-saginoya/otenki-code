@@ -63,6 +63,10 @@
 
 [docs/area-selection.md](../docs/area-selection.md)を参照。
 
+## 服装推薦の仕様について
+
+[docs/clothing-specifications.md](../docs/clothing-specifications.md)を参照。
+
 ## コンポーネントパターン
 
 ### UIコンポーネント (`src/components/ui/`)
