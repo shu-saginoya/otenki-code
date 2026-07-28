@@ -24,11 +24,14 @@ git push -u origin feature/add-weather-client
 3. Files changed タブでセルフレビュー
 4. 問題なければ `main` にマージ
 5. マージ完了後、ローカルの `main` ブランチを更新
+
    ```bash
    git checkout main
    git pull origin main
    ```
+
 6. 完了した `feature/<topic>` ブランチを削除
+
    ```bash
    git branch -d feature/<topic>
    git push origin --delete feature/<topic>
