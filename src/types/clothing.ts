@@ -3,18 +3,25 @@
  */
 import { ClothingImageId } from "./clothingImage";
 
-// 服装のカテゴリ
-export type ClothingCategory = "tops" | "bottoms" | "outer";
-
 // 服装のID
 export type ClothingItemId = string;
 
-// 服装アイテムの型
-export type ClothingItem = {
+// 服装アイテムの型（デフォルト）
+export type ClothingItemDefault = {
   id: ClothingItemId;
   name: string;
-  category: ClothingCategory;
   imageId: ClothingImageId;
-  isDefault: boolean; // デフォルトアイテムかどうかのフラグ
-  userId?: string; // カスタムアイテムの場合のみ設定
+  type: "default";
 };
+
+// 服装アイテムの型（カスタム）
+export type ClothingItemCustom = {
+  id: ClothingItemId;
+  name: string;
+  imageId: ClothingImageId;
+  type: "custom";
+  userId: string;
+};
+
+// 服装アイテムの型
+export type ClothingItem = ClothingItemDefault | ClothingItemCustom;

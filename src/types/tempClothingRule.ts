@@ -1,25 +1,29 @@
 /**
- * @file 天気と服装の相関の型定義
+ * @file 気温帯と服装の紐づけルールの型定義
  * @description
- * 気温と服装の相関ルールを定義する型。気温は範囲を示すため境界値として`minTemp`をもつ。
+ * 気温帯ごとのセット/解除を型として安全に扱うための定義を提供する。
  */
-import type { ClothingCategory, ClothingItemId } from "./clothing";
 
-// 気温と服装の相関ルールの型
-// 先頭要素のminTempには`-Infinity`を指定する想定
-export type TempClothingRule = {
-  minTemp: number;
-  clothingItemId: ClothingItemId;
+import type { ClothingItemId } from "./clothing";
+import type { TempZoneId } from "./tempZone";
+
+// 服装を算出する時間帯
+export type ClothingTimeSlot = "daytime" | "morningEvening";
+
+// 気温帯ごとの服装セット
+export type TempZoneClothingRule = {
+  tempZoneId: TempZoneId;
+  timeSlot: ClothingTimeSlot;
+  itemIds: ClothingItemId[];
 };
 
-// 先頭要素を必須にした相関ルール配列
-export type TempClothingRuleList = TempClothingRule[];
+// ユーザーごとの気温帯服装セット（デフォルト設定の上書き用）
+export type UserTempZoneClothingRule = TempZoneClothingRule & {
+  userId: string;
+};
 
-// カテゴリごとの温度と服装の相関ルールの型
-export type TempClothingRules = Record<ClothingCategory, TempClothingRuleList>;
-
-// カテゴリごとの温度をもとにした服装の戻り値
-export type TempClothingRecommendation = Record<
-  ClothingCategory,
-  ClothingItemId
->;
+// 服装と気温帯の関連設定一式
+export type TempClothingConfig = {
+  defaultRules: TempZoneClothingRule[];
+  userRules: UserTempZoneClothingRule[];
+};
