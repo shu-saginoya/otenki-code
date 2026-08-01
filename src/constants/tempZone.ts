@@ -2,7 +2,7 @@
  * @file 気温帯の定数設定ファイル
  */
 
-import type { TempZone } from "@/types/tempZone";
+import type { TempZone } from "@/types";
 
 // 全気温帯の定義
 export const TEMP_ZONES = [

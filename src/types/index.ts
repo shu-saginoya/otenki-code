@@ -7,4 +7,5 @@ export * from "./clothingImage";
 export * from "./color";
 export * from "./forecast";
 export * from "./tempClothingRule";
+export * from "./tempZone";
 export * from "./time";
