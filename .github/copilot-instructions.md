@@ -1,28 +1,25 @@
 # AIコーディングエージェント向け指示書 - お天気コーデ (Otenki Code)
 
-## プロジェクト概要
+このファイルは、AIエージェントが実装時に守るべきルールを記載する。  
+仕様や運用の詳細は重複記載せず、一次情報のドキュメントを参照する。
 
-気象庁APIを使用して気温に基づいた服装を推薦する天気予報アプリ。ターゲットユーザー：小さい子どもがいる親子。コアコンセプト：**シンプルさとスピード** - アプリを開いたらすぐに天気と服装が表示される。
+## 一次情報（必ず参照）
 
-**技術スタック:** Next.js 15 (App Router)、TypeScript、Redux Toolkit、Tailwind CSS、HeadlessUI、Supabase、Jest、Storybook
+- 全体入口: [docs/README.md](../docs/README.md)
+- 目的・条件: [docs/concept.md](../docs/concept.md)
+- 開発計画: [docs/roadmap.md](../docs/roadmap.md)
+- 地域選択仕様: [docs/area-selection.md](../docs/area-selection.md)
+- 服装推薦仕様: [docs/clothing-specifications.md](../docs/clothing-specifications.md)
+- 命名規則: [docs/naming-rule.md](../docs/naming-rule.md)
+- ディレクトリ設計: [docs/components-design.md](../docs/components-design.md)
+- 開発運用: [docs/CONTRIBUTING.md](../docs/CONTRIBUTING.md)
 
-## アーキテクチャとデータフロー
+## 実装時の基本原則
 
-### 状態管理パターン
-
-- **Redux Toolkit** でグローバル状態を管理
-- **カスタムフック** (`src/hooks/`) でデータ取得と派生状態を処理
-
-### JMA API 連携 (`src/lib/jma/`)
-
-- `fetchForecast(officeCode)` - 気象庁から天気データを取得
-- エリアコードの構造: `areas.json` → offices → class10s → class15s → class20s
-- **重要**: API レスポンスは検証・型付けされているが、構造を仮定しない
-
-## ディレクトリ構成と整理
-
-[docs/components-design.md](../docs/components-design.md)を参照。
-もし、新規作成する際に迷った場合は質問する。
+- コアコンセプトは「シンプルさとスピード」。起動直後に必要情報へ到達できる体験を優先する
+- 既存実装の有無で方針を変えず、作業優先度は [docs/roadmap.md](../docs/roadmap.md) に従う
+- 同じ内容を複数ファイルへ重複して書かない
+- 仕様判断に迷ったら、実装を先に進めず一次情報を確認する
 
 ## コメントについて
 
@@ -48,7 +45,7 @@
 ```ts
 /**
  * ここに関数の目的や詳細な説明を記載
- * 
+ *
  * @param param1 - ここに引数の説明を記載
  * @param param2 - ここに引数の説明を記載
  * @returns ここに返り値の説明を記載
@@ -66,91 +63,6 @@
 ## 服装推薦の仕様について
 
 [docs/clothing-specifications.md](../docs/clothing-specifications.md)を参照。
-
-## コンポーネントパターン
-
-### UIコンポーネント (`src/components/ui/`)
-
-- **アプリ非依存である必要あり** - JMA/服装ドメインロジックを直接含まない
-- `cn()` ユーティリティ（clsx + tailwind-merge）で className を合成
-
-```tsx
-// 標準パターン
-import { cn } from "@/lib/cn";
-import { colorVariantMap, fontSizeMap } from "@/styles";
-
-export const Button = ({ variant = "paint", color = "primary", size = "base", ... }) => {
-  return (
-    <button className={cn(
-      colorVariantMap[variant][color],
-      fontSizeMap[size],
-      // ... その他のスタイル
-    )}>
-      {children}
-    </button>
-  );
-};
-```
-
-### Featureコンポーネント (`src/components/features/`)
-
-- **ドメイン固有** - フック、サービス、Redux を使用可
-- 共通コンポーネント（Header、Footer、Main、AppLogo）は `features/common/` に配置
-
-### スタイルシステム
-
-- Tailwind クラスは `src/styles/parts/` と `src/styles/templates/` のバリアントマップで管理
-- `colorVariantMap[variant][color]` が Tailwind クラス文字列を返す
-- className のマージには必ず `cn()` を使用 - 手動で Tailwind クラスを連結しない
-
-## データと型
-
-### 型システム
-
-- `src/types/` で一元管理、`index.ts` からバレルエクスポート
-- アプリドメインの型は`@/types`からインポート
-- ライブラリ固有の型（JMA API 等）は各`lib/`モジュールからインポート
-
-## 開発ワークフロー
-
-### アプリ実行
-
-```bash
-pnpm dev          # 開発サーバー起動（localhost:3000）
-pnpm build        # プロダクションビルド
-pnpm start        # プロダクションビルドを実行
-```
-
-### テストと品質管理
-
-```bash
-pnpm test             # Jestテスト実行
-pnpm lint             # ESLintチェック
-pnpm format           # ESLint --fix（自動フォーマット）
-pnpm typecheck    # TypeScript検証（出力なし）
-pnpm storybook        # Storybookをポート6006で起動
-```
-
-### Nodeバージョン
-
-- **Voltaで固定**: [package.json](../package.json) を参照
-- 依存関係の競合を避けるため、プロジェクト全体で同じNodeバージョンを使用
-
-## コード品質基準
-
-### ESLint設定 (`eslint.config.mjs`)
-
-- インポート順序を強制
-- アルファベット順のインポートで `newlines-between: "always"`
-- Prettier統合（`prettier/prettier: "error"`）
-- Tailwind classnames 順序警告を有効化
-
-### テスト
-
-- Jest と React Testing Library (`@testing-library/react`)
-- テストファイルはコンポーネントと同じディレクトリ: `*.test.ts` または `*.test.tsx`
-- セットアップは `jest.setup.ts` に記述
-- **プロダクションビルドでは `data-testid` 属性を削除**（`next.config.ts` 参照）
 
 ## 重要な実装詳細
 
@@ -180,13 +92,11 @@ pnpm storybook        # Storybookをポート6006で起動
 
 ## 新機能追加時の手順
 
-1. **型定義から**: `src/types/` で定義し、index からエクスポート
-2. **データ層**: 外部 API なら `lib/` へ、純粋関数なら `utils/` へ
-3. **フック**: データ取得/状態管理用に `hooks/features/` で作成
-4. **UI コンポーネント**: `ui/` でプリミティブを構築し、`features/` で組み合わせ
-5. **Redux**: 真のグローバル状態のみ（地域選択パターン）
-6. **テスト**: 実装ファイルと一緒に追加
-7. **Storybook**: UI コンポーネント用に `.stories.tsx` を作成
+1. 方針確認: [docs/roadmap.md](../docs/roadmap.md) と [docs/concept.md](../docs/concept.md) を確認
+2. 設計確認: [docs/components-design.md](../docs/components-design.md) と [docs/naming-rule.md](../docs/naming-rule.md) を確認
+3. 実装: 型定義→データ層→フック→UIの順で進める
+4. 検証: lint、typecheck、test を実行
+5. 記録: 仕様変更がある場合は一次情報のdocsを更新
 
 ## よくある落とし穴
 
@@ -199,6 +109,6 @@ pnpm storybook        # Storybookをポート6006で起動
 
 ## リソース
 
-- **ドキュメント**: `docs/`ディレクトリ
-- **Tailwind 設定**: `tailwind.config.ts` - カスタムテーマ拡張
-- **パスエイリアス**: `@/*` → `src/*`（tsconfig.json）
+- **ドキュメント入口**: [docs/README.md](../docs/README.md)
+- **Tailwind 設定**: [tailwind.config.ts](../tailwind.config.ts)
+- **パスエイリアス設定**: [tsconfig.json](../tsconfig.json)

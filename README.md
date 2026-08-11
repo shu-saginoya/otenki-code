@@ -65,34 +65,9 @@
 
 ## 🐳 ドキュメント
 
-- [コンポーネント設計書](./docs/components-design.md) - UIコンポーネントの構成と設計方針
-
-## ブランチモデル
-
-- `main`:
-  - 常に安定。公開用の履歴として管理します。
-  - 直接 push は行わず、PR を通して更新します。
-- `feature/<topic>`:
-  - 機能追加や改善の作業ブランチ。作業が完了したら `main` へ PR を作成します。
-- `hotfix/<topic>`:
-  - 緊急修正用。`main` へ直接 PR を作成します。
-
-## 🤝 開発フロー
-
-### 通常の機能開発
-
-1. `feature/<topic>` ブランチを作成
-2. 実装・コミット
-3. `feature/<topic>` → `main` に PR 作成
-4. セルフレビュー後、`main` にマージ
-5. ローカルブランチのクリーンアップ
-
-### 緊急修正
-
-1. `hotfix/<topic>` ブランチを作成
-2. `main` に直接 PR 作成・マージ
-
-詳細な手順、コミット規約、PR の書き方は [CONTRIBUTING.md](./docs/CONTRIBUTING.md) を参照してください。
+- [ドキュメントガイド](./docs/README.md) - 目的、仕様、設計、運用、ロードマップの入口
+- [開発ロードマップ](./docs/roadmap.md) - 全体進行の基準
+- [開発運用ルール（Contributing）](./docs/CONTRIBUTING.md) - ブランチ・PR・レビュー運用
 
 ## 📄 ライセンス
 
