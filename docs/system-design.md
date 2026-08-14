@@ -5,9 +5,9 @@
 ## 配置方針
 
 - `app/`: 画面とルーティング
-- `components/`: 再利用UI
-- `features/`: 機能ごとの実装
-- `ui/`: 汎用UI
+- `components/`: UI（`features/` と `ui/` を含む）
+- `components/features/`: 機能ごとのUI
+- `components/ui/`: 汎用UI
 - `hooks/`: React のロジック
 - `lib/`: 共通ライブラリ
 - `utils/`: 純粋関数
