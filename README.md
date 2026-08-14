@@ -23,7 +23,7 @@
 - Tailwind CSS
 - HeadlessUI
 
-## その他ツール
+### その他ツール
 
 - Jest (テスト)
 - Storybook (UIコンポーネント開発)
