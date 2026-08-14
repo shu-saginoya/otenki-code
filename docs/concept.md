@@ -33,9 +33,3 @@
 - 起動直後に必要情報に到達する
 - 日本語で分かりやすく表示する
 - 設定は最小限にする
-
-## 参照先
-
-- [地域選択仕様](./area-selection.md)
-- [服装推薦仕様](./clothing-specifications.md)
-- [命名規則](./naming-rule.md)

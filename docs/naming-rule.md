@@ -34,7 +34,6 @@
 - 内部コードでは `class20` などの識別子を使う
 - 温度は `℃` を使う
 
-
 - ESLint の `naming-convention` を活用（TypeScriptプロジェクト）
-- `docs/naming.md` や `README.md` にまとめて共有
+- `README.md` にまとめて共有
 - よく使うドメイン用語の辞書（命名辞書）をチーム内で作るのもおすすめ
