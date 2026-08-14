@@ -1,30 +1,42 @@
-# ドキュメントガイド
+# ドキュメント一覧
 
-このファイルは、プロジェクト内ドキュメントの入口です。  
-重複記載を避けるため、各テーマの一次情報（Single Source of Truth）を明確にします。
+プロジェクトの文書は、役割ごとに分けて管理する。
 
-## 運用ルール
+## ルール
 
-- 同じ内容を複数ファイルに重複して書かない
-- 詳細は一次情報に集約し、他のファイルはリンク参照にする
-- 新しい方針や仕様を追加する場合は、先に一次情報を決めてから記述する
+- 1つの内容は1つの文書に集約する
+- 仕様・設計・計画は分けて書く
+- 迷ったらこの一覧から参照する
+- ドキュメントは短くシンプルに書く
+- 人間にもAIにも読みやすい文章を心がける
 
-## プロジェクトの目的・条件
+## 目的と方針
 
-- [アプリコンセプト](./concept.md)
-- [技術構成と選定方針](./tech-stack.md)
+- [アプリコンセプト](./product-concept.md)
 
 ## 仕様
 
-- [地域選択の仕様](./area-selection.md)
-- [服装推薦の仕様](./clothing-specifications.md)
+- [地域選択仕様](./area-selection.md)
+- [服装推薦仕様](./clothing-recommendation.md)
 
-## 設計・実装ルール
+## 設計
 
-- [コンポーネント設計書](./components-design.md)
-- [命名規則](./naming-rule.md)
-- [開発運用ルール（Contributing）](./CONTRIBUTING.md)
+- [技術方針](./technical-stack.md)
+- [構成設計](./system-design.md)
+- [命名規則](./naming-guide.md)
 
-## 計画
+## 運用
 
-- [開発ロードマップ](./roadmap.md)
+- [開発計画](./development-plan.md)
+- [運用ルール](./operating-guide.md)
+
+## 読み順
+
+1. [アプリコンセプト](./product-concept.md)
+2. [地域選択仕様](./area-selection.md)
+3. [服装推薦仕様](./clothing-recommendation.md)
+4. [技術方針](./technical-stack.md)
+5. [構成設計](./system-design.md)
+6. [命名規則](./naming-guide.md)
+7. [開発計画](./development-plan.md)
+8. [運用ルール](./operating-guide.md)
