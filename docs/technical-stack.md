@@ -64,6 +64,6 @@
 
 ## 参照
 
-- [開発ロードマップ](./roadmap.md)
-- [開発運用ルール（Contributing）](./CONTRIBUTING.md)
-- [コンポーネント設計書](./components-design.md)
+- [開発計画](./development-plan.md)
+- [運用ルール](./operating-guide.md)
+- [構成設計](./system-design.md)

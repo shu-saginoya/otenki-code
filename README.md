@@ -66,8 +66,8 @@
 ## 🐳 ドキュメント
 
 - [ドキュメントガイド](./docs/README.md) - 目的、仕様、設計、運用、ロードマップの入口
-- [開発ロードマップ](./docs/roadmap.md) - 全体進行の基準
-- [開発運用ルール（Contributing）](./docs/CONTRIBUTING.md) - ブランチ・PR・レビュー運用
+- [開発計画](./docs/development-plan.md) - 全体進行の基準
+- [運用ルール](./docs/operating-guide.md) - ブランチ・PR・レビュー運用
 
 ## 📄 ライセンス
 

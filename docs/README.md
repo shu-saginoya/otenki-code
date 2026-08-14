@@ -11,31 +11,31 @@
 
 ## 目的と方針
 
-- [アプリコンセプト](./concept.md)
+- [アプリコンセプト](./product-concept.md)
 
 ## 仕様
 
 - [地域選択仕様](./area-selection.md)
-- [服装推薦仕様](./clothing-specifications.md)
+- [服装推薦仕様](./clothing-recommendation.md)
 
 ## 設計
 
-- [技術方針](./tech-stack.md)
-- [構成設計](./components-design.md)
-- [命名規則](./naming-rule.md)
+- [技術方針](./technical-stack.md)
+- [構成設計](./system-design.md)
+- [命名規則](./naming-guide.md)
 
 ## 運用
 
-- [開発計画](./roadmap.md)
-- [運用ルール](./CONTRIBUTING.md)
+- [開発計画](./development-plan.md)
+- [運用ルール](./operating-guide.md)
 
 ## 読み順
 
-1. [アプリコンセプト](./concept.md)
+1. [アプリコンセプト](./product-concept.md)
 2. [地域選択仕様](./area-selection.md)
-3. [服装推薦仕様](./clothing-specifications.md)
-4. [技術方針](./tech-stack.md)
-5. [構成設計](./components-design.md)
-6. [命名規則](./naming-rule.md)
-7. [開発計画](./roadmap.md)
-8. [運用ルール](./CONTRIBUTING.md)
+3. [服装推薦仕様](./clothing-recommendation.md)
+4. [技術方針](./technical-stack.md)
+5. [構成設計](./system-design.md)
+6. [命名規則](./naming-guide.md)
+7. [開発計画](./development-plan.md)
+8. [運用ルール](./operating-guide.md)
