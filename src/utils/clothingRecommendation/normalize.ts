@@ -5,15 +5,16 @@
  */
 
 import { TEMP_ZONES } from "@/constants/tempZone";
+
+import type {
+  RuleCoverageMissingKey,
+  RuleCoverageValidationResult,
+} from "./types";
 import type {
   ClothingItemId,
   ClothingTimeSlot,
   TempZoneClothingRule,
 } from "@/types";
-import type {
-  RuleCoverageMissingKey,
-  RuleCoverageValidationResult,
-} from "./types";
 
 /**
  * 気温入力を検証し、利用可能な数値に正規化する。

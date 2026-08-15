@@ -4,6 +4,9 @@
  * デフォルトルールとユーザー上書きルールを合成し、検索可能な形に変換する。
  */
 
+import { normalizeItemIds } from "./normalize";
+
+import type { EffectiveRuleKey, EffectiveRuleMap } from "./types";
 import type {
   ClothingItemId,
   ClothingTimeSlot,
@@ -11,8 +14,6 @@ import type {
   TempZoneId,
   UserTempZoneClothingRule,
 } from "@/types";
-import { normalizeItemIds } from "./normalize";
-import type { EffectiveRuleKey, EffectiveRuleMap } from "./types";
 
 /**
  * 気温帯IDと時間帯からルール検索用キーを生成する。
