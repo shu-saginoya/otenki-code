@@ -9,12 +9,13 @@ import {
   mergeDefaultAndCustomItems,
   resolveClothingItemsByIds,
 } from "./itemResolver";
+import { normalizeItemIds, sanitizeTemperature } from "./normalize";
 import { getRuleItemIds, buildEffectiveRuleMap } from "./ruleResolver";
 import {
   resolveDaytimeTempZoneId,
   resolveMorningEveningTempZoneId,
 } from "./tempZone";
-import { normalizeItemIds, sanitizeTemperature } from "./normalize";
+
 import type {
   BuildClothingRecommendationInput,
   ClothingRecommendation,

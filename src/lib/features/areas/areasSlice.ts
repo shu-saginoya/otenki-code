@@ -17,30 +17,14 @@ const areasSlice = createSlice({
   name: "areas",
   initialState,
   reducers: {
-    // 選択地域を保存
+    // 選択地域を一時的に保持
     setSelectedArea: (state, action: PayloadAction<SelectedArea>) => {
       state.selectedArea = action.payload;
-      // ローカルストレージにも保存
-      localStorage.setItem("selectedArea", JSON.stringify(action.payload));
     },
 
     // 地域選択をクリア
     clearSelectedArea: (state) => {
       state.selectedArea = {};
-      localStorage.removeItem("selectedArea");
-    },
-
-    // localStorage から地域情報を読み込む
-    initSelectedArea: (state) => {
-      try {
-        const savedData = localStorage.getItem("selectedArea");
-        if (savedData) {
-          state.selectedArea = JSON.parse(savedData);
-        }
-      } catch (error) {
-        console.error("Failed to load selectedArea from localStorage:", error);
-        state.error = "地域情報の読み込みに失敗しました";
-      }
     },
 
     // ローディング状態の設定
@@ -55,12 +39,7 @@ const areasSlice = createSlice({
   },
 });
 
-export const {
-  setSelectedArea,
-  clearSelectedArea,
-  initSelectedArea,
-  setLoading,
-  setError,
-} = areasSlice.actions;
+export const { setSelectedArea, clearSelectedArea, setLoading, setError } =
+  areasSlice.actions;
 
 export default areasSlice.reducer;
