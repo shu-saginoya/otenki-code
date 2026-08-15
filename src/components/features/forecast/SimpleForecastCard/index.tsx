@@ -13,8 +13,8 @@ export type SimpleForecastCardProps = {
   date: string;
   weatherCode: JmaWeatherCode;
   pop: string;
-  tempMax: string | undefined;
-  tempMin: string | undefined;
+  tempMax?: string;
+  tempMin?: string;
 };
 
 /**

@@ -3,17 +3,19 @@
  */
 "use client";
 
-import { CurrentlyArea } from "@/components/features";
-import { Col, Grid } from "@/components/ui";
-import { useAppSelector } from "@/lib/hooks";
+import { useState, useEffect } from "react";
 
-// Phase 2 の地域選択確認中は、予報取得・表示を停止する。
-// 天気予報の実装を再開する際は、このコメント内のコードを復元する。
-// import { useState, useEffect } from "react";
-// import { ForecastCard, SimpleForecastCard } from "@/components/features";
-// import { useJmaForecast } from "@/hooks/features";
-// import { extractDailyForecast } from "@/lib/jma";
-// import type { DailyForecastSimple, DailyForecastDetail } from "@/types";
+import {
+  CurrentlyArea,
+  ForecastCard,
+  SimpleForecastCard,
+} from "@/components/features";
+import { Col, Grid } from "@/components/ui";
+import { useJmaForecast } from "@/hooks/features";
+import { useAppSelector } from "@/lib/hooks";
+import { extractDailyForecast } from "@/lib/jma";
+
+import type { DailyForecastSimple, DailyForecastDetail } from "@/types";
 
 export default function Home() {
   // Reduxの状態を取得
@@ -22,7 +24,6 @@ export default function Home() {
     selectedArea.class20?.name ?? ""
   }`.trim();
 
-  /*
   const { forecast, loading, error } = useJmaForecast();
   const [forecastsDetail, setForecastsDetail] =
     useState<DailyForecastDetail[]>();
@@ -41,14 +42,12 @@ export default function Home() {
 
   if (loading) return <p>loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
-  */
 
   return (
     <Grid gap={4}>
       <Col cols={12}>
         <CurrentlyArea area={currentlyAreaName} />
       </Col>
-      {/*
       <Col cols={12}>
         {forecastsDetail?.map((forecast) => (
           <ForecastCard key={forecast.date} {...forecast} />
@@ -57,7 +56,6 @@ export default function Home() {
           <SimpleForecastCard key={forecast.date} {...forecast} />
         ))}
       </Col>
-      */}
     </Grid>
   );
 }

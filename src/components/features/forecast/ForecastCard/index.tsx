@@ -12,7 +12,7 @@ import { formatDate, getRelativeDayLabel, convertText } from "@/utils";
 
 export type ForecastCardProps = {
   date: string;
-  weather: string;
+  weatherText: string;
   weatherCode: JmaWeatherCode;
   wind: string;
   wave?: string;
@@ -30,7 +30,7 @@ export type ForecastCardProps = {
  * 天気予報カード
  *
  * @param date 日付
- * @param weather 天気
+ * @param weatherText 天気
  * @param weatherCode 天気コード
  * @param wind 風
  * @param wave 波
@@ -40,7 +40,7 @@ export type ForecastCardProps = {
  */
 export const ForecastCard = ({
   date,
-  weather,
+  weatherText,
   weatherCode,
   wind,
   wave,
@@ -96,7 +96,7 @@ export const ForecastCard = ({
         <Stack direction="col">
           <Stack align="center" gap={2}>
             天気{createElement(iconMap["partlySunny"])}
-            {convertText(weather, convertOptions)}
+            {convertText(weatherText, convertOptions)}
           </Stack>
           <Stack align="center" gap={2}>
             風{createElement(iconMap["windy"])}
