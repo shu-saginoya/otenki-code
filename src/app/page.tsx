@@ -40,8 +40,20 @@ export default function Home() {
     setForecastsSimple(simpleList);
   }, [selectedArea, forecast]);
 
-  if (loading) return <p>loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (loading) {
+    return (
+      <p role="status" aria-live="polite" aria-busy="true">
+        Loading...
+      </p>
+    );
+  }
+  if (error) {
+    return (
+      <p role="alert">
+        Error: {error.message}
+      </p>
+    );
+  }
 
   return (
     <Grid gap={4}>
