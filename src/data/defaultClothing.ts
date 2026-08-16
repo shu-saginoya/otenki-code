@@ -1,10 +1,13 @@
 /**
  * @file 気温と服装の設定のデフォルト値を管理するファイル
  */
-import type { ClothingItem } from "@/types";
+import type { ClothingItemDefault } from "@/types";
 
 // デフォルトの服装データ
-export const defaultClothingItems: Omit<ClothingItem, "id" | "userId">[] = [
+export const defaultClothingItems: Omit<
+  ClothingItemDefault,
+  "id" | "userId"
+>[] = [
   {
     name: "半袖シャツ",
     imageId: "",
