@@ -3,7 +3,7 @@
  */
 import "./globals.css";
 
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import { ReactNode } from "react";
 
 import StoreProvider from "@/app/StoreProvider";
@@ -13,7 +13,11 @@ export const metadata: Metadata = {
   title: "お天気コーデ",
   description:
     "気象庁の天気・気温予報をもとに服装の目安をお知らせします。忙しい毎日にご活用ください。",
-  viewport: "width=device-width, initial-scale=1",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: "#10b981",
 };
 

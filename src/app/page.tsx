@@ -48,11 +48,7 @@ export default function Home() {
     );
   }
   if (error) {
-    return (
-      <p role="alert">
-        Error: {error.message}
-      </p>
-    );
+    return <p role="alert">Error: {error.message}</p>;
   }
 
   return (
