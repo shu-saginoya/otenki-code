@@ -1,27 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  reactStrictMode: true,
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "lh3.googleusercontent.com",
+  /* config options here */
+  cacheComponents: true,
+  partialPrefetching: true,
+  turbopack: {
+    rules: {
+      "*.css": {
+        loaders: ["@tailwindcss/turbopack"],
+        as: "*.css",
       },
-    ],
+    },
   },
-  compiler: (() => {
-    let compilerConfig = {};
-    if (process.env.NODE_ENV === "production") {
-      compilerConfig = {
-        ...compilerConfig,
-        // 本番環境ではReact Testing Libraryで使用するdata-testid属性を削除
-        reactRemoveProperties: { properties: ["^data-testid$"] },
-      };
-    }
-
-    return compilerConfig;
-  })(),
 };
 
 export default nextConfig;
