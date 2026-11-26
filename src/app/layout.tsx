@@ -1,13 +1,13 @@
 /**
  * @file アプリケーションのページで共通して利用されるレイアウトコンポーネント
  */
-import "./globals.css";
+// import "./globals.css";
 
 import { Metadata, Viewport } from "next";
 import { ReactNode } from "react";
 
-import StoreProvider from "@/app/StoreProvider";
-import { Header, Main } from "@/components/features";
+// import StoreProvider from "@/app/StoreProvider";
+// import { Header, Main } from "@/components/features";
 
 export const metadata: Metadata = {
   title: "お天気コーデ",
@@ -28,6 +28,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
+      <body>
+        <main>{children}</main>
+      </body>
+    </html>
+  );
+  /*   return (
+    <html lang="ja">
       <body className="h-svh">
         <StoreProvider>
           <div className="flex h-full flex-col">
@@ -39,5 +46,5 @@ export default function RootLayout({
         </StoreProvider>
       </body>
     </html>
-  );
+  ); */
 }
